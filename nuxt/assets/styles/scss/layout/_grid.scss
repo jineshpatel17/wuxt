@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains global container and grid based classes
+// -----------------------------------------------------------------------------
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  flex: 1;
+
+  @include from('desktop') {
+    max-width: get('desktop.min-width', $config) - gutter();
+  }
+}

@@ -1,0 +1,612 @@
+$v-card__accent-height: 4px;
+
+.card {
+  position: relative;
+  margin-bottom: gutter();
+  @include when-inside('.we-are') {
+    margin-bottom: 48px
+  }
+  @include when-inside('.news-insights') {
+    margin-bottom: 0;
+  }
+  @include when-inside('.events') {
+    margin-bottom: 0;
+  }
+  @include from('tablet--pt') {
+    @include when-inside('.news-insights__list') {
+      margin-bottom: 64px;
+    }
+    @include when-inside('.events__list') {
+      margin-bottom: 68px;
+    }
+    @include when-inside('.we-are') {
+      margin-bottom: 58px
+    }
+  }
+  @include from('desktop') {
+    @include when-inside('.we-are') {
+      margin-bottom: 69px
+    }
+    @include when-inside('.news-insights__list') {
+      margin-bottom: 80px;
+    }
+    @include when-inside('.events__list') {
+      margin-bottom: 72px;
+    }
+  }
+  &::after {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #d8d8d8;
+    margin: 0 auto;
+    content: "";
+    bottom: 0;
+    @include when-inside('.events') {
+      height: 0;
+    }
+    @include when-inside('.we-do') {
+      background: transparent;
+      @include from('tablet--pt') {
+        background-color: rgba($color: $cl__light--alpha, $alpha: 0.3);
+      }
+    }
+    @include when-inside('.we-are') {
+      background: transparent;
+    }
+    @include when-inside('.news-insights') {
+      background: transparent;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights .news-insights__list') {
+        background-color: #d8d8d8;
+      }
+      @include when-inside('.events') {
+        height: 1px;
+      }
+    }
+  }
+
+  &--clickable {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    transition: $easing--entering;
+    &:hover {
+      transform: scale(1.04);
+      transition: $easing--exiting;
+      box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &__link {
+    cursor: pointer;
+  }
+
+  &__link-text {
+    text-transform: uppercase;
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    color: $cl__action--beta;
+    // border-bottom: 2px solid $cl__action--beta;
+    @include when-inside('.card--highlight') {
+      color: $cl__accent--beta;
+      // border-bottom: 2px solid $cl__accent--beta;
+    }
+    @include when-inside(".card--offices") {
+      @include font-sizes('small', 'gamma');
+      border-bottom-width: 0;
+    }
+    @include when-inside(".news-insights__list") {
+      display: none;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights__list') {
+        display: inline-block;
+        font-size: $fnt__small--gamma;
+        line-height: $lht__small--alpha;
+      }
+      @include when-inside(".card--offices") {
+        letter-spacing: 0.85px;
+      }
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -9px;
+    @include from("desktop") {
+      margin: 0 -15px;
+      @include when-inside(".we-do") {
+        padding-left: span(2 wide);
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: auto;
+    min-height: 140px;
+    display: block;
+    &--background {
+      background-image: linear-gradient(297deg, #fe752f, #fe9b2f);
+    }
+  }
+
+  &__content {
+    padding: 29px 0 39px 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include when-inside('.news-insights__list') {
+      padding: 15px 0 49px 0;
+    }
+    @include when-inside('.events') {
+      padding-bottom: 56px;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights__list') {
+        padding: 33px 0 39px 0;
+      }
+    }
+  }
+
+  &__meta {
+    @include font-sizes("small", "beta");
+    font-weight: $fwt--bold;
+    letter-spacing: 0.69px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    @include when-inside('.events') {
+      order: 2;
+      margin-bottom: 19px;
+      letter-spacing: 1.83px;
+    }
+    @include when-inside('.we-are__news-card') {
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    @include from('tablet--pt') {
+      letter-spacing: 0.85px;
+      @include when-inside('.card--article-large') {
+        margin-bottom: 20px;
+      }
+      @include when-inside('.we-are__news-card') {
+        margin-bottom: 11px;
+      }
+      @include when-inside('.events') {
+        letter-spacing: 0.85px;
+      }
+    }
+    @include from('desktop') {
+      letter-spacing: 1.83px;
+      @include when-inside('.card--article-large') {
+        margin-bottom: 49px;
+      }
+      @include when-inside('.we-are__news-card') {
+        margin-bottom: 13px;
+      }
+    }
+  }
+
+  &__hidden {
+    display: none;
+  }
+
+  &__title {
+    font-size: $fnt__medium--gamma;
+    line-height: $lht__medium--gamma;
+    font-weight: $fwt--bold;
+    margin: 0 0 15px;
+    min-height: 50px;
+    @include when-inside('.we-do') {
+      margin-bottom: 5px;
+    }
+    @include when-inside('.we-are') {
+      margin-bottom: 19px;
+    }
+    @include when-inside('.news-insights') {
+      font-size: $fnt__medium--beta;
+      line-height: 20px;
+      margin-bottom: 0;
+    }
+    @include when-inside('.card--article-large') {
+      min-height: 1px;
+    }
+    @include when-inside(".card--offices") {
+      @include font-sizes('medium', 'alpha');
+      min-height: 1px;
+      max-height: 48px;
+      overflow: hidden;
+    }
+    @include when-inside('.card--offices.card--offices-first') {
+      font-size: $fnt__large--alpha-tablet;
+      line-height: $lht__large--alpha;
+      min-height: 1px;
+      margin-bottom: 13px;
+    }
+    @include from("tablet--pt") {
+      @include when-inside('.news-insights__list') {
+        @include font-sizes('medium', 'gamma');
+        margin-bottom: 8px;
+      }
+      @include when-inside('.we-are') {
+        font-size: $fnt__medium--gamma-desktop;
+        margin-bottom: 21px;
+      }
+      @include when-inside(".card--offices") {
+        @include font-sizes('medium', 'gamma');
+        max-height: 35px;
+      }
+    }
+    @include from("desktop") {
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: $lht__medium--gamma-desktop;
+
+      @include when-inside('.we-do') {
+        @include font-sizes("medium", "gamma");
+        max-width: 90%;
+      }
+      @include when-inside('.we-are') {
+        @include font-sizes("medium", "gamma");
+        margin-bottom: 25px;
+      }
+      @include when-inside('.card--article-large') {
+        @include font-sizes('large', 'alpha');
+      }
+      @include when-inside('.news-insights__list') {
+        font-size: 26px;
+      }
+      @include when-inside(".card--offices") {
+        font-size: $fnt__medium--gamma-desktop;
+        line-height: normal;
+      }
+    }
+    &_sep {
+      position: relative;
+      margin: 0 0 9px;
+      @include when-inside('.events') {
+        margin-bottom: 14px;
+      }
+      @include from('tablet--pt') {
+        @include when-inside('.card--article-large') {
+          margin: 0 0 13px;
+        }
+        @include when-inside(".card--offices") {
+          margin: 0 0 13px;
+        }
+      }
+      @include from('desktop') {
+        @include when-inside('.card--article-large') {
+          margin: 0 0 60px;
+        }
+        @include when-inside(".card--offices") {
+          margin: 0 0 12px;
+        }
+      }
+    }
+  }
+
+  &__holder {
+    @include from("tablet--pt") {
+      @include when-inside('.card--article-large') {
+        display: flex;
+        margin: 0 -10px;
+      }
+    }
+    @include from('desktop') {
+      @include when-inside('.card--article-large') {
+        margin: 0 -15px;
+      }
+    }
+  }
+
+  &__sep {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+    @include when-inside('.card--article-large') {
+      display: none;
+    }
+    @include when-inside('.we-are__news-card') {
+      display: none;
+    }
+    @include when-inside('.events') {
+      display: none;
+    }
+    @include when-inside('.news-insights__list') {
+      display: none;
+    }
+    @include from("tablet--pt") {
+      @include when-inside('.news-insights__list') {
+        display: block;
+        margin-bottom: 7px;
+      }
+    }
+  }
+
+  &__bullet {
+    font-size: $fnt__small--beta;
+    background: $cl__action--beta;
+    width: 5px;
+    height: 5px;
+    // border-radius: 5px;
+    display: inline-block;
+  }
+
+  &__subtitle {
+    font-weight: $fwt--bold;
+    font-size: 20px;
+    line-height: 20px;
+  }
+
+  &__text {
+    @include font-sizes("medium", "alpha");
+    min-height: 40px;
+    margin: 0 0 20px 0;
+    position: relative;
+    @include when-inside('.events') {
+      order: 3;
+      margin-bottom: 0;
+      @include font-sizes("medium", "beta");
+    }
+    @include when-inside('.news-insights__list') {
+      display: none;
+    }
+    @include when-inside('.we-are__news-card') {
+      display: none;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.card--article-large') {
+        margin: 0 0 28px;
+      }
+      @include when-inside('.news-insights__list') {
+        display: block;
+        @include font-sizes("medium", "alpha-tablet");
+      }
+    }
+    @include from('desktop') {
+      @include when-inside('.card--article-large') {
+        @include font-sizes('medium', 'beta');
+      }
+    }
+    @include when-inside(".card--offices") {
+      @include font-sizes("small", "gamma");
+      margin: 0 0 8px;
+      max-height: 54px;
+      overflow: hidden;
+      @include from("tablet--pt") {
+        max-height: 88px;
+        @include font-sizes("medium", "beta");
+        margin-bottom: 14px;
+      }
+      @include from("desktop") {
+        margin-bottom: 12px;
+        line-height: $lht__medium--beta-tablet;
+        margin-bottom: 7px;
+      }
+    }
+    @include when-inside(".card--offices-first") {
+      @include font-sizes("medium", "alpha");
+      margin-bottom: 13px;
+    }
+    @include when-inside('.card--article-large') {
+      min-height: 1px;
+      margin-bottom: 28px;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.events') {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  &__readarticle {
+    font-size: $fnt__small--beta;
+    letter-spacing: 1px;
+    @include when-inside('.events') {
+      display: none;
+    }
+    @include from("tablet--pt") {
+      display: block;
+      @include font-sizes("small", "gamma");
+      font-weight: $fwt--bold;
+      @include when-inside('.events') {
+        display: inline-block;
+        order: 4;
+        font-size: 14px;
+      }
+    }
+  }
+  &__detail {
+    @include when-inside('.events') {
+      display: flex;
+      flex-direction: column;
+    }
+    @include when-inside('.card--offices') {
+      height: 160px;
+      overflow: hidden;
+      @include from('tablet--pt') {
+        height: 165px;
+      }
+      @include from('desktop') {
+        height: 180px;
+      }
+    }
+  }
+  &__wrapper {
+    display: inline-block;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &--align-middle {
+    vertical-align: middle;
+  }
+  &__contact {
+    text-transform: uppercase;
+    font-size: $fnt__small--beta;
+    font-weight: $fwt--bold;
+    color: $cl__action--beta;
+    &-phone {
+      display: block;
+      background: _asset('img', 'phone.svg') no-repeat;
+      background-size: 20px 20px;
+      padding-left: 20px;
+      min-height: 20px;
+    }
+    &-email {
+      display: block;
+      background: _asset('img', 'email.svg') no-repeat;
+      background-size: 20px 20px;
+      padding-left: 20px;
+      min-height: 20px;
+      margin-bottom: 15px;
+      overflow-wrap: break-word;
+    }
+    &-text {
+      @include font-sizes('small', 'beta');
+      letter-spacing: 0.85px;
+      vertical-align: middle;
+      margin-left: 7px;
+      font-weight: $fwt--bold;
+      display: block;
+      @include from("desktop") {
+        @include font-sizes('small', 'gamma');
+        letter-spacing: 1px;
+      }
+    }
+    @include when-inside(".card--offices-first") {
+      margin-top: 27px;
+    }
+    @include from("desktop") {
+      @include font-sizes("small", "gamma");
+      font-weight: $fwt--bold;
+    }
+  }
+  &__content {
+    padding: 25px 0 39px 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    @include when-inside('.news-insights__list') {
+      padding: 22px 0 46px 0;
+    }
+    @include when-inside('.card--offices.card--offices-first') {
+      padding: 23.6px 0 33px 0;
+    }
+    @include when-inside('.events') {
+      padding-bottom: 56px;
+    }
+    @include when-inside('.we-are') {
+      padding: 29px 0 0;
+    }
+    @include when-inside(".card--offices-first") {
+      padding-bottom: 34px;
+    }
+    @include when-inside('.card--article-large') {
+      padding: 21px 0 0;
+    }
+    @include when-inside('.events') {
+      display: flex;
+      flex-direction: column;
+      padding-top: 16px;
+    }
+    @include when-inside(".card--offices") {
+      padding: 22px 0 27px;
+      @include from("tablet--pt") {
+        padding: 15px 0 35px;
+      }
+      @include from('desktop') {
+        padding: 19.6px 0 35px;
+      }
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights__list') {
+        padding: 33px 0 39px 0;
+      }
+      @include when-inside('.card--article-large') {
+        width: calc(50% - 18px);
+        padding: 0 10px;
+      }
+      @include when-inside('.events') {
+        padding: 25px 0 47px;
+      }
+    }
+    @include from('desktop') {
+      @include when-inside('.card--article-large') {
+        padding: 0 15px 0 span(1 wide);
+      }
+      @include when-inside('.events') {
+        padding: 29px 0 47px;
+      }
+    }
+  }
+  &__readarticle {
+    @include when-inside(".card--offices") {
+      @include font-sizes("small", "beta");
+      font-weight: $fwt--bold;
+      color: $cl__action--beta;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.85px;
+      padding-bottom: 0;
+      @include from("tablet--pt") {
+        letter-spacing: 2px;
+        font-weight: $fwt--bold;
+      }
+      @include from("desktop") {
+        @include font-sizes("small", "gamma");
+        letter-spacing: 1px;
+        font-weight: $fwt--bold;
+      }
+    }
+    @include when-inside(".card--offices-first") {
+      @include font-sizes("small", "beta");
+      letter-spacing: 0.85px;
+      font-weight: $fwt--bold;
+      padding-bottom: 0;
+    }
+  }
+  &__meta-bullet {
+    width: 3px;
+    height: 3px;
+    margin: 3px;
+    // border-radius: 3px;
+    display: inline-block;
+    background-color: $cl__action--beta;
+    @include when-inside('.card--highlight') {
+      background-color: $cl__accent--beta;
+    }
+    @include when-inside('.news-insights') {
+      display: none;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights') {
+        display: inline-block;
+      }
+    }
+  }
+  &__date {
+    @include when-inside('.news-insights') {
+      @include font-sizes('small', 'alpha');
+      display: block;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights') {
+        display: inline-block;
+        font-size: $fnt__small--beta;
+      }
+    }
+  }
+  &__category {
+    @include when-inside('.news-insights') {
+      font-weight: $fwt--regular;
+      font-size: $fnt__small--alpha;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.news-insights') {
+        display: inline-block;
+        font-size: $fnt__small--beta;
+        font-weight: $fwt--bold;
+      }
+    }
+  }
+}

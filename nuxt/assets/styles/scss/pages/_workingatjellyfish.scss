@@ -1,0 +1,125 @@
+.working {
+  &__seperator {
+    border-top: 1px solid #bad1cf;
+    @include from('tablet--pt') {
+      border-color: #e8e8e8;
+    }
+    @include from('desktop') {
+      border: 0;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: calc(((100% - #{get('desktop.min-width', $config)}) / 2) + 15px);
+        margin-left: calc((#{get('desktop.min-width', $config)} / 6) - 2px);
+        display: inline-block;
+        height: 1px;
+        background: #bad1cf;
+      }
+    }
+  }
+  &__section {
+    position: relative;
+    display: flex;
+    flex: 1 1 span(4 of 4);
+    @include from("tablet--pt") {
+      flex: 1 1 span(12 of 12);
+    }
+    &--video {
+      margin-bottom: 57px;
+      @include from("tablet--pt") {
+        margin-bottom: 100px;
+      }
+      @include from("desktop") {
+        flex: 1 1 span(12 of 12);
+        margin-left: span(2 wide);
+        margin-bottom: 97px;
+      }
+    }
+    &--intro {
+      padding: 47px 0 54px 0;
+      @include from("tablet--pt") {
+        padding: 72px 0 69px;
+      }
+      @include from("desktop") {
+        padding-top: 105px;
+        padding-bottom: 89px;
+      }
+    }
+    &--growth {
+      padding: 42px 0 34px;
+      @extend .working__seperator;
+      position: relative;
+      @include from("tablet--pt") {
+        padding: 75px 0 49px;
+      }
+      @include from("desktop") {
+        padding: 103px 0 57px;
+      }
+    }
+    &--acknowledge {
+      padding: 50px 0 22px;
+      @extend .working__seperator;
+      @include from("tablet--pt") {
+        padding: 74px 0 76px;
+      }
+      @include from("desktop") {
+        padding: 103px 0 81px;
+      }
+    }
+    &--academy {
+      padding: 51px 0 48px 0;
+      @extend .working__seperator;
+      @include from("tablet--pt") {
+        padding: 74px 0 55px 0;
+      }
+      @include from("desktop") {
+        padding: 104px 0 64px 0;
+      }
+    }
+  }
+  &__vacancy {
+    position: relative;
+    @extend .working__seperator;
+  }
+  &__list-item {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding: 51px 0px 12px;
+
+    @include from("tablet--pt") {
+      width: 25%;
+    }
+  }
+  // &__image {
+  //   display: block;
+  //   max-width: 70px;
+  //   max-height: 70px;
+  //   margin: 0 auto;
+  //   @include from("tablet--pt") {
+  //     max-width: 170px;
+  //     max-height: 170px;
+  //   }
+  // }
+  &__carousel {
+    padding-bottom: 70px;
+    @include from('tablet--pt') {
+      padding-bottom: 93px;
+    }
+    @include from('desktop') {
+      padding-bottom: 127px;
+    }
+  }
+  &__quotes {
+    padding-bottom: 69px;
+    @include from('tablet--pt') {
+      padding-bottom: 93px;
+    }
+    @include from('desktop') {
+      padding-bottom: 126px;
+    }
+  }
+}

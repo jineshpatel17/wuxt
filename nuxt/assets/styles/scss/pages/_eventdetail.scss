@@ -1,0 +1,226 @@
+.event-detail {
+  scroll-behavior: smooth;
+  position: relative;
+  &__header {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: -71px;
+    @include from('tablet--pt') {
+      width: 50%;
+      right: 100px;
+      left: auto;
+      top: -90px;
+    }
+    @include from('desktop') {
+      right: 130px;
+      &--lg {
+        width: 100%;
+        right: auto;
+      }
+    }
+    &--hero {
+      top: 0;
+    }
+  }
+  &__hero {
+    // margin-bottom: 23px;
+    // @include from('tablet--pt') {
+    //   margin-bottom: 44px;
+    // }
+    // @include from('desktop') {
+    //   margin-bottom: 49px;
+    // }
+  }
+  &__menu {
+    margin: 0;
+    padding: 0;
+    height: 71px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: absolute;
+    z-index: 101;
+    right: 67px;
+    top: -71px;
+    @include from('tablet--pt') {
+      height: 90px;
+      right: 41px;
+      top: -90px;
+      @include when-inside('.app') {
+        right: 141px;
+      }
+    }
+    @include from('desktop') {
+      right: 141px;
+      width: 100%;
+      max-width: 1230px;
+    }
+    @include when-inside('.event-detail__header--hero') {
+      margin-top: 0; 
+    }
+    @include when-inside('.app--init') {
+      top: 0;
+      transition: top 0.8s;
+      -webkit-transition: top 0.8s;
+      -moz-transition: top 0.8s;
+      -ms-transition: top 0.8s;
+      -o-transition: top 0.8s;
+    }
+    @include when-inside('.app') {
+      top: 0;
+      position: fixed;
+      transition: top 0.8s;
+      -webkit-transition: top 0.8s;
+      -moz-transition: top 0.8s;
+      -ms-transition: top 0.8s;
+      -o-transition: top 0.8s;
+    }
+  }
+  &__menu-item {
+    list-style-type: none;
+    float: left;
+  }
+  &__menu-link {
+    display: none;
+    text-transform: uppercase;
+    font-weight: $fwt__bold;
+    font-size: $fnt__small--beta;
+    margin-right: 59px;
+    letter-spacing: 1.83px;
+    cursor: pointer;
+    @include from('desktop') {
+      display: inline-block;
+      margin-right: 42px;
+    }
+    &--light {
+      color: $cl__light--alpha;
+      @include when-inside('.app') {
+        color: $cl__dark--beta;
+      }
+    }
+  }
+  &__menu-button {
+    @extend .event-detail__menu-link;
+    display: inline-block;
+    padding: 16px 25px 17px 24px;
+    margin-right: 0;
+    font-size: $fnt__small--beta;
+    letter-spacing: 1.83px;
+    font-weight: $fwt__bold;
+    border: solid 2px $cl__dark--beta;
+    @include from('tablet--pt') {
+      padding: 20px 35px;
+    }
+    @include when-inside('.event-detail__menu-link--light') {
+      border: solid 2px $cl__light--beta;
+      @include when-inside('.app') {
+        border: solid 2px $cl__dark--beta;
+      }
+    }
+  }
+  &__register-btn {
+    @extend .event-detail__menu-link;
+    display: inline-block;
+    padding: 20px 33px 21px 34px;
+    margin-right: 0;
+    letter-spacing: 2px;
+    font-size: 12px;
+    font-weight: $fwt__bold;
+    border: solid 2px $cl__dark--beta;
+    @include from('tablet--pt') {
+      padding: 31px 45px;
+      @include font-sizes('small', 'gamma');
+      letter-spacing: 0.93px;
+    }
+    @include from("desktop") {
+      padding: 38px 50px 40px 50px;
+    }
+  }
+  &__text {
+    margin: 23px 20px 34px;
+    @include font-sizes('medium', 'beta');
+    text-align: center;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha');
+      margin: 44px 91px 74px 90px;
+    }
+    @include from("desktop") {
+      display: none; 
+    }
+  }
+  &__separator {
+    border-bottom: 1px solid rgba(155, 155, 155, 0.5); // Not defined in color map
+  }
+  &__spotlight {
+    padding-right: 20px;
+    padding-left: 20px;
+    @include from("tablet--pt") {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+    @include from("desktop") {
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+  }
+  &__carousel {
+    padding-right: 20px;
+    padding-left: 20px;
+    @include from("tablet--pt") {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+    @include from("desktop") {
+      padding-right: 50px;
+      padding-left: 50px;
+    }
+    /** We had a carousel earlier (in some pages) containing row width
+        ** Now carousel in event detail page have full width carousel
+        ** so overwritten .row class here
+        ** we can use when-inside mixin too but it looks more appropriate
+        **/
+    .row {
+      @include from("desktop") {
+        max-width: 100%;
+      }
+    }
+  }
+  &__caption {
+    @extend .event-detail__center;
+  }
+  &__center {
+    padding: 0 20px;
+    @include from("tablet--pt") {
+      padding: 0 30px;
+    }
+    @include from("desktop") {
+      padding: 0 50px;
+    }
+  }
+  &__location {
+    background: #f5f5f5;
+  }
+  &__cta {
+    margin-top: 42px;
+    @include from("tablet--pt") {
+      margin-top: 49px;
+      padding-left: span(3 wide);
+    }
+    @include from("desktop") {
+      margin-top: 73px;
+      padding-left: span(4 wide);
+    }
+  }
+  &__register {
+    background: #0078ff;
+    margin: 0 0px 80px 0px;
+    max-width: 100vw;
+    @include from("desktop") {
+      margin: 0 50px 80px 50px;
+    }
+    &--space {
+      margin-bottom: 0px;
+    }
+  }
+}

@@ -1,0 +1,86 @@
+.schedule {
+  &__text {
+    margin-bottom: 50px;
+    @include from('tablet--pt') {
+      margin-bottom: 63px;
+    }
+    @include from('desktop') {
+      margin-bottom: 73px;
+    }
+  }
+  &__agenda {
+    background-color: #f0f0f0;
+    margin: 0 -18px;
+    padding: 0 20px;
+    @include from('tablet--pt') {
+      margin: 0;
+      padding: 40px 60px 38px;
+    }
+    @include from('desktop') {
+      margin: 0 span(1 wide);
+      padding: 20px 103px 22px;
+    }
+  }
+  &__list {
+    padding: 38px 0 26px 0;
+    border-bottom: 1px solid rgba(38, 42, 43, 0.25);
+    &:last-child {
+      border-bottom: 0;
+    }
+    @include from("tablet--pt") {
+      display: flex;
+      flex-wrap: wrap;
+      padding: 35px 0;
+      margin-left: 0px;
+    }
+    @include from("desktop") {     
+      padding: 26px 0 37px 0;
+    }
+  }
+  &__time {
+    font-weight: $fwt__bold;
+    @include font-sizes("medium", "beta");
+    @include from("tablet--pt") {
+      flex: 1 1 span(3 of 12);
+    }
+    @include from("desktop") {
+      padding-top: 11px;
+    }
+  }
+  &__activity {
+    font-weight: $fwt__regular;
+    padding-top: 8px;
+    @include font-sizes("medium", "alpha-tablet");
+    @include from("tablet--pt") {
+      @include font-sizes("medium", "beta-tablet");
+      padding: 0;
+    }
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+    }
+  }
+  &__name {
+    font-weight: $fwt__bold;
+    font-size: $fnt__medium--alpha;
+    line-height: 20px;
+    padding-top: 18px;
+    @include from("tablet--pt") {
+      padding-top: 12px;
+      @include font-sizes("medium", "beta");
+    }
+  }
+  &__role {
+    font-weight: $fwt__regular;
+    @include font-sizes("small", "gamma");
+    padding-top: 5px;
+    &--space {
+      padding-bottom: 4px;
+    }
+  }
+  &__container {
+    padding: 0;
+    @include from("tablet--pt") {
+      flex: 1 1 span(8.5 of 12);
+    }
+  }
+}

@@ -1,0 +1,1 @@
+<?php /* Template Name: Capability page Template */ ?>

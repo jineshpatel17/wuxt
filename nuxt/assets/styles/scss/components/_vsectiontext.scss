@@ -1,0 +1,203 @@
+.section-text {
+  &__title {
+    @include font-sizes("medium", "alpha");
+    font-weight: $fwt--bold;
+    margin-bottom: 5px;
+    @include when-inside(".we-are__people") {
+      @include font-sizes("medium", "alpha");
+      margin-bottom: 1px;
+    }
+    @include when-inside(".we-are") {
+      margin-bottom: 10px;
+    }
+    @include when-inside(".we-are__news") {
+      margin-bottom: 18px;
+    }
+    @include when-inside(".we-are__offices") {
+      margin-bottom: 18px;
+    }
+    @include when-inside(".we-do") {
+      @include font-sizes("medium", "beta-tablet");
+      margin-bottom: 13px;
+    }
+    @include when-inside(".working") {
+      @include font-sizes("medium", "beta-tablet");
+      margin-bottom: 12px;
+    }
+    @include when-inside(".case-study") {
+      @include font-sizes("medium", "beta");
+    }
+    @include when-inside(".event-detail") {
+      @include font-sizes("medium", "beta");
+      margin-bottom: 10px;
+    }
+    @include from("tablet--pt") {
+      @include font-sizes("medium", "alpha-tablet");
+      flex: 1 1 span(2 of 12);
+      margin-bottom: 0;
+      @include when-inside(".working") {
+        @include font-sizes("medium", "alpha-tablet");
+      }
+      @include when-inside(".we-do") {
+        @include font-sizes("medium", "alpha-tablet");
+        margin-bottom: 0;
+      }
+      @include when-inside(".we-are__people") {
+        @include font-sizes("medium", "alpha");
+        margin-bottom: 0;
+      }
+      @include when-inside(".we-are") {
+        margin-bottom: 0;
+      }
+      @include when-inside(".we-are__news") {
+        margin-bottom: 0;
+      }
+      @include when-inside(".we-are__offices") {
+        margin-bottom: 0;
+      }
+      @include when-inside(".event-detail") {
+        @include font-sizes("medium", "beta-tablet");
+        margin-bottom: 0;
+      }
+    }
+    @include from("desktop") {
+      flex: 1 1 span(2.5 of 12);
+      @include when-inside(".case-study") {
+        flex: 1 1 span(2 of 10);
+      }
+      @include when-inside(".event-detail") {
+        @include font-sizes("medium", "beta");
+      }
+    }
+  }
+  &__block {
+    @include from('tablet--pt') {
+      max-width: 121px;
+      margin-top: 3px;
+    }
+    @include from('desktop') {
+      max-width: 180px;
+      margin-top: 6px;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha-tablet');
+    @include when-inside(".case-study") {
+      @include font-sizes("medium", "beta-desktop");
+    }
+    @include when-inside(".working") {
+      @include font-sizes("medium", "beta-tablet");
+    }
+    margin: 0;
+    @include from("tablet--pt") {
+      flex: 1 1 span(8 of 12);
+      padding: 0 span(1 wide) 0 10px;
+      @include font-sizes('medium', 'beta-tablet');
+      @include when-inside(".case-study") {
+        @include font-sizes("medium", "gamma");
+      }
+      @include when-inside(".event-detail") {
+        @include font-sizes("medium", "beta");
+      }
+      @include when-inside(".working") {
+        @include font-sizes("medium", "beta-tablet");
+      }
+      @include when-inside(".event-detail") {
+        @include font-sizes("medium", "beta-tablet");
+      }
+    }
+    @include from("desktop") {
+      padding-left: 37px;
+      @include font-sizes('medium', 'beta-desktop');
+      @include when-inside(".we-do") {
+        font-size: $fnt__medium--beta;
+        line-height: $lht__medium--gamma;
+      }
+      @include when-inside(".we-do .we-do__event-text") {
+        @include font-sizes('medium', 'beta-desktop');
+      }
+      @include when-inside(".event-detail") {
+        line-height: $lht__medium--gamma;
+        flex: 1 1 span(8 of 10);
+        padding: 0 span(1.5 wide) 0 0;
+      }
+      @include when-inside(".case-study") {
+        @include font-sizes("medium", "beta-desktop");
+        flex: 1 1 span(8 of 10);
+        padding: 0 span(1.5 wide) 0 0;
+      }
+      @include when-inside(".working") {
+        @include font-sizes('medium', 'beta-desktop');
+      }
+      @include when-inside(".event-detail") {
+        font-size: 20px;
+      }
+    }
+    /******************************
+    ** CMS content specific css
+    *******************************/
+    a {
+      display: inline-block;
+      padding-bottom: 5px;
+      border-bottom: 1px solid $cl__action--beta;
+      color: $cl__action--beta;
+      font-weight: $fwt__bold;
+      text-transform: uppercase;
+      margin-top: 20px;
+      margin-right: 25px;
+      @include when-inside(".case-study") {
+        @include font-sizes("small", "gamma");
+        letter-spacing: 1px;
+      }
+      @include from('tablet--pt') {
+        margin-top: 26px;
+        border-bottom: 2px solid $cl__action--beta;
+      }
+      @include from('desktop') {
+        margin-top: 38px;
+        font-size: 16px; // Not defined in map
+        line-height: $lht__small--gamma;
+        @include when-inside(".case-study") {
+          font-size: $fnt__medium--beta;
+          letter-spacing: 1.14px;
+        }
+      }
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0px;
+    }
+    h2 {
+      @include when-inside(".case-study") {
+        line-height: 1.4;
+      }
+      br {
+        @include when-inside(".case-study") {
+          line-height: 155%;
+        }
+      }
+    }
+  }
+  &__container {
+    @include when-inside(".offices") {
+      margin: 0 -18px;
+    }
+    @include when-inside(".we-are .offices") {
+      margin: 0;
+    }
+    @include from("tablet--pt") {
+      display: flex;
+      @include when-inside(".offices") {
+        margin: 0 -30px;
+      }
+    }
+    @include from("desktop") {
+      margin-left: span(2 wide);
+      @include when-inside(".offices") {
+        margin: 0;
+      }
+      @include when-inside(".we-do") {
+        padding-right: span(1 wide);
+      }
+    }
+  }
+}

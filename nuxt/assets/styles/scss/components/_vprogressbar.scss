@@ -1,0 +1,107 @@
+//Progress bar scss
+.progress {
+  display: flex;
+  flex-wrap: nowrap;
+  flex: 1;
+  margin: 0px -9px 0;
+  @include when-inside('.carousel-mobile') {
+    max-width: 100%;
+    padding-left: 9px;
+  }
+  @include when-inside('.people') {
+    margin-top: 0;
+  }
+  @include when-inside('.case-study__carousel') {
+    @include from('desktop') {
+      padding: 0 135px;
+    }
+  }
+  @include when-inside('.event-detail__carousel') {
+    @include from('desktop') {
+      padding: 0 135px;
+    }
+  }
+  @include when-inside('.quotes') {
+    @include from('desktop') {
+      margin-top: 10px;
+    }
+  }  
+  &__bar {
+    flex-grow: 1;
+    width: calc(25% - 9px);
+    height: 2px;
+    background-color: rgba(128, 128, 128, 0.3);
+    margin: 17px 9px 0;
+    position: relative;
+    cursor: pointer;
+    @include when-inside('.working__quotes') {
+      margin: 18px 11px 0;
+    }
+    @include when-inside('.working__carousel') {
+      margin-top: 18px;
+    }
+    @include from('tablet--pt') {
+      margin-top: 18px;
+      @include when-inside('.working__carousel') {
+        margin-top: 26px;
+      }
+      @include when-inside('.working__quotes') {
+        margin: 25px 10px 0;
+      }
+    }
+    @include from('desktop') {
+      margin-top: 35px;
+      @include when-inside('.people') {
+        margin-top: 18px;
+      }
+    }
+  }
+  &__indicator {
+    height: 2px;
+    position: absolute;
+    cursor: pointer;
+    background-image: linear-gradient(to right, #0fb7df, #0284ff);
+    // @include when-inside(".bg--light-alpha") {
+    //   background-image: linear-gradient(to right, #fb5bbd, #cb017d);
+    // }
+    @include when-inside(".case-study") {
+      background-image: linear-gradient(to right, $cl__action--alpha, $cl__action--beta);
+    }
+    @include when-inside(".event-detail") {
+      background-image: linear-gradient(to right, $cl__action--alpha, $cl__action--beta);
+    }
+    @include when-inside('.progress--theme-white') {
+      background: $cl__light--alpha;
+    }
+    &--active {
+      animation: fill 3s linear 1;
+      width: 100%;
+    }
+    @for $i from 1 through 10 {
+      &--fill-#{$i} {
+        animation: fill #{$i}s linear 1;
+      }
+    }
+    &--activated {
+      animation: fill 12s linear 1;
+      animation-iteration-count: infinite;
+      width: 100%;
+    }
+    &--completed {
+      width: 100%;
+    }
+  }
+  &__count {
+    @include font-sizes('small', 'beta');
+    width: 100%;
+    display: block;
+    padding: 40px 0px 0;
+    position: absolute;
+    top: -28px;
+    font-weight: $fwt--bold;
+    letter-spacing: 0.8px;
+    @include when-inside('.progress--theme-white') {
+      color: $cl__light--alpha;
+    }
+  }
+}

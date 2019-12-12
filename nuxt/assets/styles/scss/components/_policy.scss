@@ -1,0 +1,204 @@
+.policy {
+  @include font-sizes('medium', 'alpha');
+  &__head {
+    padding: 40px 0 111px;
+    @include from('tablet--pt') {
+      padding: 50px 0 119px;
+    }
+    @include from('desktop') {
+      padding: 48px 0 140px;;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__section {
+    padding-bottom: 55px;
+    &:last-child {
+      padding-bottom: 0;
+    }
+    @include from('tablet--pt') {
+      padding-bottom: 66px;
+    }
+    @include from('desktop') {
+      padding-bottom: 69px;
+    }
+  }
+  &__title {
+    @include font-sizes('large', 'alpha-tablet');
+    font-weight: $fwt__bold;
+    margin-bottom: 42px;
+    @include from('tablet--pt') {
+      @include font-sizes('large', 'delta-tablet');
+      letter-spacing: -1px;
+      margin-bottom: 50px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__large--gamma-desktop;
+      line-height: 88px;
+      letter-spacing: -2px;
+      flex: 1 1 span(4 of 12);
+      margin-bottom: 0;
+    }
+  }
+  &__link-list {
+    padding-left: 30px;
+    @include from('tablet--pt') {
+      padding-left: 43px;
+    }
+    @include from('desktop') {
+      padding-left: 60px;
+      flex: 1 1 span(8 of 12);
+    }
+  }
+  &__link-head {
+    @include font-sizes('small', 'beta');
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    letter-spacing: 0.8px;
+    @include from('tablet--pt') {
+      margin-bottom: 19px;
+    }
+    @include from('desktop') {
+      margin-bottom: 9px;
+    }
+  }
+  &__link-container {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  &__links {
+    counter-increment: item;
+    position: relative;
+    margin-bottom: 5px;
+    color: rgba(38, 42, 43, 0.5);
+    &:before {
+      @include font-sizes('small', 'beta');
+      font-weight: $fwt__bold;
+      counter-increment: li;
+      content: counter(item, decimal-leading-zero);
+      position: absolute;
+      left: -25px;
+      top: 4px;
+      letter-spacing: 0.85px;
+      @include from('tablet--pt') {
+        left: -43px;
+      }
+      @include from('desktop') {
+        top: 8px;
+        left: -60px;
+        letter-spacing: 1.83px;
+      }
+    }
+    @include from('tablet--pt') {
+      letter-spacing: 1.83px;
+    }
+  }
+  &__link {
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt__regular;
+    color: $cl__action--gamma;
+    display: flex;
+    vertical-align: top;
+    margin-left: -5px;
+    .link--slide__text {
+      padding: 0 5px;
+    }
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha-tablet');
+      font-weight: $fwt__bold;
+      display: inline-block;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta-desktop');
+    }
+  }
+  &__details {
+    padding-bottom: 58px;
+    @include from('tablet--pt') {
+      position: relative;
+      padding-bottom: 80px;
+    }
+    @include from('desktop') {
+      margin-left: calc(50vw - ((#{get("desktop.min-width", $config)}) - 12px) / 2);
+    }
+  }
+  &__section-counter {
+    @include font-sizes('small', 'beta');
+    font-weight: $fwt--bold;
+    letter-spacing: 1.83px;
+    margin-bottom: 44px;
+    position: relative;
+    color: #132b2a;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 70px;
+      right: 0;
+      top: calc(50% - 1px);
+      display: inline-block;
+      border-top: 2px solid $cl__action--gamma;
+      @include from('tablet--pt') {
+        left: 65px;
+      }
+    }
+    @include from('tablet--pt') {
+      margin-bottom: 52px;
+    }
+    @include from('desktop') {
+      margin-bottom: 64px;
+    }
+  }
+  &__header {
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt__bold;
+    margin: 0 0 15px;
+    @include from('tablet--pt') {
+      line-height: $lht__medium--beta-tablet;
+      padding: 0 30px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: normal;
+      padding: 0 span(2 wide);
+      margin: 0 0 19px;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha-tablet');
+    @include from('tablet--pt') {
+      padding: 0 30px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta-desktop');
+      padding: 0 span(2 wide);
+    }
+  }
+  &__detail-container {
+    @include from('desktop') {
+      max-width: 1122px;
+      padding-left: span(1 wide);
+    }
+  }
+}
+// All cms related stuff css
+/deep/ {
+  p {
+    margin: 0 0 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  h1, h2, h3 {
+    font-weight: $fwt__bold;
+    margin: 0 0 15px;
+  }
+  strong {
+    font-weight: $fwt__bold;
+  }
+  a {
+    color: $cl__action--beta;
+    font-weight: $fwt__bold;
+  }
+}

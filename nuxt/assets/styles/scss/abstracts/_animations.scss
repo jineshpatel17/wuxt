@@ -1,0 +1,298 @@
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/********************************
+* Animation effect
+* When user hover over cards
+*********************************/
+.fade-enter {
+  opacity: 0;
+  transform: translateY(80px);
+  &--active {
+    transition: all 1s;
+  }
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+  transition-timing-function: ease;
+  overflow: hidden;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter--active {
+  transition: all 0.3s ease;
+}
+.slide-fade-leave--active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(10px);
+  opacity: 0;
+}
+/*************************
+*** Key Frame to fill
+*** Progress bar
+*************************/
+@keyframes fill {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+/*************************
+*** Key Frame to fade
+*** Progress bar
+*************************/
+@keyframes fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes slideup {
+  0% {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideInUp-FadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(500px);
+  }
+  5% {
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  95% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(500px);
+  }
+}
+
+
+/*********************
+** people card fade
+**********************/
+@keyframes FadeInOut {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+/*********************
+** slide effects
+**********************/
+.animation {
+  animation: slideup 1s ease-in 0s forwards;
+  &--delay-1 {
+    animation-delay: 1s;
+  }
+  &--delay-2 {
+    animation-delay: 2s;
+  }
+}
+.animate {
+  // We have to give important just because above fade classes are inheriting through parent classes
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+  transition: all 1s ease-out !important;
+  &__fade {
+    opacity: 0;
+    &--right {
+      transform: translate(120px, 0);
+    }
+    &--left {
+      transform: translate(-120px, 0);
+    }
+    &--center {
+      transform: translateY(120px);
+    }
+  }
+}
+
+/********************************
+* Text effects
+* highlight on/off
+*********************************/
+
+.text-animation--highlight {
+  color: $white;
+  display: inline;
+  white-space: pre-wrap;
+  margin: 0 0 15px;
+  padding: 5px 0;
+  /* Old browsers */
+  //background-image: linear-gradient(to left, white 50%, $royal-blue 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+}
+
+
+/*----------------------------------------------------------------------------
+ *
+ * Button / link background animation slides
+ *
+ * --------------------------------------------------------------------------*/
+
+/* Left to Right ------------------------------------------------------------ */
+.background-slide--ltr {
+    -webkit-animation: slide-out-ltr 0.5s;
+    .btn--slide__text,
+    .link--slide__text {
+      -webkit-animation: text-out-rtl 0.5s;
+    }
+}
+
+.background-slide--ltr:hover {
+    -webkit-animation: slide-in-ltr 0.5s;
+    animation-fill-mode: forwards;
+    .btn--slide__text,
+    .link--slide__text {
+      -webkit-animation: text-in-rtl 0.5s;
+      animation-fill-mode: forwards;
+    }
+}
+
+@keyframes slide-in-ltr {
+    from {
+      background-position: 100% bottom;
+    }
+    to {
+      background-position: 0 bottom;
+    }
+}
+
+@keyframes slide-out-ltr {
+    0% {
+      background-position: 0 bottom;
+    }
+    100% {
+      background-position: -95% bottom;
+    }
+}
+
+@keyframes text-out-rtl {
+    from {
+      background-position: -100% bottom;
+    }
+    to {
+      background-position: -200% bottom;
+    }
+}
+
+@keyframes text-in-rtl {
+    0% {
+      background-position: 0 bottom;
+    }
+    100% {
+      background-position: -100% bottom;
+    }
+}
+
+
+/* Right to Left ------------------------------------------------------------ */
+.background-slide--rtl {
+    -webkit-animation: slide-out-rtl 0.5s;
+    .btn--slide__text,
+    .link--slide__text {
+      -webkit-animation: text-out-ltr 0.5s;
+    }
+}
+
+.background-slide--rtl:hover {
+    -webkit-animation: slide-in-rtl 0.5s;
+    animation-fill-mode: forwards;
+    .btn--slide__text,
+    .link--slide__text {
+      -webkit-animation: text-in-ltr 0.5s;
+      animation-fill-mode: forwards;
+    }
+}
+
+@keyframes slide-in-rtl {
+    from {
+      background-position: -95% bottom;
+    }
+    to {
+      background-position: 0 bottom;
+    }
+}
+
+@keyframes slide-out-rtl {
+    0% {
+      background-position: 0 bottom;
+    }
+    100% {
+      background-position: 95% bottom;
+    }
+}
+
+@keyframes text-out-ltr {
+    from {
+      background-position: -100% bottom;
+    }
+    to {
+      background-position: 0 bottom;
+    }
+}
+
+@keyframes text-in-ltr {
+    0% {
+      background-position: 0 bottom;
+    }
+    100% {
+      background-position: 100% bottom;
+    }
+}
+
+
+/* Removes animation on initial load to stop keyframes playing.
+ * This class is removed on button mouseover */
+.animation-none {
+  animation: none;
+  -webkit-animation: none;
+  .btn--slide__text,
+  .link--slide__text {
+    animation: none;
+    -webkit-animation: none;
+  }
+}

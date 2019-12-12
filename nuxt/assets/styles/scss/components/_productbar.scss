@@ -1,0 +1,135 @@
+.product-bar {
+  color: $cl__light--alpha;
+  @include from('tablet--pt') {
+    padding: 0 0 0 30px;
+  }
+  @include from('desktop') {
+    padding: 0 0 0 calc(((100% - #{get('desktop.min-width', $config)}) / 4));
+  }
+
+  &__bg {
+    background-color: $cl__action--gamma;
+    background-size: cover;
+    padding: 41px 70px 54px 18px;
+    width: 100%;
+    position: relative;
+    @include from('tablet--pt') {
+      padding: 38px 60px 62px;
+    }
+    @include from('desktop') {
+      padding: 86px 0 121px;
+    }
+  }
+  &__bg-picture {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+  &__bg-image {
+    width: 100%
+  }
+  &__container {
+    position: relative;
+    z-index: 10;
+    @include from('tablet--pt') {
+      display: flex;
+    }
+    @include from('tablet--pt') {
+      margin: 0 auto;
+    }
+  }
+  &__meta {
+    @include font-sizes('medium', 'beta');
+    font-weight: $fwt__bold;
+    margin-bottom: 9px;
+    @include from('tablet--pt') {
+      margin-bottom: 10px;
+    }
+    @include from('desktop') {
+      margin-bottom: 12px;
+    }
+  }
+  &__header {
+    @include font-sizes('large', 'beta');
+    font-weight: $fwt__bold;
+    letter-spacing: -0.6px;
+    max-width: 75%;
+    @include from('tablet--pt') {
+      @include font-sizes('large', 'gamma-tablet');
+    }
+    @include from('desktop') {
+      font-size: 56px;
+      line-height: 64px;
+    }
+  }
+  &__seperator {
+    margin: 6px 0 10px;
+    &:before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: $cl__light--alpha;
+    }
+    @include from('tablet--pt') {
+      margin: 12px 0 10px;
+    }
+    @include from('desktop') {
+      margin: 22px 0 12px;
+      &:before {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'beta');
+    margin-bottom: 34px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'beta-tablet');
+      margin-bottom: 0;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta-desktop');
+    }
+  }
+  &__button {
+    background: $cl__light--alpha;
+    color: $cl__action--beta;
+    font-weight: $fwt__bold;
+    font-size: $fnt__small--gamma;
+    line-height: $lht__small--alpha;
+    width: 172px;
+    height: 72px;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 1px;
+    border: 0;
+  }
+  &__content {
+    flex: 1 1 span(7 of 12);
+    @include from('tablet--pt') {
+      max-width: 500px;
+    }
+    @include from('desktop') {
+      max-width: 600px;
+      position: relative;
+        right: 0;
+        left: calc(((100% - #{get('desktop.min-width', $config)}) / 3) + 15px);
+        margin-left: calc((#{get('desktop.min-width', $config)} / 6) - 2px);
+    }
+  }
+  &__ctc {
+    @include from('tablet--pt') {
+      text-align: right;
+      padding-top: 55px;
+      flex: 1 1 span(5 of 12);
+    }
+    @include from('desktop') {
+      margin-right: calc(((100% - #{get('desktop.min-width', $config)}) / 1.5) + 15px)
+    }
+  }
+}

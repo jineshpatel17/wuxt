@@ -1,0 +1,46 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 0 93px;
+  @include from('tablet--pt') {
+    padding: 30px 0 29px;
+    flex-direction: row;
+    align-items: center;
+  }
+  @include from('desktop') {
+    padding: 58px 0 56px;
+    margin-left: span(2 wide);
+  }
+  &__text {
+    @include font-sizes('large', 'alpha-tablet');
+    font-weight: $fwt--bold;
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: -0.6px;
+    @include from('tablet--pt') {
+      margin-bottom: 0;
+      flex: 1 1 span(8 of 12);
+      text-align: left;
+      min-height: 213px;
+      display: flex;
+      align-items: center;
+      max-width: 435px;
+    }
+    @include from('desktop') {
+      @include font-sizes('large', 'gamma-tablet');
+      max-width: 705px;
+      min-height: 206px;
+      letter-spacing: -1px;
+    }
+  }
+  &__action {
+    text-align: center;
+    @include from('tablet--pt') {
+      flex: 1 1 span(4 of 12);
+      text-align: right;
+    }
+    @include from('desktop') {
+      
+    }
+  }
+}

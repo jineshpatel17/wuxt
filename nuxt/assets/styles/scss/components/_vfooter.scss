@@ -1,0 +1,94 @@
+.footer {
+  font-weight: $fwt__regular;
+  padding: 65px 0 34px;
+  position: relative;
+  z-index: 2;
+  @include from('desktop') {
+    padding: 80px 0;
+  }
+  @include from('tablet--pt') {
+    padding: 65px 0;
+  }
+  &__container {
+    padding: 0 18px;
+    @include from('tablet--pt') {
+      padding: 0 30px;
+    }
+    @include from('desktop') {
+      padding: 0 50px;
+    }
+  }
+  &__logo {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 350px) {
+      display: block;
+    }
+  }
+  &__jellyfish-logo {
+    display: inline-block;
+    width: 108px;
+    height: 28px;
+    background: _asset('img', 'jellyfish-logo-dark.svg') no-repeat;
+    background-size: cover;
+  }
+  &__icon {
+    margin-right: 18px;
+    @include from('tablet--pt') {
+      margin-right: 24px;
+    }
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  &__links {
+    margin-top: 26px;
+    @include from('tablet--pt') {
+      margin-top: 27px;
+    }
+    @include from('desktop') {
+      margin-top: 37px;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+  &__link-list {
+    display: inline;
+    font-size: 10px;
+    line-height: 24px;
+    word-break: break-word;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include from('tablet--pt') {
+      margin-bottom: 8px;
+      line-height: 18px;
+      display: inline-block;
+    }
+    @include from('desktop') {
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    font-size: 10px;
+    line-height: $lht__small--gamma;
+    color: #36445e; // Not defined in color map
+    margin-right: 15px;
+    white-space: nowrap;
+    &:last-child {
+      margin-right: 0;
+      @media (max-width: 350px) {
+        margin-right: 15px;
+      }
+    }
+    @include from('tablet--pt') {
+      @include font-sizes('small', 'gamma');
+    }
+  }
+  &__social {
+    @media (max-width: 350px) {
+      margin-top: 15px;
+    }
+  }
+}

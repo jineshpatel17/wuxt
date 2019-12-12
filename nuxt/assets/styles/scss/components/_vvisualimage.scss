@@ -1,0 +1,60 @@
+.visual-img {
+  background-image: _asset-path('img', 'vi-texture-sm.svg');
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  width: 130px;
+  height: 297px;
+  margin-top: 60px;
+  @include when-inside('.we-are') {
+    margin-top: 0;
+    bottom: -67px;
+    width: 243px;
+    height: 155px;
+  }
+  @include when-inside('.we-do') {
+    margin-top: 0;
+    top: 0;
+    width: 165px;
+    height: 155px;
+  }
+  @include from('tablet--pt') {
+    background-image: _asset-path('img', 'vi-texture-md.svg');
+    top: 0;
+    margin-top: 0;
+    width: 373px;
+    height: 600px;
+    @include when-inside('.working') {
+      width: 226px;
+      height: 479px;
+    }
+    @include when-inside('.we-are') {
+      width: 459px;
+      height: 290px;
+      top: auto;
+      bottom: -133px;
+    }
+    @include when-inside('.we-do') {
+      width: 374px;
+      height: 341px;
+    }
+  }
+  @include from('desktop') {
+    background-image: _asset-path('img', 'vi-texture-lg.svg');
+    width: 850px;
+    height: 1044px;
+    @include when-inside('.working') {
+      height: 740px;
+      width: 405px;
+    }
+    @include when-inside('.we-are') {
+      width: 901px;
+      height: 925px;
+      bottom: -275px;
+    }
+    @include when-inside('.we-do') {
+      width: 573px;
+      height: 589px;
+    }
+  }
+}

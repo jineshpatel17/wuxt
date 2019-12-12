@@ -1,0 +1,107 @@
+.hero {
+  height: 100vw;
+  overflow: hidden;
+  position: relative;
+  z-index: -1;
+  padding-top: 71px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include from('tablet--pt') {
+    height: 768px;
+    padding-top: 90px;
+  }
+  @include from('desktop') {
+    height: 800px;
+  }
+  &__bg-image {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    transform: scale(1.1);
+  }
+  &__logo {
+    position: relative;
+    max-width: 200px;
+    margin-top: -35px; // To make Middle (header spacing / 2)
+    @include from('tablet--pt') {
+      max-width: 300px;
+      margin-top: -45px; // To make Middle (header spacing / 2)
+    }
+  }
+  &__logo-image {
+    display: block;
+    max-width: 100%;
+  }
+
+
+
+
+/*---------------------------------------
+ * HERO component - JF colors & squares
+/*---------------------------------------*/
+
+  &__title-section {
+    position: relative;
+    width: calc(100% - 36px); /* see margin */
+    // margin: 0 18px 12px;
+    margin: 0 0 12px;
+    padding: 36px 0 0;
+    @include from('tablet--pt') {
+      width: calc(100% - 60px); /* see margin */
+      min-height: 432px;
+      // margin: 0 30px 14px;
+      margin: 0 0 14px;
+      padding: 53px 0 0;
+    }
+    @include from('desktop') {
+      width: calc(100% - 100px); /* see margin */
+      min-height: 460px;
+      margin: 0 50px 0;
+      padding: 67px 30px 0;
+    }
+  }
+
+  &__colors {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+      top: 0;
+    transition: background 500ms ease-out 1s;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include from('tablet--ls') {
+      background-size: 150vw auto;
+    }
+    @include from('tablet--ls') {
+      background-size: 100vw auto;
+    }
+    @include from('desktop') {
+      left: 50%;
+      transform: translateX(-50%);
+      background-size: cover;
+    }
+  }
+
+  /* Hero colors defined should align with color array in Hero.vue */
+  &__colors--blue {
+    background-color: #0078ff;
+    background-image: _asset('img', 'hero-squares/sq--blue.svg');
+  }
+
+  &__colors--purple {
+    background-color: #5331bc;
+    background-image: _asset('img', 'hero-squares/sq--pink.svg');
+  }
+
+  &__colors--pink {
+    background-color: #dd1b57;
+    background-image: _asset('img', 'hero-squares/sq--purple.svg');
+  }
+
+  &__colors--pink-lt {
+    background-color: #ff809e;
+    background-image: _asset('img', 'hero-squares/sq--pink-dark.svg');
+  }
+
+}

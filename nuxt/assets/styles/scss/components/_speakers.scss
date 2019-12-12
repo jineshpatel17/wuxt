@@ -1,0 +1,19 @@
+.speakers {
+  &__logo {
+    margin: 0 -9px;
+    display: flex;
+    flex-wrap: wrap;
+    @include from('desktop') {
+      padding-left: span(2 wide);
+    }
+  }
+  &__text {
+    margin-bottom: 50px;
+    @include from('tablet--pt') {
+      margin-bottom: 63px;
+    }
+    @include from('desktop') {
+      margin-bottom: 73px;
+    }
+  }
+}

@@ -1,0 +1,96 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+@import 'variables/colors';
+@import 'variables/grid';
+@import 'variables/fonts';
+@import 'variables/easings';
+
+/// Relative or absolute URL where all assets are served from
+/// @group config
+/// @type String
+/// @example scss - When using a CDN
+///
+///   $asset-root: 'http://cdn.example.com';
+///
+$asset-root: '../../../assets' !default;
+
+/// Directory name where images are stored (realtive to the root)
+/// @group config
+/// @type String
+/// @example scss - When using a CDN
+///
+///   $asset-root: 'http://cdn.example.com/assets/';
+///   $image-dir: 'application/images'
+///
+$image-dir: 'images' !default;
+
+/// Compiled Config, uses in multiple Mixins and to be the central source of
+/// truth for the app at compile time.
+///
+/// The idea is that we can add a new 'Namespace' for breakpoints as required,
+/// these are then assigned min and max widths and susy configuration details.
+/// @group config
+/// @type {Map}
+/// @prop {String} mobile              - Namespaced breakpoint - Mobile
+/// @prop {String} tablet--pt          - Namespaced breakpoint - Tablet Portrait
+/// @prop {String} tablet--ls          - Namespaced breakpoint - Tablet Landscape
+/// @prop {String} desktop             - Namespaced breakpoint - Desktop
+/// @prop {String} base.min-width      - Minimum screen width for each Namespace
+/// @prop {String} base.max-width      - Maximum screen width for each Namespace
+/// @prop {String} base.susy-config    - Susy configuration map
+/// @prop {String} susy-config.columns - How many columns Susy should use for each Namespace
+/// @prop {String} susy-config.gutters - Gutter widths Susy should use for each Namespace
+$config: (
+  'mobile': (
+    'min-width': get('alpha', $grid__breakpoints),
+    'max-width': get('beta', $grid__breakpoints) - 1px,
+    'susy-config': (
+      'columns': susy-repeat(get('alpha', $grid__columns)),
+      'gutters': get('alpha', $grid__gutters),
+      'spread': 'narrow',
+      'container-spread': 'narrow',
+    ),
+  ),
+  'tablet--pt': (
+    'min-width': get('beta', $grid__breakpoints),
+    'max-width': get('gamma', $grid__breakpoints) - 1px,
+    'susy-config': (
+      'columns': susy-repeat(get('beta', $grid__columns)),
+      'gutters': get('beta', $grid__gutters),
+    ),
+  ),
+  'tablet--ls': (
+    'min-width': get('gamma', $grid__breakpoints),
+    'max-width': get('delta', $grid__breakpoints) - 1px,
+    'susy-config': (
+      'columns': susy-repeat(get('gamma', $grid__columns)),
+      'gutters': get('gamma', $grid__gutters),
+    ),
+  ),
+  'desktop': (
+    'min-width': get('delta', $grid__breakpoints),
+    'max-width': 100vw,
+    'susy-config': (
+      'columns': susy-repeat(get('delta', $grid__columns)),
+      'gutters': get('delta', $grid__gutters),
+    ),
+  ),
+);
+
+
+
+/// Susy is a design-agnostic set of tools for creating powerful, custom
+/// layouts. We didn’t want another grid system full of rules and restrictions
+/// Susy Version Three is trimmed down to it’s most basic components — functions
+/// that can be used to build any grid system.
+/// @group config
+/// @link http://oddbird.net/susy/docs/
+/// @type map - The base susy configuration pulls from the `$config` map and uses the mobile first approach.
+$susy: get('mobile.susy-config', $config);
+
+
+$easing--standard: all 250ms cubic-bezier(0.4, 0.0, 0.2, 1);
+$easing--entering: all 300ms cubic-bezier(0.0, 0.0, 0.2, 1);
+$easing--exiting: all 250ms cubic-bezier(0.4, 0.0, 1, 1);

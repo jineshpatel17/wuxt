@@ -1,0 +1,48 @@
+.case-study {
+  @include font-sizes("small", "beta");
+  position: relative;
+  margin-top: -71px;
+  @include from('tablet--pt') {
+    margin-top: -90px;
+  }
+  // Do not assign overflow hidden as this makes image + text component fail
+  // overflow-x: hidden;
+  &__seperator {
+    border-top: 1px solid rgba(155, 155, 155, 0.5); // Not defined in color map
+  }
+  &__section {
+    position: relative;
+    z-index: 1;
+  }
+  &__carousel {
+    padding: 0 20px;
+    @include from("tablet--pt") {
+      padding: 0 30px;
+    }
+    @include from("desktop") {
+      padding: 0 50px;
+    }
+    /** We had a carousel earlier (in some pages) containing row width
+    ** Now carousel in case study page have full width carousel
+    ** so overwritten .row class here
+    ** we can use when-inside mixin too but it looks more appropriate
+    **/
+    .row {
+      @include from('desktop') {
+        max-width: 100%;
+      }
+    }
+  }
+  &__spotlight {
+    padding-left: 20px;
+    padding-right: 20px;
+    @include from("tablet--pt") {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    @include from("desktop") {
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+  }
+}

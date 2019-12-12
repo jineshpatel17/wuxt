@@ -1,0 +1,191 @@
+/**************************************
+*** These css is CMS based
+**************************************/
+.article__text {
+  /deep/ {
+    p {
+      margin: 0 0 15px 0;
+      @include from("tablet--pt") {
+        margin-right: span(2 wide);
+        margin-bottom: 20px;
+      }
+      @include from("desktop") {
+        margin-bottom: 25px;
+      }
+      br {
+        display: none;
+      }
+    }
+    ul, ol {
+      @include from("tablet--pt") {
+        margin-right: span(2 wide);
+      }
+    }
+    h2, h3 {
+      @include from("tablet--pt") {
+        margin-right: span(2 wide);
+      }
+    }
+    a {
+      color: $cl__action--beta;
+      font-weight: $fwt--bold;
+    }
+    img,
+    video {
+      max-width: 100%;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .block-caption {
+      font-size: 16px;
+      margin-bottom: 20px;
+      @include from("tablet--pt") {
+        margin-bottom: 40px;
+      }
+      @include from("desktop") {
+        font-size: $fnt__medium--alpha;
+        margin-top: 10px;
+        margin-bottom: 45px;
+      }
+    }
+    .wp-block-jellyfish-left-image-block,
+    .wp-block-jellyfish-right-image-block {
+      margin: 30px 0;
+      @include from("tablet--pt") {
+        margin: 40px 0;
+        display: flex;
+      }
+      @include from("desktop") {
+        margin: 45px 0;
+      }
+      .block-caption,
+      p,
+      img {
+        @include from("tablet--pt") {
+          margin: 0;
+        }
+      }
+      .jellyfish-left-image-content,
+      .jellyfish-right-image-content {
+        width: 50%;
+      }
+    }
+    .wp-block-jellyfish-left-image-block .article__img-container {
+      @include from("tablet--pt") {
+        padding-right: gutter();
+        width: 50%;
+      }
+      @include from("desktop") {
+        padding-right: 30px;
+      }
+    }
+    .wp-block-jellyfish-right-image-block .article__img-container {
+      @include from("tablet--pt") {
+        padding-left: gutter();
+        width: 50%;
+      }
+      @include from("desktop") {
+        padding-left: 30px;
+      }
+    }
+    .wp-block-quote {
+      border-width: 2px 0 0;
+      border-style: solid;
+      padding-top: 37px;
+      font-weight: $fwt--regular;
+      margin: 48px 0 45px;
+      @include when-inside(".bg--light-beta") {
+        border-color: $cl__accent--alpha;
+      }
+      @include when-inside(".bg--light-alpha") {
+        border-color: $cl__accent--beta;
+      }
+      @include from("tablet--pt") {
+        padding-top: 54px;
+        margin: 72px 0 72px;
+      }
+      @include from("desktop") {
+        padding-top: 75px;
+        margin: 80px 0 80px;
+      }
+      p {
+        @include font-sizes('medium', 'beta');
+        margin: 0;
+        @include when-inside(".bg--light-beta") {
+          color: $cl__accent--alpha;
+        }
+        @include when-inside(".bg--light-alpha") {
+          color: $cl__accent--beta;
+        }
+        @include from("tablet--pt") {
+          @include font-sizes('medium', 'gamma');
+          font-weight: $fwt--extra-light;
+        }
+        @include from("desktop") {
+          @include font-sizes('medium', 'gamma');
+        }
+      }
+      cite {
+        @include font-sizes('small', 'gamma');
+        margin-top: 36px;
+        position: relative;
+        color: $cl__dark--beta;
+        display: inline-block;
+        font-style: normal;
+        @include from("tablet--pt") {
+          margin-top: 25px;
+          padding-left: 100px;
+        }
+        @include from("desktop") {
+          margin-top: 27px;
+          padding-left: 119px;
+          @include font-sizes('medium', 'alpha');
+        }
+        &:before {
+          content: "";
+          height: 1px;
+          width: 60px;
+          position: absolute;
+          top: -10px;
+          left: 0;
+          @include when-inside(".bg--light-beta") {
+            background-color: $cl__accent--alpha;
+          }
+          @include when-inside(".bg--light-alpha") {
+            background-color: $cl__accent--beta;
+          }
+          @include from("tablet--pt") {
+            width: 80px;
+            top: 50%;
+          }
+          @include from("desktop") {
+            width: 100px;
+          }
+        }
+      }
+    }
+    .wp-block-gallery {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      @include from('tablet--pt') {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -15px;
+      }
+      .blocks-gallery-item {
+        @include from('tablet--pt') {
+          padding: 0 15px;
+          flex: 1 1 span(4 of 12);
+        }
+        figure {
+          margin: 0;
+        }
+        img {
+          max-width: 100%;
+          display: block;
+        }
+      }
+    }
+  }
+}

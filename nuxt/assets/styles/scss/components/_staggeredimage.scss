@@ -1,0 +1,54 @@
+.staggered-image {
+  position: relative;
+  &__container {
+    position: relative;
+    z-index: 1;
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      margin: 0 -15px;
+    }
+  }
+  &__block {
+    @include from('tablet--pt') {
+      flex: 1 1 span(6 of 12);
+      max-width: 50%;
+      padding: 0 15px;
+      margin-bottom: 42px;
+      &:nth-child(2) {
+        padding-top: 273px;
+      }
+      &:nth-child(odd) {
+        margin-top: -273px;
+      }
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+    }
+    @include from('desktop') {
+      margin-bottom: 60px;
+      max-width: 495px;
+      &:nth-child(2) {
+        padding-top: 393px;
+      }
+      &:nth-child(odd) {
+        margin-top: -393px;
+      }
+      &:nth-child(1) {
+        margin-top: 0;
+      }
+    }
+  }
+  &__bg {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    height: 50%;
+    @include from('desktop') {
+      width: calc(100% - 100px);
+      left: 50px;
+    }
+  }
+}

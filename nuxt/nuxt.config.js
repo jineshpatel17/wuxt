@@ -2,6 +2,9 @@ const axios = require('axios')
 const pkg = require('./package')
 
 module.exports = {
+  server: {
+    host: '0.0.0.0'
+  },
   mode: 'universal',
 
   env: {
@@ -34,7 +37,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~/plugins/wp-api-docker-connector', ssr: false }],
+  plugins: [{ src: '~/plugins/wp-api-docker-connector', ssr: false }, { src: '~/plugins/global-components', ssr: false }],
 
   /*
    ** Nuxt.js modules
@@ -47,7 +50,12 @@ module.exports = {
     [
       '~/modules/wp-api/index',
       {
-        endpoint: 'http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/'
+        endpoint:
+          'http://' +
+          (process.env.WUXT_WP_CONTAINER
+            ? process.env.WUXT_WP_CONTAINER
+            : 'wp.wuxt') +
+          ':80/wp-json/'
       }
     ]
   ],
@@ -61,28 +69,50 @@ module.exports = {
   /*
    ** Build configuration
    */
+  // buildDir: '../functions'
   build: {
+    // publicPath: '/',
+    // vendor: ['isomorphic-fetch'],
+    // extractCSS: true,
+    // babel: {
+    //   presets: [
+    //     'es2015',
+    //     'stage-0'
+    //   ],
+    //   plugins: ["transform-runtime", {
+    //     "polyfill": true,
+    //     "regenerator": true
+    //   }]
+    // },
+
     /*
      ** You can extend webpack config here
      */
-    // extend(config, ctx) {
-    //   // Run ESLint on save
-    //   if (ctx.isDev && ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // }
+    extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          // loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    }
   },
 
   generate: {
-    routes: function() {
+    routes: () => {
+      const posts = []
       return axios
-        .get('http://' + (process.env.WUXT_WP_CONTAINER ? process.env.WUXT_WP_CONTAINER : 'wp.wuxt') + ':80/wp-json/wuxt/v1/generate')
-        .then(({ data }) => data)
+        .get('http://docker.dev.jellyfish.net:3080/wp-json/wp/v2/posts/')
+        .then(res => {
+          console.log('testing', res)
+          for (let index = 0; index < res.data.length; index++) {
+            posts.push(res.data[index].slug)
+          }
+          return posts
+        })
     }
   }
 }

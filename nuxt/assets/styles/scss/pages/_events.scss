@@ -1,0 +1,101 @@
+.events {
+  @include font-sizes('medium', 'beta');
+  font-weight: $fwt__regular;
+  &__text {
+    margin-bottom: 75px;
+    @include from('tablet--pt') {
+      margin-bottom: 74px;
+    }
+    @include from('desktop') {
+      background: $cl__light--beta;
+      padding: 41px 0 47px;
+      @include font-sizes('medium','beta-desktop');
+      margin: -210px 0 86px;
+    }
+    // CMS content para css
+    p {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @include from('tablet--pt') {
+        padding-right: span(3 wide);
+      }
+      @include from('desktop') {
+        padding-right: span(6 wide);
+      }
+    }
+  }
+  &__header {
+    @include font-sizes('large', 'alpha');
+    margin: 88px 0 27px;
+    @include from('tablet--pt') {
+      @include font-sizes('large', 'alpha-tablet');
+      margin: 0;
+    }
+    @include from('desktop') {
+      @include font-sizes('large', 'beta-desktop');
+      margin-top: 0;
+    }
+  }
+  &__container {
+    padding: 0 0 80px;
+    @include from('tablet--pt') {
+      padding: 35px 0 80px;
+    }
+    @include from('desktop') {
+      padding: 66px 0 120px;
+    }
+  }
+  &__list {
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -10px;
+    }
+    @include from('desktop') {
+      margin: 0 -15px;
+    }
+  }
+  &__list-left {
+    @include from('tablet--pt') {
+      flex: 1 1 span(6 of 12);
+      padding: 0 10px;
+      max-width: 50%;
+    }
+    @include from('desktop') {
+      padding: 0 15px;
+    }
+  }
+  &__list-right {
+    @extend .events__list-left;
+    @include from('tablet--pt') {
+      padding-top: 64px;
+    }
+  }
+  &__load-more {
+    text-align: center;
+    @include from('tablet--pt') {
+      flex: 1;
+    }
+  }
+  &__section {
+    max-width: 1230px;
+    margin: 0 auto;
+    @include from('desktop') {
+      display: flex;
+    }
+  }
+  &__detail {
+    flex: 1 1 span(7 of 12);
+  }
+  &__form {
+    flex: 1 1 span(5 of 12);
+    @include from('desktop') {
+      padding-top: 50px;
+      display: flex;
+      justify-content: flex-end;
+      min-height: 495px;
+    }
+  }
+}

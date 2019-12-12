@@ -1,0 +1,100 @@
+.header-region {
+  // @include font-sizes('small', 'gamma');
+  // font-weight: $fwt__regular;
+  // padding-top: 28px;
+  // @include from('tablet--pt') {
+  //   padding: 136px 132px 0 90px;
+  //   margin: 0 -30px;
+  //   column-count: 2;
+  // }
+  // @include from('desktop') {
+  //   display: flex;
+  //   flex-wrap: wrap;
+  //   justify-content: space-between;
+  //   padding: 96px span(1 wide) 0 0;
+  //   margin: 0;
+  //   column-count: 3;
+  // }
+  &__section {
+    margin-bottom: 51px;
+    // @include from('tablet--pt') {
+    //   width: 243px;
+    //   margin-bottom: 78px;
+    //   &:nth-child(odd) {
+    //     margin-right: 60px;
+    //   }
+    // }
+    // @include from('desktop') {
+    //   float: left;
+    //   flex: 1 1 span(3 of 12);
+    //   max-width: 285px;
+    //   &:nth-child(odd) {
+    //     margin-right: 0;
+    //   }
+    // }
+  }
+  &__continent {
+    // font-size: $fnt__small--beta;
+    // line-height: $lht__small--gamma;
+    // color: $cl__dark--alpha; // color var not defined
+    // font-weight: $fwt--bold;
+    padding-bottom: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid rgba($color: #2a3d3d, $alpha: 0.2);
+    // @include from('tablet--pt') {
+    //   line-height: $lht__small--alpha;
+    //   padding-bottom: 12px;
+    //   margin-bottom: 25px;
+    // }
+    // @include from('desktop') {
+    //   margin-bottom: 33px;
+    // }
+  }
+  &__box {
+    // @include from('tablet--pt') {
+    //   margin-top: 23px;
+    //   &:first-child {
+    //     margin-top: 0;
+    //   }
+    // }
+  }
+  &__country {
+    // @include font-sizes('medium', 'beta-desktop');
+    // font-weight: $fwt__bold;
+    // margin: 16px 0 0 -8px;
+    // position: relative;
+    // display: inline-block;
+    // background-position: 99% bottom;
+    // @include from('tablet--pt') {
+    //   margin-top: 0;
+    //   @include font-sizes('medium', 'beta-desktop');
+    //   &:first-child {
+    //     margin-top: 0;
+    //   }
+    // }
+    .link--slide__text {
+      padding: 0 26px 0 8px;
+    }
+    .svg--chevron-right {
+      /deep/ .mask {
+        // fill: $dodger-blue-shaded;
+      }
+    }
+  }
+  &__languages {
+    display: none;
+  }
+  &__language {
+    // @include font-sizes('small', 'beta');
+    text-transform: uppercase;
+    color: #808080; // color var not defined
+    padding: 0 10px;
+    border-left: 1px solid #808080;
+    letter-spacing: 2px;
+    &:nth-child(1) {
+      padding-left: 0;
+      border: 0;
+    }
+  }
+}

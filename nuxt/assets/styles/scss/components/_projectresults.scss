@@ -1,0 +1,81 @@
+.project-results {
+  &__label {
+    font-weight: $fwt__bold;
+    font-size: $fnt__medium--alpha;
+    line-height: 42px; // Not defined in map
+    padding: 0 0 25px 0;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--gamma;
+      padding: 0 0 46px 0;
+    }
+    @include from("desktop") {
+      padding: 0 0 46px 0;
+    }
+  }
+  &__list {
+    padding-right: span(1 wide);
+    @include from("tablet--pt") {
+      padding-right: 0;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -9px;
+    }
+    @include from("desktop") {
+      margin: 0 -15px;
+    }
+  }
+  &__row {
+    border-top: 2px solid #9b9b9b; // Not defined in map
+    padding: 14px 0 50px 0;
+    align-items: center;
+    @include from("tablet--pt") {
+      display: flex;
+      width: calc(33% - 18px);
+      margin: 0 9px;
+      flex-direction: column;
+      padding: 30px 0 75px 0;
+      align-items: flex-start;
+    }
+    @include from("desktop") {
+      padding: 23px 0 66px 0;
+      width: calc(33% - 30px);
+      margin: 0 15px;
+    }
+  }
+  &__title {
+    font-size: $fnt__medium--gamma-desktop;
+    line-height: $lht__medium--gamma;
+    font-weight: $fwt__regular;
+    @include from("desktop") {
+      @include font-sizes('medium', 'gamma');
+    }
+  }
+  &__value {
+    font-size: 80px;
+    line-height: 84px;
+    padding: 14px 0 0;
+    color: #1c1e21; // Not defined in map
+    font-weight: $fwt--extra-light;
+    @include when-inside(".bg--dark-beta") {
+      color: $cl__light--alpha;
+    }
+    @include from('tablet--pt') {
+      color: #9b9b9b; // Not defined in map
+    }
+    @include from("desktop") {
+      font-size: 120px;
+      line-height: 160px;
+      padding: 25px 0 0;
+    }
+  }
+  &__subtitle {
+    @include font-sizes('medium', 'alpha-tablet');
+    font-weight: $fwt__bold;
+    padding-right: 20px;
+    @include from("desktop") {
+      @include font-sizes("medium", "alpha");
+      padding-right: span(3 wide);
+      letter-spacing: -0.5px;
+    }
+  }
+}

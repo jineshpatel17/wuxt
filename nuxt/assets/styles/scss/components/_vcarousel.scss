@@ -1,0 +1,41 @@
+.carousel {
+  width: 100%;
+  padding: 0 18px;
+  @include from("tablet--pt") {
+    padding: 0 30px;
+  }
+  @include from("desktop") {
+    padding: 0 0 0 span(2 wide);
+    @include when-inside(".job") {
+      padding-left: 0px;
+    }
+  }
+  @include when-inside(".case-study__carousel") {
+    padding: 0;
+  }
+  @include when-inside(".event-detail__carousel") {
+    padding: 0;
+  }
+  &__image {
+    max-width: 100%;
+    display: block;
+    @include when-inside(".case-study__carousel") {
+      width: 100%;
+    }
+    @include when-inside(".event-detail__carousel") {
+      width: 100%;
+    }
+  }
+  // .VueCarousel-slide generated through vCarousel plugin used we are overriding our css here
+  .VueCarousel-slide {
+    @include when-inside(".job") {
+      margin-left: 0px;
+      @include from("tablet--pt") {
+        margin-left: 20px;
+      }
+      @include from("desktop") {
+        margin-left: 30px;
+      }
+    }
+  }
+}

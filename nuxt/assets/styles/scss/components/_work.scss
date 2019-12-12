@@ -1,0 +1,55 @@
+.work {
+  padding: 50px 0;
+  &__header {
+    font-weight: 300;
+    font-size: 40px;
+    @include from("tablet--pt") {
+      font-size: $lht__medium--gamma;
+    }
+  }
+  &__container {
+    flex: 1 1 span(4 of 4);
+    padding: 0;
+    @include from("desktop") {
+      flex: 1 1 span(10 of 12);
+      margin-left: span(2 wide);
+      padding: 0;
+    }
+  }
+}
+
+.logo__work {
+  @include when-inside('.we-do') {
+    margin: 0 -18px;
+    @include from('tablet--pt') {
+      margin: 0 -30px;
+    }
+    @include from('desktop') {
+      margin: 0;
+    }
+  }
+  .logo__logo-list {
+    margin-bottom: 35px;
+    @include from("tablet--pt") {
+      margin-bottom: 38.6px;
+    }
+    @include from("desktop") {
+      margin: 70px 0;
+    }
+  }
+  .work__list-item {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    .work__image {
+      display: block;
+    }
+    @include from("tablet--pt") {
+      width: 25%;
+    }
+    @include from("desktop") {
+      width: 20%;
+    }
+  }
+}

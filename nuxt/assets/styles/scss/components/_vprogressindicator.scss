@@ -1,0 +1,108 @@
+.progress {
+  display: none;
+  height: 396px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: calc(50vh - 198px);
+  z-index: 1;
+  @include from("desktop") {
+    display: flex;
+  }
+  &--sticky {
+    position: fixed;
+  }
+  &--fluid {
+    top: auto;
+    bottom: calc(50vh - 198px);
+  }
+  // In case progress indicator need fade effects
+  &--fade-in {
+    @extend .progress--sticky;
+    -webkit-animation: fadein 0.5s linear forwards;
+    animation: fadein 0.5s linear forwards;
+  }
+  &--fade-out {
+    -webkit-animation: fadeout 0.5s linear forwards;
+    animation: fadeout 0.5s linear forwards;
+  }
+  // progress indicator hide/show
+  &--show {
+    @extend .progress--sticky;
+    @include from('desktop') {
+      display: flex;
+    }
+  }
+  &--hide {
+    display: none;
+  }
+  &__bar {
+    height: 100%;
+    margin-right: 23px;
+    background-color: rgba(128, 128, 128, 0.3);
+    width: 2px;
+    border-radius: 2px;
+    position: relative;
+  }
+  &__indicator {
+    width: 2px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: linear-gradient(to bottom, #0fb7df, #0284ff);
+    // @include when-inside(".bg--light-alpha") {
+    //   background-image: linear-gradient(to bottom, #fb5bbd, #cb017d);
+    // }
+  }
+  &__menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    mix-blend-mode: difference;
+  }
+  &__item {
+    margin-bottom: 34px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    @include font-sizes('small', 'beta');
+    font-weight: $fwt--bold;
+    letter-spacing: 2px;
+    color: #999;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: inline-block;
+    @include when-inside(".progress__item--active") {
+      color: #656565;
+    }
+  }
+}
+
+
+
+.expertise {
+  .progress {
+    top: 90px;
+
+    &--fluid {
+      top: auto;
+      bottom: calc(50vh - 198px);
+    }
+
+    &--sticky {
+      top: calc(50vh - 198px);
+    }
+
+    &--fade-in,
+    &--fade-out {
+      -webkit-animation: none;
+      animation: none;
+    }
+
+    &--hide {
+      display: flex;
+    }
+  }
+}

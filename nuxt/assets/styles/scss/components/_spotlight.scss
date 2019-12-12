@@ -1,0 +1,122 @@
+.spotlight {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  &__cursor {
+    cursor: pointer;
+  }
+  &--align-right {
+    align-items: flex-end;
+  }
+  &--align-center {
+    align-items: center;
+  }
+  &:before {
+    position: absolute;
+    content: "";
+    left: 0;
+    right: 0;
+  }
+  &--bg-top:before {
+    top: 0;
+    height: 40%;
+    @include from("tablet--pt") {
+      height: 118px;
+    }
+    @include from("desktop") {
+      height: 246px;
+    }
+  }
+  &--bg-full {
+    @include when-inside(".bg--dark-beta") {
+      background: $cl__dark--beta;
+    }
+    @include when-inside(".bg--dark-alpha") {
+      background: $cl__dark--alpha;
+    }
+    @include when-inside(".bg--light-alpha") {
+      background: $cl__light--alpha;
+    }
+  }
+  &--bg-bottom:before {
+    bottom: 0;
+    height: 40%;
+    @include from("tablet--pt") {
+      height: 396px;
+    }
+    @include from("desktop") {
+      height: 558px;
+    }
+  }
+  &__container {
+    width: calc(100% - #{gutter()});
+    position: relative;
+    @include when-inside(".case-study__spotlight") {
+      width: 100%;
+    }
+    @include when-inside(".event-detail__spotlight") {
+      width: 100%;
+    }
+    @include when-inside(".work") {
+      width: 100%;
+      margin-right: gutter();
+    }
+    @include when-inside(".capability") {
+      width: calc(100% - 36px);
+    }
+    @include from("tablet--pt") {
+      width: calc(100% - 30px);
+      @include when-inside(".work") {
+        width: 100%;
+        margin-right: gutter();
+      }
+      @include when-inside(".capability") {
+        width: calc(100% - 60px);
+      }
+    }
+    @include from("desktop") {
+      width: calc(
+        100% - ((100vw - #{get("desktop.min-width", $config)}) / 2) / 2
+      );
+      @include when-inside(".work") {
+        width: calc(
+          100% - ((100vw - #{get("desktop.min-width", $config)})) / 2
+        );
+        margin-right: 0px;
+      }
+      @include when-inside(".capability") {
+        width: calc(100% - 100px);
+      }
+    }
+    @include when-inside(".working__section") {
+      width: 100%;
+    }
+  }
+  &__image {
+    z-index: 1;
+    line-height: 0;
+    &--hidden {
+      opacity: 0;
+    }
+  }
+  &__action {
+    width: 100%;
+    margin-top: -1px;
+  }
+  &__button {
+    position: relative;
+    z-index: 1;
+    &--hidden {
+      display: none;
+    }
+  }
+  &__video {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+}

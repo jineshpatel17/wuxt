@@ -1,0 +1,214 @@
+// -----------------------------------------------------------------------------
+// This file contains all base font variables and maps
+// -----------------------------------------------------------------------------
+////
+/// @author Steve Slade
+/// @group typography
+////
+
+
+/// Font weight map
+/// @example scss - **Usage**
+///
+///   // Bad
+///   .text--bold {
+///     font-weight: get('bold', $font__weights);
+///   }
+///
+///   // Good
+///   $text--bold: get('bold', $font__weights);
+///
+///   .card {
+///     font-weight: $text--bold;
+///   }
+///
+///   // Best
+///   .fwt {
+///     @include create-modifiers($font__weights, 'font-weight');
+///   }
+///
+///   .fwt--light {
+///     font-weight: 300;
+///   }
+///
+///   .fwt--regular {
+///     font-weight: 400;
+///   }
+///
+///   // ...
+///
+
+// Variable declaration for used font
+$font__family--sans: "Noto Sans", sans-serif;
+
+
+/// @prop {Number | String} extra-light [100] - Lighter than regular
+/// @prop {Number | String} light      [300] - Lighter than regular
+/// @prop {Number | String} regular    [400] - Standard (default) weight
+/// @prop {Number | String} semibold   [600] - Lighter than bold
+/// @prop {Number | String} bold       [700] - Standard bold weight
+/// @prop {Number | String} extra-bold [800] - Heavier than bold
+/// @prop {Number | String} black      [900] - Heaviest weight
+/// @type Map - Font weights
+
+$font__weights: (
+  'extra-light' : 100,
+  'regular' : 400,
+  'bold' : 700,
+);
+
+// Useable font variables, These are mapped to the font weights above.
+$fwt--extra-light: get( 'extra-light', $font__weights );
+$fwt--regular: get( 'regular', $font__weights );
+$fwt--bold: get( 'bold', $font__weights );
+
+/// Variables to defines font size and line height
+$font__sizes: (
+  'small': (
+    'alpha': (
+      font-size: 9px,
+      line-height: 16px
+    ),
+    'beta': (
+      font-size: 11px,
+      line-height: 16px
+    ),
+    'gamma': (
+      font-size: 13px,
+      line-height: 18px
+    )
+  ),
+  'medium': (
+    'alpha': (
+      font-size: 18px,
+      line-height: 24px
+    ),
+    'alpha-tablet': (
+      font-size: 16px,
+      line-height: 24px
+    ),
+    'beta': (
+      font-size: 16px,
+      line-height: 24px
+    ),
+    'beta-tablet': (
+      font-size: 18px,
+      line-height: 28px
+    ),
+    'beta-desktop': (
+      font-size: 20px,
+      line-height: 32px
+    ),
+    'gamma': (
+      font-size: 24px,
+      line-height: 32px
+    ),
+    'gamma-desktop': (
+      font-size: 26px,
+      line-height: 36px
+    )
+  ),
+  'large': (
+    'alpha': (
+      font-size: 28px,
+      line-height: 40px
+    ),
+    'alpha-tablet': (
+      font-size: 32px,
+      line-height: 42px
+    ),
+    'alpha-desktop': (
+      font-size: 36px,
+      line-height: 48px
+    ),
+    'beta': (
+      font-size: 32px,
+      line-height: 42px
+    ),
+    'beta-tablet': (
+      font-size: 40px,
+      line-height: 52px
+    ),
+    'beta-desktop': (
+      font-size: 48px,
+      line-height: 64px
+    ),
+    'gamma': (
+      font-size: 32px,
+      line-height: 42px
+    ),
+    'gamma-tablet': (
+      font-size: 48px,
+      line-height: 56px
+    ),
+    'gamma-desktop': (
+      font-size: 80px,
+      line-height: 104px
+    ),
+    'delta': (
+      font-size: 32px,
+      line-height: 44px
+    ),
+    'delta-tablet': (
+      font-size: 48px,
+      line-height: 56px
+    ),
+    'delta-desktop': (
+      font-size: 80px,
+      line-height: 88px
+    )
+  )
+);
+
+
+// Useable font size variables, These are mapped to the font size above.
+$fnt__small--alpha: get('small.alpha.font-size', $font__sizes);
+$fnt__small--beta: get('small.beta.font-size', $font__sizes);
+$fnt__small--gamma: get('small.gamma.font-size', $font__sizes);
+
+$fnt__medium--alpha: get('medium.alpha.font-size', $font__sizes);
+$fnt__medium--alpha-tablet: get('medium.alpha-tablet.font-size', $font__sizes);
+$fnt__medium--beta: get('medium.beta.font-size', $font__sizes);
+$fnt__medium--beta-tablet: get('medium.beta-tablet.font-size', $font__sizes);
+$fnt__medium--beta-desktop: get('medium.beta-desktop.font-size', $font__sizes);
+$fnt__medium--gamma: get('medium.gamma.font-size', $font__sizes);
+$fnt__medium--gamma-desktop: get('medium.gamma-desktop.font-size', $font__sizes);
+
+$fnt__large--alpha: get('large.alpha.font-size', $font__sizes);
+$fnt__large--alpha-tablet: get('large.alpha-tablet.font-size', $font__sizes);
+$fnt__large--alpha-desktop: get('large.alpha-desktop.font-size', $font__sizes);
+$fnt__large--beta: get('large.beta.font-size', $font__sizes);
+$fnt__large--beta-tablet: get('large.beta-tablet.font-size', $font__sizes);
+$fnt__large--beta-desktop: get('large.beta-desktop.font-size', $font__sizes);
+$fnt__large--gamma: get('large.gamma.font-size', $font__sizes);
+$fnt__large--gamma-tablet: get('large.gamma-tablet.font-size', $font__sizes);
+$fnt__large--gamma-desktop: get('large.gamma-desktop.font-size', $font__sizes);
+$fnt__large--delta: get('large.delta.font-size', $font__sizes);
+$fnt__large--delta-tablet: get('large.delta-tablet.font-size', $font__sizes);
+$fnt__large--delta-desktop: get('large.delta-desktop.font-size', $font__sizes);
+
+// Useable line height variables, These are mapped to the font size above.
+$lht__small--alpha: get('small.alpha.line-height', $font__sizes);
+$lht__small--beta: get('small.beta.line-height', $font__sizes);
+$lht__small--gamma: get('small.gamma.line-height', $font__sizes);
+
+$lht__medium--alpha: get('medium.alpha.line-height', $font__sizes);
+$lht__medium--alpha-tablet: get('medium.alpha-tablet.line-height', $font__sizes);
+$lht__medium--beta: get('medium.beta.line-height', $font__sizes);
+$lht__medium--beta-tablet: get('medium.beta-tablet.line-height', $font__sizes);
+$lht__medium--beta-desktop: get('medium.beta-desktop.line-height', $font__sizes);
+$lht__medium--gamma: get('medium.gamma.line-height', $font__sizes);
+$lht__medium--gamma-desktop: get('medium.gamma-desktop.line-height', $font__sizes);
+
+$lht__large--alpha: get('large.alpha.line-height', $font__sizes);
+$lht__large--alpha-tablet: get('large.alpha-tablet.line-height', $font__sizes);
+$lht__large--alpha-desktop: get('large.alpha-desktop.line-height', $font__sizes);
+$lht__large--beta: get('large.beta.line-height', $font__sizes);
+$lht__large--beta-tablet: get('large.beta-tablet.line-height', $font__sizes);
+$lht__large--beta-desktop: get('large.beta-desktop.line-height', $font__sizes);
+$lht__large--gamma: get('large.gamma.line-height', $font__sizes);
+$lht__large--gamma-tablet: get('large.gamma-tablet.line-height', $font__sizes);
+$lht__large--gamma-desktop: get('large.gamma-desktop.line-height', $font__sizes);
+$lht__large--delta: get('large.delta.line-height', $font__sizes);
+$lht__large--delta-tablet: get('large.delta-tablet.line-height', $font__sizes);
+$lht__large--delta-desktop: get('large.delta-desktop.line-height', $font__sizes);

@@ -26,8 +26,8 @@ services:
           WORDPRESS_DB_PASSWORD: dev
           WUXT_PORT_BACKEND: ${WUXT_PORT_BACKEND:-3080}
           WORDPRESS_CONFIG_EXTRA: |
-            define('WP_SITEURL', 'http://localhost:${WUXT_PORT_BACKEND:-3080}' );
-            define('WP_HOME', 'http://localhost:${WUXT_PORT_BACKEND:-3080}' );
+            define('WP_SITEURL', 'http://docker.dev.jellyfish.net:${WUXT_PORT_BACKEND:-3080}' );
+            define('WP_HOME', 'http://docker.dev.jellyfish.net:${WUXT_PORT_BACKEND:-3080}' );
         networks:
           - default
 
@@ -36,7 +36,7 @@ services:
         image: node:11-slim
         working_dir: '/var/www/app'
         environment:
-            - HOST=0.0.0.0
+            - HOST=localhost
             - WUXT_WP_CONTAINER=${WUXT_WP_CONTAINER:-wp.wuxt}
             - WUXT_PORT_BACKEND=${WUXT_PORT_BACKEND:-3080}
         ports:

@@ -1,0 +1,194 @@
+.vacancy {
+  padding: 50px 0 64px;
+  @include from("tablet--pt") {
+    padding: 73px 0 94px;
+  }
+  @include from("desktop") {
+    padding: 103px 0 102px;
+    margin-left: span(2 wide);
+  }
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__page-tile {
+    @include font-sizes('medium', 'beta-tablet');
+    flex: 1 1 span(4 of 4);
+    font-weight: $fwt--bold;
+    margin-bottom: 12px;
+    @include from("tablet--pt") {
+      flex: 1 1 span(2 of 12);
+      @include font-sizes('medium', 'beta');
+      margin-bottom: 0;
+    }
+    @include from("desktop") {
+      flex: 1 1 span(2.5 of 12);
+    }
+  }
+  &__container {
+    flex: 1 1 span(4 of 4);
+    @include from("desktop") {
+      flex: 1 1 span(10 of 12);
+      margin-left: span(2 wide);
+    }
+  }
+  &__detail {
+    @include font-sizes('medium', 'beta-tablet');
+    flex: 1 1 span(4 of 4);
+    margin-bottom: 9px;
+    @include from("tablet--pt") {
+      flex: 1 1 span(8 of 12);
+      margin-bottom: 0;
+      padding: 0 span(1 wide) 0 10px;
+    }
+    @include from("desktop") {
+      padding-left: 37px;
+    }
+  }
+  &__copy {
+    margin-bottom: 20px;
+    @include from("tablet--pt") {
+      @include font-sizes('medium', 'beta-tablet');
+      margin-bottom: 28px;
+    }
+    @include from("desktop") {
+      margin-bottom: 38px;
+      @include font-sizes('medium', 'beta-desktop');
+      @include when-inside('.work') {
+        margin-right: span(1.5 wide);
+      }
+    }
+  }
+  &__text-block {
+    @include from('tablet--pt') {
+      display: block;
+      max-width: 121px;
+    }
+    @include from('desktop') {
+      max-width: 180px;
+      margin-top: 6px;
+    }
+  }
+  &__region {
+    font-size: $fnt__large--alpha;
+    line-height: $lht__medium--gamma;
+    color: #132b2a;
+    display: inline-block;
+    width: 150px;
+    margin-left: 10px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--alpha-tablet;
+      line-height: $lht__large--alpha;
+      position: relative;
+      top: -10px;
+    }
+    @include from("desktop") {
+      font-size: $fnt__large--beta-desktop;
+      line-height: $lht__large--gamma-tablet;
+    }
+  }
+  &__link {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    color: $cl__action--beta;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 2px solid;
+    padding-bottom: 3px;
+  }
+  &__count {
+    @include font-sizes('medium', 'beta');
+    font-weight: $fwt--bold;
+    display: inline-block;
+    width: 35px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--alpha;
+      line-height: 42px;
+      display: block;
+      width: auto;
+      margin-bottom: 13px;
+      font-weight: $fwt--extra-light;
+    }
+    &--large {
+      line-height: 112px;
+      font-size: 100px;
+      font-weight: $fwt--extra-light;
+      color: #094ecd;
+      width: auto;
+      display: inline-block;
+      @include from("tablet--pt") {
+        font-size: 140px;
+        line-height: 140px;
+        margin-bottom: 0;
+      }
+      @include from("desktop") {
+        font-size: 210px;
+        line-height: 210px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__country {
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt--bold;
+    display: inline-block;
+    flex: 1;
+    @include from("tablet--pt") {
+      margin-bottom: 12px;
+      display: block;
+    }
+  }
+  &__list {
+    @include from("tablet--pt") {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -9px;
+    }
+    @include from("desktop") {
+      margin: 0 -15px;
+      padding-left: 35px;
+    }
+  }
+  &__row {
+    border-top: 1px solid rgba(128, 128, 128, 0.3);
+    padding: 10px 0 14px;
+    display: flex;
+    align-items: center;
+    @include from("tablet--pt") {
+      width: calc(25% - 18px);
+      margin: 30px 9px 0;
+      flex-direction: column;
+      padding: 29px 0 0;
+      align-items: flex-start;
+      &:nth-child(-n + 4) {
+        margin-top: 0;
+      }
+    }
+    @include from("desktop") {
+      width: calc(25% - 30px);
+      margin: 40px 15px 0;
+    }
+  }
+  //NJW-858
+  &__button {
+    padding: 0;
+    @include from("tablet--pt") {
+      padding: 5px 0 0;
+    }
+    @include from("desktop") {
+      padding: 0;
+    }
+  }
+  .mobile {
+    display: block;
+    @include from("tablet--pt") {
+      display: none;
+    }
+  }
+  .desktop {
+    display: none;
+    @include from("tablet--pt") {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,84 @@
+.accordion {
+  overflow: hidden;
+
+  &__toggle {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    text-transform: uppercase;
+    text-align: left;
+    color: $dodger-blue;
+    letter-spacing: 1px;
+    width: 100%;
+    height: 42px;
+    display: block;
+    padding: 0 20px;
+    position: relative;
+    background: $white-smoke;
+    border: none;
+    outline: none;
+    @include when-inside('.mobile') {
+        @include from('tablet--pt') {
+          display: none;
+        }
+    }
+  }
+
+  &__panel {
+    transition: 0.3s all linear;
+    background: $white-smoke;
+    @include from('tablet--pt') {
+      background: none;
+    }
+
+    &.collapsed {
+      max-height: 0!important;
+      @include when-inside('.mobile') {
+        @include from('tablet--pt') {
+          max-height: none!important;
+        }
+      }
+    }
+  }
+
+  &__cta {
+    flex: 100%;
+    padding: 0 0 65px;
+
+    @include from('tablet--pt') {
+      padding: 0;
+    }
+
+    &-link {
+      @include font-sizes('small', 'gamma');
+      font-weight: $fwt--bold;
+      text-transform: uppercase;
+      color: $dodger-blue;
+      letter-spacing: 1px;
+      margin: 40px 0 20px;
+      position: relative;
+      display: inline-block;
+
+      @include from('desktop') {
+        margin: 25px 0 20px;
+      }
+
+      .svg--chevron-right /deep/ .mask {
+        fill: $dodger-blue;
+      }
+
+      &:after {
+        content: "";
+        width: 100%;
+        height: 2px;
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+        background-color: transparent;
+        background-image: linear-gradient(270deg,#0078ff 0,#0078ff 50%,transparent 0,transparent);
+        background-size: 210% 100%;
+        background-position: 100% bottom;
+      }
+    }
+
+  }
+}

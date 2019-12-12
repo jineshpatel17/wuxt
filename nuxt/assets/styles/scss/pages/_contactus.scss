@@ -1,0 +1,33 @@
+.contact {
+  &__separator {
+    border-bottom: 1px solid rgba(155, 155, 155, 0.5);
+  }
+  &__message {
+    padding: 73px 0 120px;
+    @include from('desktop') {
+      max-width: 810px;
+      margin: 0 auto;
+    }
+    &-copy {
+      margin-bottom: 55px;
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: $lht__medium--gamma;
+    }
+    &-list {
+      @include from('tablet--pt') {
+        display: flex;
+        margin: 0 -15px;
+      }
+    }
+    &-item {
+      padding-top: 30px;
+      &:first-child {
+        padding-top: 0px;
+      }
+      @include from('tablet--pt') {
+        padding: 0 15px;
+        width: 33.33%;
+      }
+    }
+  }
+}

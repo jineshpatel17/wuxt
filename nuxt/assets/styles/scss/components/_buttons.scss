@@ -1,0 +1,530 @@
+/*
+
+BUTTON TYPES
+  1. Black outline, black text (hover blue bg, white text)
+  "btn--slide-blue" - e.g. /we-are standard content button
+
+  2. Solid white, blue text (hover transparent bg, white outline, white text)
+  "btn--slide-white-solid" - e.g. vContact.vue
+
+  3. White outline, white text, transparent bg (hover solid white, blue text)
+  "btn--slide-white" - e.g. VTextCta.vue
+
+  4. Solid white, black text (hover semi-transparent black bg, white outline, white text)
+  "btn--slide-black-tint" - e.g. Homepage buttons
+
+  5. play button
+  "btn--play" - e.g. Spotlight.vue
+
+
+LINK/CTA TYPES
+  1. Text link with solid blue bg slide on hover
+  "link--slide-blue-solid" - e.g. Nav links, policy pages, breadcrumbs
+
+  2. Text link with solid white bg slide on hover
+  "link--slide-white-solid" - e.g. breadcrumbs on hero colours
+
+  3. Text link with blue underline, slides out and back in on hover
+  "link--slide-blue-underline" e.g. Nes & insights card
+
+*/
+
+
+.btn--slide {
+  // font-size: $fnt__small--gamma;
+  // font-weight: $fwt--bold;
+  // line-height: $lht__medium--gamma;
+  letter-spacing: 1px;
+  // color: $cl__dark--beta;
+  text-transform: uppercase;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: 0; /* Padding handled by button text for animation effects to work */
+  background-color: transparent; /* to allow border on pseudo element to show */
+  background-size: 210% 100%; /* Extra 10% to stop shadow pixel showing */
+  background-position: -95% bottom; /* Starting position */
+  border: none;
+  // @include when-inside('.contact__message-item') {
+  //   width: 100%;
+  // }
+
+  /* To provide a frame for the pseudo outline styles */
+  &-wrapper {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Add border behind button
+   * so bg can slide over the top */
+  &:before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+    // border: solid 2px $cl__dark--beta;
+    position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
+  }
+
+  /* outline needs to be white for the 'white-blue' button */
+  &.btn--slide-white-solid,
+  &.btn--slide-white,
+  // &.btn--slide-black-tint {
+  //   &:before {
+  //     border: solid 2px $white;
+  //   }
+  // }
+
+  &__text {
+    // line-height: $lht__medium--alpha;
+    display: block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 0 bottom;
+    position: relative;
+
+    // @include when-inside('.btn--slide-blue') {
+    //   background-image: linear-gradient(to right,
+    //     $cl__dark--beta,
+    //     $cl__dark--beta 50%,
+    //     $white 50%
+    //   );
+    padding: 24px 58px 24px 40px;
+      // @include from('tablet--pt') {
+      //   padding: 28px 61px 28px 48px;
+      // }
+      // @include from('tablet--ls') {
+      //   padding: 36px 63px 36px 45px;
+      // }
+    }
+
+    // @include when-inside('.btn--slide-white-solid') {
+    //   background-image: linear-gradient(to right,
+    //     $dodger-blue-shaded,
+    //     $dodger-blue-shaded 50%,
+    //     $white 50%
+    //   );
+    //   padding: 21px 52px 24px;
+    //   @include from('tablet--pt') {
+    //     padding: 36px 45px;
+    //   }
+    // }
+
+    // @include when-inside('.btn--slide-white') {
+    //   background-image: linear-gradient(to right,
+    //     $white,
+    //     $white 50%,
+    //     $dodger-blue-shaded 50%
+    //   );
+    //   padding: 24px 58px 24px 40px;
+    //   @include from('tablet--pt') {
+    //     padding: 36px 63px 36px 45px;
+    //   }
+    // }
+
+    // @include when-inside('.btn--slide-black-tint') {
+    //   line-height: $lht__small--gamma;
+    //   background-image: linear-gradient(to right,
+    //     $black-pearl,
+    //     $black-pearl 50%,
+    //     $white 50%
+    //   );
+    //   width: 185px;
+    //   padding: 28px 66px 28px 25px;
+    //   @include from('tablet--pt') {
+    //     width: 150px;
+    //     padding: 28px 50px 28px 25px;
+    //   }
+    // }
+
+    // @include when-inside('.btn--slide-white-play') {
+    //   background-image: linear-gradient(to right,
+    //     $black-pearl,
+    //     $black-pearl 50%,
+    //     $white 50%
+    //   );
+    //   padding: 28px 66px 28px 25px;
+    //   @include from('tablet--pt') {
+    //     padding: 36px 45px;
+    //   }
+    // }
+
+    // @include when-inside('.cookie__button') {
+    //   font-size: $fnt__small--gamma;
+    //   line-height: $lht__medium--alpha;
+    //   font-weight: $fwt--regular;
+    //   padding: 14px 48px 14px 30px;
+
+    //   .svg--chevron-right {
+    //     right: 30px;
+    //   }
+    // }
+
+    .people-list__form & {
+      padding: 18px 61px 18px 41px;
+    }
+
+    // @include when-inside('.spotlight') {
+    //   padding: 18px 55px;
+    //   @include from('tablet--ls') {
+    //     padding: 36px 45px;
+    //   }
+    // }
+
+    // @include when-inside('.product-bar__ctc') {
+    //   padding: 21px 40px 24px;
+    //   @include from('tablet--pt') {
+    //     padding: 25px 28px 28px;
+    //   }
+    //   @include from('tablet--ls') {
+    //     padding: 36px 45px;
+    //   }
+    // }
+
+    // @include when-inside('.event-detail__cta') {
+    //   padding: 24px 58px;
+    //   @include from('tablet--pt') {
+    //     padding: 28px 48px;
+    //   }
+    //   @include from('tablet--ls') {
+    //     padding: 36px 45px;
+    //   }
+    // }
+
+  }
+
+
+  .svg--chevron-right {
+    position: absolute;
+      right: 34px;
+      top: 50%;
+    transform: translateY(-50%);
+    // @include from('tablet--pt') {
+    //   right: 45px;
+    // }
+
+    .mask {
+      // fill: $black-pearl;
+      transition: 0.2s;
+      transition-delay: 0.2s;
+    }
+  }
+
+  // &:hover {
+  //   .svg--chevron-right .mask {
+  //     fill: $white;
+  //   }
+  // }
+
+  // &:active {
+  //   background: $cobalt;
+  //   transition: none;
+  //   .btn--slide__text {
+  //     background: none;
+  //     color: $white;
+  //     -webkit-text-fill-color: $white;
+  //   }
+  // }
+
+  /* Standard button - hover slides to blue bg */
+  /* Found on /we-are - VButton.vue */
+  // &-blue {
+  //   background-image: linear-gradient(to right,
+  //     // $dodger-blue-shaded 0%,
+  //     // $dodger-blue-shaded 50%,
+  //     transparent 50%,
+  //     transparent 100%
+  //   )
+  // }
+
+  /* White button - hover slides to blue bg */
+  /* Found on /we-are - VContact.vue */
+  // &-white-solid {
+  //   background-image: linear-gradient(to right,
+  //     transparent 0%,
+  //     transparent 50%,
+  //     // $white 50%,
+  //     // $white 100%
+  //   );
+  // }
+
+  /* White outline button - hover slides to solid white bg */
+  /* Found on /we-are -  */
+  // &-white {
+  //   background-image: linear-gradient(to right,
+  //     // $white 0%,
+  //     // $white 50%,
+  //     transparent 50%,
+  //     transparent 100%
+  //   );
+
+  //   .svg--chevron-right {
+  //     .mask {
+  //       fill: $white;
+  //     }
+  //   }
+
+  //   &:hover {
+  //     .svg--chevron-right .mask {
+  //       fill: $dodger-blue-shaded;
+  //     }
+  //   }
+  // }
+
+  /* Solid white button - hover slides to semi-transparent black bg */
+  /* Found on homepage -  */
+  // &-black-tint {
+  //   // font-size: $fnt__medium--alpha-tablet;
+  //   // line-height: $lht__small--gamma;
+  //   letter-spacing: 1.14px;
+  //   margin: 0 20px 15px 0;
+  //   background-image: linear-gradient(to left,
+  //     // $white 0%,
+  //     // $white 50%,
+  //     rgba(0,0,0,0.1) 50%,
+  //     rgba(0,0,0,0.1) 100%
+  //   );
+
+  //   @include from('tablet--pt') {
+  //     margin-bottom: 0;
+  //     display: inline-block;
+  //     margin-right: 20px;
+  //     &:last-child {
+  //       margin-right: 0;
+  //     }
+  //   }
+
+  //   .svg--chevron-right {
+  //     right: 30px;
+  //     // @include from('tablet--pt') {
+  //     //   right: 25px;
+  //     // }
+  //     // @include from('tablet--ls') {
+  //     //   right: 22px;
+  //     // }
+  //   }
+  // }
+
+  /* Found on /working-at-jellyfish video placeholder -  */
+  // &-white-play {
+  //   background-image: linear-gradient(to right,
+  //     // $dodger-blue-shaded 0%,
+  //     // $dodger-blue-shaded 50%,
+  //     // $white 50%,
+  //     // $white 100%
+  //   );
+  //   min-width: 122.7px;
+  //   min-height: 49px;
+  //   position: absolute;
+  //     left: 10px;
+  //     bottom: 30px;
+  //   // @include from('tablet--pt') {
+  //   //   min-width: 162px;
+  //   //   min-height: 64px;
+  //   //   left: 0;
+  //   //   bottom: 36px;
+  //   // }
+  //   // @include from('tablet--ls') {
+  //   //   margin-left: 60px;
+  //   // }
+  //   // @include from('desktop') {
+  //   //   min-width: 218px;
+  //   //   min-height: 92px;
+  //   //   bottom: 47px;
+  //   //   margin-left: 105px;
+  //   // }
+
+  // }
+
+
+
+/* -----------------------------------------------------------------------------
+ * Styles for animated links & CTAs
+ * -------------------------------------------------------------------------- */
+.link--slide {
+  padding: 0; /* Padding handled by button text for animation effects to work */
+  background-color: transparent; /* to allow border on pseudo element to show */
+  background-size: 210% 100%; /* Extra 10% to stop shadow pixel showing */
+  background-position: 100% bottom; /* Starting position */
+  border: none;
+  display: inline-block;
+
+  &__text {
+    display: block;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 0 bottom;
+    position: relative;
+
+    // @include when-inside('.link--slide-blue-solid') {
+    //   background-image: linear-gradient(to right,
+    //     $cl__dark--beta,
+    //     $cl__dark--beta 50%,
+    //     $white 50%
+    //   );
+    // }
+
+    // /* Set policy link text to blue */
+    // @include when-inside('.policy__link') {
+    //   background-image: linear-gradient(to right,
+    //     $dodger-blue-shaded,
+    //     $dodger-blue-shaded 50%,
+    //     $white 50%
+    //   );
+    // }
+
+    // /* Set breadcrumb link text to blue */
+    // @include when-inside('.breadcrumb') {
+    //   background-image: linear-gradient(to right,
+    //     $dodger-blue-shaded,
+    //     $dodger-blue-shaded 50%,
+    //     $white 50%
+    //   );
+    // }
+
+    // /* Set breadcrumb in hero colours text to white */
+    // @include when-inside('.link--slide-white-solid') {
+    //   background-image: linear-gradient(to right,
+    //     $white,
+    //     $white 50%,
+    //     $dodger-blue-shaded 50%
+    //   );
+    // }
+
+    // @include when-inside('.background-slide--rtl') {
+    //   padding-left: 20px; /* padding for left chevron */
+    // }
+  }
+
+  .svg--chevron-right,
+  .svg--chevron-left {
+    position: absolute;
+      right: 8px;
+      top: 50%;
+      transform: translateY(-50%);
+
+    .mask {
+      // fill: $black-pearl;
+      transition: 0.2s;
+      transition-delay: 0.2s;
+    }
+  }
+
+  .svg--chevron-left {
+    right: auto;
+    left: 0;
+    .mask {
+      // fill: $dodger-blue-shaded;
+    }
+  }
+
+  // &:hover {
+  //   .svg--chevron-right .mask,
+  //   .svg--chevron-left .mask  {
+  //     fill: $white;
+  //   }
+  // }
+
+  &:active {
+    // background: $cobalt;
+    transition: none;
+    .link--slide__text {
+      background: none;
+      // color: $white;
+      // -webkit-text-fill-color: $white;
+    }
+  }
+
+  // &-blue-solid {
+  //   background-image: linear-gradient(to right,
+  //     // $dodger-blue-shaded 0%,
+  //     // $dodger-blue-shaded 50%,
+  //     transparent 50%,
+  //     transparent 100%
+  //   );
+  // }
+
+  // &-white-solid {
+  //   background-image: linear-gradient(to right,
+  //     // $white 0%,
+  //     // $white 50%,
+  //     transparent 50%,
+  //     transparent 100%
+  //   );
+
+  //   // .svg--chevron-left {
+  //   //   .mask {
+  //   //     fill: $white;
+  //   //   }
+  //   // }
+
+  //   // &:hover {
+  //   //   .svg--chevron-left .mask  {
+  //   //     fill: $dodger-blue-shaded;
+  //   //   }
+  //   // }
+  // }
+
+  &-blue-underline {
+    position: relative;
+    border: none;
+    padding-bottom: 1px;
+
+    .svg--chevron-right {
+      position: absolute;
+        right: -13px;
+        top: 50%;
+        transform: translateY(-50%);
+        // .mask {
+        //   fill: $dodger-blue-shaded;
+        // }
+    }
+
+    &:after {
+      content: "";
+      width: 100%;
+      height: 2px;
+      position: absolute;
+        left: 0;
+        bottom: -3px;
+      background-color: transparent;
+      background-image: linear-gradient(to left,
+        // $dodger-blue-shaded 0%,
+        // $dodger-blue-shaded 50%,
+        transparent 50%,
+        transparent 100%
+      );
+      background-size: 210% 100%;
+      background-position: 100% bottom;
+    }
+
+    &:hover {
+      &:after {
+        transition-delay: 0.1s;
+        transition: background-position .8s linear;
+        background-position: -95% bottom;
+      }
+    }
+
+    &.active-in {
+      &:after {
+        background-position: 0 bottom;
+        transition: background-position .5s ease;
+      }
+    }
+    &.active-out {
+      &:after {
+        background-position: -95% bottom;
+        transition: background-position .5s ease;
+      }
+    }
+  }
+}

@@ -1,0 +1,220 @@
+.work {
+  @include font-sizes('medium', 'beta');
+  font-weight: $fwt__regular;
+  &__container {
+    padding: 0 18px;
+    margin-bottom: 80px;
+    @include from('tablet--pt') {
+      padding: 0 30px;
+      margin-bottom: 100px;
+    }
+    @include from('desktop') {
+      padding: 0 50px;
+      margin-bottom: 120px;
+    }
+  }
+  &__breadcrumbs {
+    display: none;
+    @include from('desktop') {
+      display: block;
+    }
+  }
+  &__card {
+    position: relative;
+    margin-bottom: 20px;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    @include from('tablet--pt') {
+      @include when-inside('.work__list') {
+        flex: 1 1 span(6 of 12);
+        max-width: 50%;
+        padding: 0 9px;
+      }
+    }
+    @include from('desktop') {
+      margin-bottom: 50px;
+      @include when-inside('.work__list') {
+        padding: 0 25px;
+      }
+      &:hover {
+        & > .work__logo {
+          display: none;
+        }
+        & > .work__overlay {
+          height: 100%;
+          opacity: 1;
+        }
+      }
+    }
+  }
+  &__logo {
+    position: absolute;
+    top: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(circle at 50% 46%, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    @include from('tablet--pt') {
+      @include when-inside('.work__list') {
+        left: 9px;
+        right: 9px;
+      }
+    }
+    @include from('desktop') {
+      @include when-inside('.work__list') {
+        left: 25px;
+        right: 25px;
+      }
+    }
+  }
+  &__list {
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -9px;
+    }
+    @include from('desktop') {
+      margin: 0 -25px;
+    }
+  }
+  &__overlay {
+    opacity: 0;
+    background: rgba($color: #165dff, $alpha: 0.7); // Not defined in map;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 0;
+    padding: 14px 20px;
+    color: $cl__light--alpha;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .5s ease;
+    @include from('tablet--pt') {
+      padding: 22px 30px 26px;
+      @include when-inside('.work__list') {
+        left: 9px;
+        right: 9px;
+        padding: 14px 20px 17px;
+      }
+    }
+    @include from('desktop') {
+      padding: 49px 65px 60px;
+      @include when-inside('.work__list') {
+        padding: 23px 30px 27px;
+        left: 25px;
+        right: 25px;
+      }
+    }
+  }
+  &__name {
+    font-weight: $fwt__bold;
+    font-size: $fnt__medium--alpha;
+    margin: 0;
+    @include from('tablet--pt') {
+      font-size: $fnt__medium--gamma;
+      line-height: normal;
+      @include when-inside('.work__list') {
+        font-size: 16px; // Not defined in map
+      }
+    }
+    @include from('desktop') {
+      font-size: $fnt__large--alpha-tablet;
+      @include when-inside('.work__list') {
+        font-size: $fnt__medium--alpha;
+      }
+    }
+  }
+  &__title {
+    font-size: 20px;
+    @include from('tablet--pt') {
+      font-size: 40px; // Not defined in map
+      line-height: 48px; // Not defined in map
+      font-weight: $fwt__extra-light;
+      padding-right: span(1 wide);
+      margin-top: 20px;
+      @include when-inside('.work__list') {
+        @include font-sizes('large', 'beta');
+        padding: 0;
+        margin-top: 0;
+      }
+    }
+    @include from('desktop') {
+      font-size: 56px;
+      line-height: $lht__large--beta-desktop;
+      position: absolute;
+      bottom: 135px;
+      padding-right: span(5.5 wide);
+      @include when-inside('.work__list') {
+        position: relative;
+        bottom: auto;
+        font-size: 40px; // Not defined in map
+        line-height: 48px; // Not defined in map
+      }
+    }
+  }
+  &__meta {
+    display: none;
+    @include from('tablet--pt') {
+      font-weight: $fwt__bold;
+      display: block;
+      font-size: $fnt__small--beta;
+      line-height: normal;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      @include when-inside('.work__list') {
+        font-size: 9px;
+        line-height: 14px;
+        letter-spacing: 1.56px;
+      }
+    }
+    @include from('desktop') {
+      font-size: 16px;
+      letter-spacing: 3.6px;
+      @include when-inside('.work__list') {
+        font-size: 10px;
+        letter-spacing: 2.25px;
+      }
+    }
+  }
+  &__tag {
+    padding-right: 18px;
+    position: relative;
+    display: inline-block;
+    @include from('desktop') {
+      padding-right: 30px;
+      @include when-inside('.work__list') {
+        padding-right: 18px;
+      }
+    }
+    &:after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      // border-radius: 4px;
+      background: $cl__light--alpha;
+      position: absolute;
+      right: 7px;
+      top: calc(50% - 2px);
+      @include from('desktop') {
+        right: 12px;
+        @include when-inside('.work__list') {
+          right: 6px;
+        }
+      }
+    }
+    &:last-child {
+      padding: 0;
+      &:after {
+        display: none;
+      }
+    }
+  }
+}

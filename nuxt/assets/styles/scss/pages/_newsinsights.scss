@@ -1,0 +1,190 @@
+.news-insights {
+  @include font-sizes('small', 'gamma');
+  font-weight: $fwt__regular;
+  &__card {
+    cursor: pointer;
+    position: relative;
+    @include from('tablet--pt') {
+      padding-bottom: 50px;
+    }
+    @include from('desktop') {
+      margin-right: calc(((100% - #{get('desktop.min-width', $config)}) / 12) + 15px);
+      background: rgba(204, 204, 204, 0.5);
+      padding-bottom: 0;
+    }
+    &:after {
+      @include from('tablet--pt') {
+        content: '';
+        border-bottom: 1px solid rgba($color: $cl__dark--beta, $alpha: 0.2);
+        display: inline-block;
+        position: absolute;
+        left: 30px;
+        right: 30px;
+        bottom: 0;
+      }
+      @include from('desktop') {
+        display: none;
+      }
+    }
+  }
+  &__box {
+    @include from('desktop') {
+      display: flex;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 96px 0;
+    }
+  }
+  &__detail {
+    padding: 30px 18px 0;
+    @include from('tablet--pt') {
+      padding: 30px span(3 wide) 0 30px;
+    }
+    @include from('desktop') {
+      flex: 1 1 span(6 of 12);
+      padding: 0 0 0 67px;
+    }
+  }
+  &__meta {
+    margin-bottom: 15px;
+    @include from('tablet--pt') {
+      margin-bottom: 19px;
+    }
+    @include from('desktop') {
+      margin-bottom: 20px;
+    }
+  }
+  &__bullets {
+    display: none;
+    @include from('desktop') {
+      display: block;
+      margin: 15px 0 19px;
+      width: 24px;
+      height: 24px;
+      &:before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        background: $cl__dark--beta;
+        display: inline-block;
+      }
+    }
+  }
+  &__img {
+    @include from('tablet--pt') {
+      padding-right: 30px;
+    }
+    @include from('desktop') {
+      padding-right: 67px;
+      flex: 1 1 span(6 of 12);
+    }
+  }
+  &__tag {
+    @include font-sizes('small', 'beta');
+    font-weight: $fwt--bold;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    position: relative;
+    margin-right: 24px;
+    &:last-child {
+      margin-right: 0;
+      &:after {
+        display: none;
+      }
+    }
+    &:after {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      // border-radius: 2px;
+      background: $cl__action--beta;
+      position: absolute;
+      right: -15px;
+      top: calc(50% - 1px);
+    }
+  }
+  &__title {
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt__bold;
+    margin: 0 0 15px;
+    @include from('tablet--pt') {
+      @include font-sizes('large', 'alpha-tablet');
+      font-weight: $fwt__regular;
+      margin-bottom: 20px;
+    }
+    @include from('desktop') {
+      @include font-sizes('large', 'beta-desktop');
+    }
+  }
+  &__copy {
+    @include font-sizes('small', 'gamma');
+    color: $cl__dark--alpha;
+    margin-bottom: 20px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha-tablet');
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta-desktop');
+      margin-bottom: 26px;
+    }
+  }
+  &__link {
+    @include font-sizes('small', 'beta');
+    text-transform: uppercase;
+    letter-spacing: 0.85px;
+    font-weight: $fwt__bold;
+    display: inline-block;
+    padding-bottom: 1px;
+    border-bottom: 2px solid $cl__action--beta;
+    color: $cl__action--beta;
+    @include from('tablet--pt') {
+      @include font-sizes('small', 'gamma');
+    }
+    @include from('desktop') {
+      letter-spacing: 1px;
+    }
+  }
+  &__container {
+    padding: 55px 0 80px;
+    @include from('tablet--pt') {
+      padding: 64px 0 80px;
+    }
+    @include from('desktop') {
+      padding: 138px 0 120px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+    @include from('desktop') {
+      margin: 0 -15px;
+    }
+  }
+  &__list-left {
+    flex: 1 1 span(6 of 12);
+    padding: 0 10px;
+    max-width: 50%;
+    @include from('desktop') {
+      padding: 0 15px;
+    }
+  }
+  &__list-right {
+    @extend .news-insights__list-left;
+    @include from('tablet--pt') {
+      padding-top: 80px;
+    }
+    @include from('desktop') {
+      padding-top: 64px;
+    }
+  }
+  &__load-more {
+    text-align: center;
+    margin-top: 25px;
+    @include from('tablet--pt') {
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+}

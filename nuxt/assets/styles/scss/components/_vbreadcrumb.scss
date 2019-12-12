@@ -1,0 +1,92 @@
+.breadcrumb {
+  @include font-sizes('small', 'gamma');
+  color: $cl__action--beta;
+  font-weight: $fwt__bold;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  position: relative;
+  @include when-inside('.working') {
+    display: none;
+  }
+  @include when-inside('.offices') {
+    display: none;
+  }
+  @include when-inside('.job-listing') {
+    display: none;
+  }
+  @include when-inside('.policy-page') {
+    display: none;
+    margin: 9px 0 11px;
+  }
+  @include when-inside('.news-insights') {
+    margin-top: 7px;
+  }
+  @include from("tablet--pt") {
+    @include when-inside('.job-listing') {
+      display: block;
+    }
+    @include when-inside('.working') {
+      display: block;
+    }
+    @include when-inside('.offices') {
+      display: block;
+      margin: 4px 0 0 0;
+    }
+    @include when-inside('.policy-page') {
+      display: block;
+    }
+  }
+  @include from("desktop") {
+    @include font-sizes('small', 'beta');
+    @include when-inside('.working') {
+      margin-top: 40px;
+    }
+    @include when-inside('.expertise') {
+      line-height: $lht__medium--beta;
+    }
+    @include when-inside('.offices') {
+      margin: 45px 0 3px;
+    }
+    @include when-inside('.policy-page') {
+      margin: 37px 0 5px;
+    }
+    @include when-inside('.news-insights') {
+      margin-top: 46px;
+    }
+    @include when-inside('.job__breadcrumb') {
+      margin-top: 40px;
+    }
+  }
+  &__ico {
+    background: _asset-path('img', 'ic-arrow-left.svg') no-repeat;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-left: -9px;
+  }
+  &__text {
+    vertical-align: middle;
+    @include from('desktop') {
+      padding-left: 10px;
+    }
+  }
+  .link--slide {
+    padding: 5px;
+    @include when-inside('.article-detail') {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+    margin-left: -5px;
+    @include from("tablet--pt") {
+      @include when-inside('.article-detail') {
+        margin-top: 7px;
+      }
+    }
+    @include from("desktop") {
+      @include when-inside('.article-detail') {
+        margin-top: 40px;
+      }
+    }
+  }
+}

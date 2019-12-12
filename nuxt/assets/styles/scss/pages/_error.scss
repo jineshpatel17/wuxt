@@ -1,0 +1,123 @@
+.error {
+  font-family: $font__family--sans;
+  font-weight: $fwt--regular;
+  margin-top: -71px;
+  min-height: calc(100vh - 243px);
+  padding-top: 110px;
+  color: $cl__light--alpha;
+  background: _asset-path('img', 'error-bg.svg') $cl__action--gamma no-repeat left top;
+  background-size: cover;
+  @include from('tablet--pt') {
+    margin-top: -90px;
+    padding-top: 167px;
+  }
+  @include from('desktop') {
+    padding-top: 219px;
+  }
+  &__text-container {
+    @include from('tablet--pt') {
+      padding-right: span(2 wide);
+    }
+  }
+  &__title {
+    @include font-sizes('large', 'alpha-tablet');
+    font-weight: $fwt--bold;
+    margin: 0;
+    margin-bottom: 20px;
+    @include from('tablet--pt') {
+      @include font-sizes("large", "delta-tablet");
+      letter-spacing: -1px;
+      margin-bottom: 21px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__large--gamma-desktop;
+      line-height: 88px;
+      letter-spacing: -2px;
+      margin-bottom: 31px;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha-tablet');
+    margin-bottom: 82px;
+    @include from('tablet--pt') {
+      font-size: $fnt__medium--alpha;
+      line-height: 28px;
+      margin-bottom: 100px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'gamma-desktop');
+      line-height: normal;
+      margin-bottom: 116px;
+    }
+  }
+  &__box {
+    background: rgba($color: $cl__light--alpha, $alpha: 0.1);
+    padding: 40px 0 42px;
+    position: relative;
+    @include from('tablet--pt') {
+      padding: 80px 0;
+    }
+    @include from('desktop') {
+      padding: 120px 0;
+      margin-right: 100px;
+    }
+  }
+  &__blur-bg {
+    background: _asset-path('img', 'blur.png');
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0.8;
+  }
+  &__container {
+    position: relative;
+    z-index: 1;
+    padding: 0 18px;
+    @include from('tablet--pt') {
+      padding: 0 30px;
+    }
+    @include from('desktop') {
+      max-width: 1230px;
+      padding: 0;
+    }
+  }
+  &__links {
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    @include from('desktop') {
+      margin-left: calc((100vw - #{get('desktop.min-width', $config)}) / 2 + 10px);
+      width: 100%;
+    }
+  }
+  &__button {
+    display: block;
+    margin-bottom: 16px;
+    padding: 35px 0;
+    text-align: center;
+    letter-spacing: 1px;
+    font-size: $fnt__small--gamma;
+    line-height: $lht__small--beta;
+    color: $cl__action--beta;
+    background: $cl__light--alpha;
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include from('tablet--pt') {
+      margin-bottom: 0;
+      width: calc(33.33% - 10px);
+      padding: 46px 0 52px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta');
+      padding: 89px 0 87px;
+      width: calc(33% - 15px);
+    }
+  }
+}

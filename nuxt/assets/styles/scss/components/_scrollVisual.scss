@@ -1,0 +1,64 @@
+.scroll-visual {
+  @include font-sizes('medium', 'alpha');
+  font-weight: $fwt__regular;
+  @include from('desktop') {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+  }
+  &__caption {
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include from('desktop') {
+      display: block;
+      flex: 1 1 span(3 of 12);
+      position: sticky;
+      position: -webkit-sticky;
+      top: 100px;
+    }
+    @include when-inside(".scroll-visual--right") {
+      order: 2;
+    }
+  }
+  &__title {
+    font-weight: $fwt__bold;
+    margin-bottom: 7px;
+    @include from('tablet--pt') {
+      flex: 1 1 span(3 of 12);
+    }
+    @include from('desktop') {
+      font-size: 19px; // Not defined in font map
+      margin-bottom: 30px;
+    }
+  }
+  &__copy {
+    margin-bottom: 34px;
+    @include from('tablet--pt') {
+      @include font-sizes("medium", "gamma");
+      flex: 1 1 span(9 of 12);
+      padding-right: span(1 wide);
+      margin-bottom: 73px;
+    }
+    @include from('desktop') {
+      line-height: $lht__large--alpha;
+      padding-right: 0;
+      margin-bottom: 0;
+    }
+  }
+  &__visual {
+    @include from('desktop') {
+      flex: 1 1 span(9 of 12);
+      padding-left: span(1 wide);
+      padding-right: 0;
+      @include when-inside(".scroll-visual--right") {
+        padding-right: span(1 wide);
+        padding-left: 0;
+      }
+    }
+    @include when-inside(".scroll-visual--right") {
+      order: 1;
+    }
+  }
+}

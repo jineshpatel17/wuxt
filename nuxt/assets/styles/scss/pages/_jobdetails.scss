@@ -1,0 +1,174 @@
+.job {
+  padding-top: 28px;
+  overflow: hidden;
+  @include from("tablet--pt") {
+    padding-top: 50px;
+  }
+  @include from("desktop") {
+    padding-top: 69px;
+  }
+  &__title {
+    padding-bottom: 41px;
+    @include from('tablet--pt') {
+      padding-bottom: 28px;
+    }
+    @include from('desktop') {
+      padding-bottom: 0;
+    }
+  }
+  &__section-name {
+    @include font-sizes('small', 'beta');
+    text-transform: uppercase;
+    letter-spacing: 0.85px;
+    margin-bottom: 14px;
+    font-weight: $fwt__bold;
+    @include from("tablet--pt") {
+      @include font-sizes('small', 'gamma');
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    @include from("desktop") {
+      letter-spacing: 0.93px;
+      margin-bottom: 25px;
+    }
+  }
+  &__section {
+    margin-bottom: 80px;
+    @include from("tablet--pt") {
+      margin-bottom: 65px;
+    }
+    @include from("desktop") {
+      margin-left: span(2 wide);
+      margin-bottom: 80px;
+    }
+  }
+  &__detail {
+    display: none;
+    @include from("desktop") {
+      display: block;
+    }
+  }
+  &__list-item {
+    width: 50%;
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+    padding: 38px 10px 30px;
+
+    @include from("tablet--pt") {
+      width: 25%;
+    }
+  }
+  &__image {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto;
+    &--large {
+      display: block;
+      width: 100%;
+    }
+  }
+  &__city {
+    font-size: $fnt__large--alpha;
+    line-height: $lht__medium--beta;
+    margin-bottom: 29px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--beta;
+      margin-bottom: 22px;
+    }
+    @include from("desktop") {
+      @include font-sizes("large", "beta-desktop");
+      margin-bottom: 19px;
+    }
+  }
+  &__description {
+    color: $cl__dark--beta;
+    @include font-sizes("medium", "beta");
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+    }
+  }
+  &__role {
+    font-size: $fnt__large--alpha;
+    line-height: $lht__medium--gamma-desktop;
+    font-weight: $fwt--bold;
+    margin: 0;
+    letter-spacing: -0.53px;
+    margin-bottom: 27px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--beta-tablet;
+      line-height: 48px;
+      letter-spacing: -0.83px;
+    }
+    @include from("desktop") {
+      font-size: 64px;
+      line-height: 76px;
+      letter-spacing: -1.6px;
+      margin-bottom: 31px;
+    }
+  }
+  &__city-detail {
+    @include font-sizes("medium", "beta");
+    margin-bottom: 28px;
+    @include from("tablet--pt") {
+      margin-bottom: 25px;
+    }
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+      margin-bottom: 31px;
+    }
+  }
+  &__container {
+    padding: 0 0 37px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+    @include from("tablet--pt") {
+      padding: 0 20px 66px;
+    }
+    @include from("desktop") {
+      position: relative;
+      padding: 0 0 98px 30px;
+      // To show image in full width of screen
+      width: 100%;
+      // when size will reduce down to 1900px it will crop the image.
+      // Taken 1900px bcz zeplin container width is 1600 and half image is cropped from both side i.e. 1900px
+      min-width: 1900px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      margin: 0 -15px;
+      white-space: nowrap;
+    }
+  }
+  &__applyBtn {
+    margin-top: 27px;
+    @include from('tablet--pt') {
+      margin-top: 20px;
+    }
+    @include from('desktop') {
+      margin-top: 50px;
+    }
+  }
+  &__img-list  {
+    width: 100%;
+    padding: 0 18px;
+    display: none;
+    &:nth-child(3) {
+      display: inline-block;
+    }
+    @include from("tablet--pt") {
+      flex: 1 1 span(4 of 12);
+      padding: 0 10px;
+      &:nth-child(2), &:nth-child(4) {
+        display: inline-block;
+      }
+    }
+    @include from("desktop") {
+      padding: 0 15px;
+      display: inline-block;
+      width: 20%;
+      vertical-align: top;
+    }
+  }
+}

@@ -1,0 +1,146 @@
+.vfilter {
+  padding: 28px 0 65px;
+  font-weight: $fwt--regular;
+  @include from("tablet--pt") {
+    padding: 41px 0 65px;
+  }
+  @include from("desktop") {
+    padding: 80px 103px;
+  }
+  &__meta {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    letter-spacing: 2.6px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    @include from("tablet--pt") {
+      @include font-sizes('medium', 'alpha-tablet');
+      font-weight: $fwt--regular;
+      letter-spacing: 3.2px;
+      margin-bottom: 18px;
+    }
+    @include from("desktop") {
+      font-weight: $fwt--regular;
+      margin-bottom: 36px;
+    }
+  }
+  &__title {
+    font-size: $fnt__large--beta;
+    line-height: 44px; // Not defined in map
+    font-weight: $fwt--bold;
+    margin: 0 0 39px;
+    @include from("tablet--pt") {
+      @include font-sizes('large', 'gamma-tablet');
+      margin: 0 span(3 wide) 60px 0;
+    }
+    @include from("desktop") {
+      font-size: $fnt__large--gamma-desktop;
+      line-height: 88px; // Not defined in map
+      margin-bottom: 76px;
+    }
+  }
+  &__form {
+    @include from("desktop") {
+      display: flex;
+      margin: 0 span(2 wide) 37px 0;
+    }
+  }
+  &__fields {
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 345px;
+    position: relative;
+    @include from("tablet--pt") {
+      margin-bottom: 23px;
+    }
+    @include from("desktop") {
+      max-width: 500px;
+      margin: 0 50px 0 0;
+    }
+    &:after {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(38, 42, 43, 0);
+      border-bottom-color: $cl__dark--beta;
+      border-width: 5px;
+      margin-left: -5px;
+      z-index: 1;
+      right: 11px;
+      bottom: calc(50% + 3px);
+      @include from("tablet--pt") {
+        right: 18px;
+      }
+      @include from("desktop") {
+        right: 21px;
+      }
+    }
+    &:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(38, 42, 43, 0);
+      border-top-color: $cl__dark--beta;
+      border-width: 5px;
+      margin-left: -5px;
+      z-index: 1;
+      right: 11px;      
+      top: calc(50% + 3px);
+      @include from("tablet--pt") {
+        right: 18px;
+      }
+      @include from("desktop") {
+        right: 21px;
+      }
+    }
+    & + .vfilter__fields {
+      margin-bottom: 23px;
+      @include from("tablet--pt") {
+        margin-bottom: 34px;
+      }
+      @include from("desktop") {
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__label {
+    @include font-sizes('medium', 'alpha-tablet');
+    font-weight: $fwt--bold;
+    @include from("desktop") {
+      margin-right: 30px;
+      font-size: $fnt__medium--gamma-desktop;
+    }
+  }
+  &__count {
+    @include font-sizes('medium', 'beta');
+    @include from('desktop') {
+      font-size: $fnt__medium--alpha;
+      line-height: $lht__medium--beta-tablet;
+    }
+  }
+  &__field {
+    max-width: 223px;
+    width: calc(100% - 15px);
+    height: 42px;
+    background-color: #f5f5f5;
+    border: 0;
+    border-bottom: 1px solid $cl__dark--beta;
+    padding: 6px 12px;
+    outline: none;
+    appearance: none;
+    @include from("desktop") {
+      max-width: 100vw;
+      width: 332px;
+      height: 47px;
+    }
+  }
+}

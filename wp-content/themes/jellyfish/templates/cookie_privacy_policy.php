@@ -1,0 +1,1 @@
+<?php /* Template Name: Cookie/Privacy policy Template */ ?>

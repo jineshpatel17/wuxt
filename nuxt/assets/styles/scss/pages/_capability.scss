@@ -1,0 +1,183 @@
+.capability {
+  @include font-sizes('medium', 'alpha');
+  font-weight: $fwt__regular;
+  @include from('tablet--pt') {
+    line-height: 28px; // Not defined in map
+  }
+  @include from('desktop') {
+    font-size: $fnt__medium--beta;
+    line-height: $lht__medium--gamma;
+  }
+  &__breadcrumbs {
+    display: none;
+    @include from('desktop') {
+      display: block;
+    }
+  }
+  &__container {
+    @include from('desktop') {
+      margin-left: span(2 of 12);
+      padding-left: 20px;
+    }
+  }
+  &__single-column,
+  &__row-list {
+    @include from('desktop') {
+      max-width: 915px;
+    }
+  }
+  &__double-column {
+    @include when-inside('.capability__mix-column') {
+      padding-top: 40px;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.capability__mix-column') {
+        padding-top: 38px;
+      }
+    }
+    @include from('desktop') {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 915px;
+      @include when-inside('.capability__mix-column') {
+        padding-top: 59px;
+      }
+    }
+  }
+  &__column {
+    @include from('tablet--pt') {
+      flex: 1 1 span(6 of 12);
+    }
+    @include from('desktop') {
+      &:nth-child(odd) {
+        padding-right: span(0.65 of 12);
+      }
+      &:nth-child(even) {
+        padding-left: span(0.65 of 12);
+      }
+    }
+  }
+  &__header {
+    font-size: $fnt__medium--gamma;
+    line-height: $lht__medium--alpha;
+    font-weight: $fwt__regular;
+    margin: 0 0 5px;
+    @include from('tablet--pt') {
+      font-size: 28px;
+      margin-bottom: 18px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__large--gamma;
+    }
+  }
+  &__text {
+    @include from('tablet--pt') {
+      margin-right: span(2.2 wide);
+    }
+    @include from('desktop') {
+      font-size: $fnt__medium--gamma;
+      line-height: $lht__large--alpha;
+      margin-right: 0;
+    }
+    // CSS for cms contents comes within capability-text section.
+    p {
+      margin-top: 15px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    strong {
+      font-weight: $fwt__bold;
+    }
+  }
+  &__sub-header {
+    margin: 0 0 5px;
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt__bold;
+    @include from('tablet--pt') {
+      line-height: $lht__medium--alpha;
+      margin-bottom: 14px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__medium--beta;
+      line-height: $lht__medium--alpha;
+      @include when-inside('.capability__mix-column') {
+        font-size: $fnt__medium--alpha;
+      }
+      @include when-inside('.capability__list-section') {
+        font-size: $fnt__medium--alpha;
+      }
+      @include when-inside('.capability__without-header') {
+        font-size: $fnt__medium--gamma;
+      }
+    }
+  }
+  &__column {
+    margin-bottom: 48px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include when-inside('.capability__list-section') {
+      margin-bottom: 0;
+    }
+    @include from('tablet--pt') {
+      margin-bottom: 42px;
+    }
+    @include from('desktop') {
+      margin-bottom: 104px;
+    }
+  }
+  &__seperator {
+    margin: 0 -18px;
+    height: 1px;
+    background: rgba($color: #979797, $alpha: 0.3); // Color not defined in map
+    @include from('tablet--pt') {
+      margin: 0 -30px;
+    }
+    @include from('desktop') {
+      position: relative;
+      height: 0;
+      margin: 0;
+      &:before {
+        content: '';
+        position: absolute;
+        right: calc(625px - 50vw);
+        height: 1px;
+        background: rgba($color: #979797, $alpha: 0.3); // Color not defined in map
+        width: 100vw;
+      }
+    }
+  }
+  &__row-list {
+    @include from('tablet--pt') {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__lists {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+  }
+  &__list {
+    padding-left: 30px;
+    position: relative;
+    @include from('desktop') {
+      font-size: 22px; // Not defined in map;
+      line-height: $lht__medium--gamma;
+    }
+    &:before {
+      content: '';
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      left: 5px;
+      top: 9px;
+      background: $cl__dark--beta;
+      border-radius: 5px;
+      @include from('desktop') {
+        top: 15px;
+      }
+    }
+  }
+}

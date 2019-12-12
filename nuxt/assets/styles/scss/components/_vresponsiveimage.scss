@@ -1,0 +1,133 @@
+.responsive-image {
+  display: block;
+  overflow: hidden;
+  line-height: 0;
+  @include when-inside(".partners__list-item") {
+    min-height: 70px;
+  }
+  @include when-inside(".hero") {
+    height: 100%;
+  }
+  @include from("tablet--pt") {
+    @include when-inside(".card--article-large") {
+      padding: 0 10px;
+      width: calc(50% + 18px);
+    }
+  }
+  @include from("desktop") {
+    @include when-inside(".card--article-large") {
+      padding: 0 15px;
+      width: 50%;
+    }
+  }
+  @include when-inside(".spotlight") {
+    img {
+      @include from("tablet--pt") {
+        width: 100%;
+        margin-bottom: -2px;
+      }
+    }
+  }
+}
+
+// Work component page image scss
+.work {
+  &__image {
+    display: block;
+    width: 100%;
+    max-width: 140px;
+    @include from("tablet--ls") {
+      max-width: 180px;
+    }
+    @include when-inside(".we-do__partner") {
+      max-width: 271px;
+      @include from("tablet--ls") {
+        max-width: 338px;
+      }
+    }
+  }
+}
+
+// Culture component images scss
+.culture__image {
+  max-width: 100%;
+  @include from("tablet--pt") {
+    max-width: none;
+  }
+}
+
+// Events image scss
+.events {
+  &__image {
+    display: block;
+    max-width: 100%;
+    @include from("tablet--pt") {
+      min-width: 100%;
+      max-width: none;
+    }
+  }
+}
+// Hero component styling
+.hero {
+  &__image {
+    height: 100%;
+    @include from('desktop') {
+      width: 100%;
+    }
+  }
+}
+// scroll visual image scs
+.spotlight {
+  &__bg {
+    width: 100%;
+  }
+}
+.case-study {
+  &__image {
+    width: 100%;
+  }
+}
+//event detail image
+.event-detail {
+  &__image {
+    width: 100%;
+  }
+}
+
+.single-image,
+.double-image,
+.horizontal-images,
+.staggered-image,
+.sponsors,
+.event-title,
+.people-card,
+.scroll-visual,
+.frame-visual {
+  &__image {
+    display: block;
+    max-width: 100%;
+  }
+}
+.work{
+  &__card-image {
+    width: 100%;
+    transition: .5s ease;
+    @include when-inside('.work__card:hover') {
+      filter: blur(25px);
+    }
+  }
+  &__logo-image {
+    max-width: 150px;
+    @include from('tablet--pt') {
+      max-width: 200px;
+    }
+    @include from('desktop') {
+      max-width: 300px;
+    }
+  }
+}
+.people-card {
+  &__image {
+    margin: 0 auto;
+  }
+}

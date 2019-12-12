@@ -1,0 +1,104 @@
+.quotes {
+  padding: 0 gutter();
+  width: 100%;
+  @include from("tablet--pt") {
+    padding: 0 30px;
+  }
+  @include from("desktop") {
+    padding: 0 0 0 span(2 wide);
+  }
+  &__carousel {
+    display: none;
+    overflow: hidden;
+    @include from("tablet--pt") {
+      flex-wrap: wrap;
+      width: calc(100% - span(2 wide));
+    }
+    &--active {
+      display: block;
+      @include from('tablet--pt') {
+        display: flex;
+      }
+    }
+  }
+  &__box {
+    padding: 37px 25px 46px;
+    font-weight: $fwt--regular;
+    flex-grow: 1;
+    color: $cl__light--alpha;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(500px);
+    @include from("tablet--pt") {
+      padding: 35px 39px 61px;
+      width: calc(50% - 10px);
+      max-width: 50%;
+    }
+    @include from("desktop") {
+      padding: 80px 80px 77px;
+      width: calc(50% - 15px);
+    }
+    &--first {
+      margin-right: 20px;
+      margin-bottom: 24px;
+      background: $cl__action--gamma;
+      @include from("tablet--pt") {
+        margin: 0 10px 0 0;
+        align-self: flex-start;
+      }
+      @include from("desktop") {
+        margin: 0 15px 0 0;
+      }
+      @include when-inside('.quotes__carousel--active') {
+        animation: slideInUp-FadeOut 10s linear;
+        animation-fill-mode: forwards;
+      }
+    }
+    &--second {
+      margin-left: 20px;
+      background-color: #0055ba;
+      @include from("tablet--pt") {
+        margin: 24px 0 0 10px;
+      }
+      @include from("desktop") {
+        margin: 88px 0 0 15px;
+      }
+      @include when-inside('.quotes__carousel--active') {
+        animation: slideInUp-FadeOut 10s linear 0.15s;
+        animation-fill-mode: forwards;
+      }
+    }
+  }
+  &__text {
+    @include font-sizes("medium", "alpha-tablet");
+    margin: 0;
+    @include from("tablet--pt") {
+      @include font-sizes("medium", "beta-tablet");
+    }
+    @include from("desktop") {
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: normal;
+    }
+  }
+  &__author {
+    margin-top: 31px;
+    text-transform: capitalize;
+    @include from("desktop") {
+      margin-top: 29px;
+    }
+    &-name {
+    	@include font-sizes("medium", "alpha-tablet");
+      font-weight: $fwt--bold;
+      margin-bottom: 4px;
+      @include when-inside(".quotes__box--light") {
+        color: #000000;
+      }
+    }
+    &-role {
+      @include font-sizes("small", "gamma");
+    }
+  }
+  // Overrides css of vcarousel plugin
+  .VueCarousel {
+    max-width: 100%;
+  }
+}

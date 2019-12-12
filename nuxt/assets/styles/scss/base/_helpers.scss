@@ -1,0 +1,59 @@
+// -----------------------------------------------------------------------------
+// This file contains CSS helper classes.
+// -----------------------------------------------------------------------------
+
+
+
+.clr {
+  @include create-modifiers($colors__map, 'color');
+}
+
+.bg {
+  @include create-modifiers($colors__map, 'background-color');
+}
+
+.bdr {
+  @include create-modifiers($colors__map, 'border-color');
+}
+
+.fwt {
+  @include create-modifiers($font__weights, 'font-weight');
+}
+
+.block--full-width {
+  flex: 1 1 span(4 of 4);
+  padding: 0 gutter();
+  @include from('tablet--pt') {
+    flex: 1 1 span(12 of 12);
+    padding: 0 30px;
+  }
+  @include from('desktop') {
+    padding: 0;
+  }
+}
+
+.seperator {
+  background-color: $cl__dark--beta;
+  height: 2px;
+  margin: 30px 0;
+  @include from('desktop') {
+    margin: 50px 0;
+  }
+}
+
+[class*="bg--dark-"],
+[class*="bg--action-gamma"] {
+  color: $cl__light--alpha;
+}
+[class*="bg--light-"] {
+  color: $cl__dark--beta;
+}
+[id*="__progress-container"] {
+  position: relative;
+}
+
+.loading {
+  min-height: 600px;
+  background: _asset-path('img', 'jellyfish_loader.svg') center no-repeat;
+  background-size: 65px 50px;
+}

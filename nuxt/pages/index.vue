@@ -1,38 +1,69 @@
 <template>
-  <main class="wp__content">
-    <p>
-      <span class="bold">Wuxt</span> combines
-      <span class="bold italic">WordPress</span>, the worlds biggest CMS with
-      <span class="bold italic">nuxt.js</span>, the most awesome front-end application framework yet.
-    </p>
-    <p>The goal is to provide a ready to use development environment, which makes the full power of WordPress easily available to your front-and app. Included in Wuxt are:</p>
+  <v-header/>
+  <!-- <main class="wp__content">
+    <section class="container">
+      <h2>This is a homepage</h2>
+      <div class="post" v-for="post in posts" :key="post.id">
+        <h1>{{post.title.rendered}}</h1>
+        <div class="post-content" v-html="post.excerpt.renderer"></div>
+        <nuxt-link :to="{ name: 'single', params: {single: post.slug, slug: post.slug, id: post.id } }">
+          Read More
+        </nuxt-link>
 
-    <ul>
-      <li>
-        Fully dockerized
-        <span class="bold italic">WordPress</span> and
-        <span class="bold italic">nuxt.js</span> container configuration,
-        <code>docker-compose up -d</code> sets up everything needed in one command and you can start working
-      </li>
-      <li>Extended Rest API to give the front-end easy access to meta-fields, featured media menus or the front-page configuration.</li>
-      <li>
-        The newest nuxt.js version, extended with a WordPress
-        <code>$wp</code> object, to connect to the extended
-        <span class="bold italic">WordPress</span> Rest API.
-      </li>
-    </ul>
-
-    <p>
-      All together the
-      <span class="bold italic">Wuxt</span> features get you started with your front-end with just one command, you just need to work with the intuitive
-      <span
-        class="bold italic"
-      >WordPress</span> admin interface and can skip all back-end coding. But if you know your way around WordPress you are able to easily extend the back-end as well.
-    </p>
-  </main>
+      </div>
+    </section>
+  </main> -->
 </template>
 
 <script>
+  import axios from 'axios'
+  import fetch from 'isomorphic-fetch'
+  import VHeader from '@/components/templates/header/VHeader';
+  import { locales } from '@/components/utils/i18n';
+
+  export default {
+      mounted () {
+        const region = locales.find(o => o.code === this.$getRegion());
+        console.log('test',region)
+      },
+    // created() {
+      
+    //   console.log(location.pathname)
+    // },
+    components: {
+      // VCookie,
+      VHeader
+      // VFooter,
+    },
+    // Need to run a foreach over all possible post types, need to get list dynmaically.
+    // Then append post type slug to Rest API URL.
+    // create new mutation in store.commit foreach post type.
+    // E.g. store.commit('page', pages)
+    // This will async load all data.
+    async asyncData({ store }) {
+      // console.log(window.location.pathname)
+      const response = await fetch('http://docker.dev.jellyfish.net:3080/wp-json/wp/v2/posts/')
+      const facts = await response.json()
+      console.log('test', facts)
+      store.commit('frontPagePosts', facts)
+      return {facts}
+    },
+
+  // export default {
+  //   fetch({ store }) {
+  //     return axios.get('http://docker.dev.jellyfish.net:3080/wp-json/wp/v2/posts/').then((res) => {
+  //       console.log('test', res.data)
+  //       store.commit('frontPagePosts', res.data)
+  //     }).catch((error) => {
+  //       console.log(error)
+  //     })
+  //   },
+    computed: {
+      posts() {
+        return this.$store.state.posts
+      }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

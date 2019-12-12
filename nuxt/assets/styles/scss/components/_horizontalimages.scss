@@ -1,0 +1,98 @@
+.horizontal-images {
+  position: relative;
+  &__container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    @include when-inside('.horizontal-images--multiple') {
+      justify-content: center;
+      @include from('tablet--pt') {
+        justify-content: space-between;
+      }
+    }
+    @include when-inside('.horizontal-images--double') {
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+  }
+  &__block {
+    @include when-inside('.horizontal-images--multiple') {
+      display: none;
+      position: relative;
+      z-index: 1;
+      max-width: 246px;
+      opacity: 0;
+      &:first-child {
+        display: block;
+      }
+      &:nth-child(2) {
+        @extend .animation--delay-1;
+      }
+      &:nth-child(3) {
+        @extend .animation--delay-2;
+      }
+      @include from('tablet--pt') {
+        max-width: calc(50% - 15px);
+        padding-bottom: 66px;
+        &:nth-child(2) {
+          display: block;
+        }
+      }
+      @include from('desktop') {
+        display: block;
+        max-width: 390px;
+      }
+    }
+    @include when-inside('.horizontal-images--double') {
+      align-self: flex-start;
+      margin-bottom: 30px;
+      &:nth-child(even) {
+        align-self: flex-end;
+        margin-bottom: 0;
+      }
+      @include from('tablet--pt') {
+        margin-bottom: 40px;
+        max-width: 80%;
+      }
+      @include from('desktop') {
+        margin-bottom: 50px;
+      }
+    }
+    @include when-inside('.horizontal-images--rtl') {
+      @extend .animate__fade;
+      &:nth-child(even) {
+        align-self: flex-start;
+        @extend .animate__fade--left;
+      }
+      &:nth-child(odd) {
+        align-self: flex-end;
+        @extend .animate__fade--right;
+      }
+    }
+  }
+  &__bg {
+    position: absolute;
+    width: 100%;
+    @include when-inside('.horizontal-images--multiple') {
+      height: 60%;
+      bottom: 15px;
+      @include from('tablet--pt') {
+        bottom: 0;
+        height: 75%;
+      }
+      @include from('desktop') {
+        height: 67%;
+        left: 50px;
+        width: calc(100% - 100px);
+      }
+    }
+    @include when-inside('.horizontal-images--double') {
+      top: 25%;
+      height: 50%;
+      @include from('desktop') {
+        width: calc(100% - 100px);
+        left: 50px;
+      }
+    }
+  }
+}

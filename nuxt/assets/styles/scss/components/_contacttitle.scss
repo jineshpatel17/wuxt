@@ -1,0 +1,71 @@
+.contact-title {
+  margin-top: -71px;
+  padding: 99px 0 54px;
+  background-image: _asset('img', 'contact-bg-m.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include from('tablet--pt') {
+    margin-top: -90px;
+    padding: 144px 0 56px;
+    background-image: _asset('img', 'contact-bg-t.svg');
+  }
+  @include from('desktop') {
+    padding: 152px 0 150px;
+    background-image: _asset('img', 'contact-bg.svg');
+  }
+  &__meta {
+    font-size: $fnt__small--beta;
+    line-height: $lht__small--gamma;
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+    letter-spacing: 2.2px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha-tablet');
+      letter-spacing: 3.2px;
+      margin-bottom: 20px;
+    }
+    @include from('desktop') {
+      margin-bottom: 25px;
+    }
+  }
+  &__header {
+    font-size: $fnt__large--alpha-tablet;
+    line-height: $lht__large--delta;
+    font-weight: $fwt__bold;
+    @include from('tablet--pt') {
+      @include font-sizes('large', 'gamma-tablet');
+      padding-right: span(3 wide);
+    }
+    @include from('desktop') {
+      font-size: 80px;
+      line-height: 88px;
+      padding-right: span(4 wide);
+    }
+    &--copy {
+      font-size: $fnt__large--alpha-tablet;
+      line-height: $lht__large--delta;
+      font-weight: $fwt__bold;
+      @include from('tablet--pt') {
+        @include font-sizes('large', 'gamma-tablet');
+        max-width: 650px;
+      }
+      @include from('desktop') {
+        max-width: 980px;
+        font-size: 80px;
+        line-height: 88px;
+      }
+    }
+  }
+  &__subtitle {
+    display: inline-block;
+    font-size: $fnt__small--gamma;
+    line-height: $lht__small--beta;
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 53px;
+    padding-bottom: 4px; 
+    border-bottom: 2px solid #d8d8d8;
+  }
+}

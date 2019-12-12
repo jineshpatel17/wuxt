@@ -1,0 +1,85 @@
+.qarticle {
+  &__bg {
+    padding: 48px 0 45px;
+    position: relative;
+    @include from("tablet--pt") {
+      padding: 72px 0 72px span(1 wide);
+    }
+    @include from("desktop") {
+      padding: 80px 0 80px span(2 wide);
+    }
+  }
+  &__box {
+    border-width: 2px 0 0;
+    border-style: solid;
+    padding-top: 37px;
+    font-weight: $fwt--regular;
+    border-color: $cl__light--alpha;
+    @include when-inside(".bg--light-alpha") {
+      border-color: $cl__dark--beta;
+    }
+    @include from("tablet--pt") {
+      padding-top: 54px;
+    }
+    @include from("desktop") {
+      padding-top: 75px;
+    }
+  }
+  &__text {
+    @include font-sizes("medium", "beta");
+    margin: 0;
+    color: $cl__light--alpha;
+    @include when-inside(".bg--light-alpha") {
+      color: $cl__dark--beta;
+    }
+    @include when-inside(".case-study") {
+      @include font-sizes("medium", "gamma");
+    }
+    @include from("tablet--pt") {
+      font-weight: $fwt--extra-light;
+      @include when-inside(".case-study") {
+        @include font-sizes("large", "alpha-tablet");
+      }
+    }
+    @include from("desktop") {
+      @include font-sizes("large", "delta-tablet");
+      @include when-inside(".case-study") {
+        @include font-sizes("large", "delta-tablet");
+      }
+    }
+  }
+  &__author {
+    @include font-sizes("small", "gamma");
+    margin-top: 36px;
+    position: relative;
+    color: $cl__dark--beta;
+    @include from("tablet--pt") {
+      margin-top: 25px;
+      padding-left: 100px;
+    }
+    @include from("desktop") {
+      margin-top: 27px;
+      padding-left: 119px;
+      @include font-sizes("medium", "alpha");
+    }
+    &:before {
+      content: "";
+      height: 1px;
+      width: 60px;
+      position: absolute;
+      top: -10px;
+      left: 0;
+      background-color: $cl__light--alpha;
+      @include when-inside(".bg--light-alpha") {
+        background-color: $cl__dark--beta;
+      }
+      @include from("tablet--pt") {
+        width: 80px;
+        top: 50%;
+      }
+      @include from("desktop") {
+        width: 100px;
+      }
+    }
+  }
+}

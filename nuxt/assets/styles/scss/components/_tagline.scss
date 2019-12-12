@@ -1,0 +1,68 @@
+.tag-line {
+  @include font-sizes('small', 'beta');
+  font-weight: $fwt--bold;
+  padding: 45px 0;
+  @include from('tablet--pt') {
+    @include font-sizes('small', 'gamma');
+    padding: 67px 0 74px;
+  }
+  @include from('desktop') {
+    @include font-sizes('medium', 'alpha');
+    padding: 102px 0 114px;
+  }
+  &__meta {
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    @include from('tablet--pt') {
+      margin-bottom: 8px;
+      letter-spacing: 2.8px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta');
+      font-weight: $fwt--regular;
+      margin-bottom: 40px;
+      letter-spacing: 3.2px;
+    }
+  }
+  &__text {
+    padding-right: 10px;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+    vertical-align: middle;
+    @include from('tablet--pt') {
+      padding-right: 16px;
+      margin-right: 16px;
+    }
+    &:after {
+      content: '|';
+      position: absolute;
+      right: -6px;
+      top: -1px;
+      font-weight: $fwt--bold;
+    }
+    &:last-child {
+      margin-right: 0;
+      padding-right: 0;
+      &:after {
+        content: '';
+      }
+    }
+  }
+  &__title {
+    font-size: 40px; // Not defined in font map
+    line-height: 48px; // Not defined in line height map
+    font-weight: $fwt__extra-light;
+    margin: 0;
+    @include from('tablet--pt') {
+      font-size: 56px;
+      line-height: $lht__large--beta-desktop;
+    }
+    @include from('desktop') {
+      font-size: 88px;
+      line-height: 108px;
+      letter-spacing: -1px;
+    }
+  }
+}

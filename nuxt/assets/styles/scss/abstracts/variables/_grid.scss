@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------
+// This file contains all base structural variables and maps
+// -----------------------------------------------------------------------------
+////
+/// @author Steve Slade
+/// @group grid
+////
+
+/// Breakpoints map (uses `from` values, ie. `min-width: 768px;`)
+/// Only used internally to define other user friendly variables
+/// @access private
+/// @prop {Number} alpha [0px]    - Baseline from zero
+/// @prop {Number} beta  [768px]  - Min screen width for tablet portrait
+/// @prop {Number} gamma [992px]  - Min screen width for tablet landscape
+/// @prop {Number} delta [1290px] - Arbitrarily desktop size
+/// @type Map
+$grid__breakpoints: (
+  'alpha' : 0px,
+  'beta'  : 768px,
+  'gamma' : 992px,
+  'delta' : 1260px,
+);
+
+/// Maximum column count for Susy - Assigned to breakpoints
+/// Only used internally to define other user friendly variables
+/// @access private
+/// @prop {Number} alpha [4]  - columns for the smallest device
+/// @prop {Number} beta  [12]  - columns for medium sized devices
+/// @prop {Number} gamma [12] - columns for medium-large sized devices
+/// @prop {Number} delta [12] - columns for large sized devices
+/// @type Map
+$grid__columns: (
+  'alpha' : 4,
+  'beta'  : 12,
+  'gamma' : 12,
+  'delta' : 12,
+);
+
+/// Gutter widths for Susy
+/// Only used internally to define other user friendly variables
+/// @access private
+/// @prop {Number} alpha [18px] - wide gutters for the smallest device
+/// @prop {Number} beta  [20px] - wide gutters for medium sized devices
+/// @prop {Number} gamma [20px] - wide gutters for medium-large sized devices
+/// @prop {Number} delta [30px] - wide gutters for large sized devices
+/// @type Map
+$grid__gutters: (
+  'alpha' : 18px,
+  'beta'  : 20px,
+  'gamma' : 20px,
+  'delta' : 30px,
+);

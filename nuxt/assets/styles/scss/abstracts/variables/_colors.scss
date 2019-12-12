@@ -1,0 +1,128 @@
+// -----------------------------------------------------------------------------
+// This file contains all base color variables and maps
+// -----------------------------------------------------------------------------
+////
+/// @author Steve Slade
+/// @group colors
+////
+
+// Private color variables.
+// At Jellyfish we recommend using http://www.htmlcsscolor.com/ to define
+// naming conventions for color variables. This allows us to have a consistant
+// naming scheme for every color used.
+$white: #ffffff;
+$white-smoke: #f5f5f5;
+$whisper: #eeeeee;
+$outer-space: #333a3c;
+$black-pearl: #262a2b;
+$iris-blue: #0fb7df;
+$bright-turquoise: #00dcdc;
+$dodger-blue: #0284ff;
+$dodger-blue-shaded: #0078ff;
+$cobalt: #0055ba;
+$burnt-orange: #fe752f;
+$neon-carrot: #fe9b2f;
+$electric-indigo: #6c00ff;
+$dark-pink: #ea4774;
+$royal-blue: #165dff;
+$silver: #c5c5c5;
+$very-light-grey: #cccccc;
+
+/// All of the colors are assigned a use-case/theme style namespace
+/// We use a BEM style methodology of constructing this map.
+/// 'cl' is the block, 'light' the element and 'alpha' the modifier.
+/// @example scss - **Usage**
+///
+///   // Bad
+///   .cl--light-alpha {
+///     color: get('light.alpha', $colors__map);
+///   }
+///
+///   // Good
+///   $cl--light-alpha: get('light.alpha', $colors__map);
+///
+///   .cl--light-alpha {
+///     color: $cl__light--alpha;
+///   }
+///
+/// @prop {Variable} light.alpha     [$white] - Light color (Primary)
+/// @prop {Variable} light.beta      [$white-smoke] - Light color (Secondary)
+///
+/// @prop {Variable} dark.alpha      [$outer-space] - Dark color (Primary)
+/// @prop {Variable} dark.beta       [$black-pearl] - Dark color (Secondary)
+///
+/// @prop {Variable} action.alpha    [$iris-blue] - Signifies an action (Primary)
+/// @prop {Variable} action.beta     [$dodger-blue] - Signifies an action (Secondary)
+///
+/// @prop {Variable} accent.alpha    [$iris-blue] - An accent for elements (Primary)
+/// @prop {Variable} accent.beta     [$dodger-blue] - An accent for elements (Secondary)
+///
+/// @prop {Variable} highlight.alpha [$burnt-orange] - Used to highlight elements (Primary)
+/// @prop {Variable} highlight.beta  [$neon-carrot] - Used to highlight elements (Secondary)
+///
+/// @type Map
+$colors__map: (
+  'light': (
+    'alpha': $white,
+    'beta': $white-smoke
+  ),
+  'dark': (
+    'alpha': $outer-space,
+    'beta': $black-pearl
+  ),
+  'action': (
+    'alpha': $iris-blue,
+    'beta': $dodger-blue,
+    'gamma': $dodger-blue-shaded,
+  ),
+  'accent': (
+    'alpha': $electric-indigo,
+    'beta': $dark-pink
+  ),
+  'highlight': (
+    'alpha': $burnt-orange,
+    'beta': $neon-carrot
+  )
+);
+
+// Useable color variables, These are also used in helpers. If new colors are
+// added to the color map above, then companion variables should be created and
+// added to this list of useable variables.
+$cl__light--alpha: get('light.alpha', $colors__map);
+$cl__light--beta: get('light.beta', $colors__map);
+$cl__dark--alpha: get('dark.alpha', $colors__map);
+$cl__dark--beta: get('dark.beta', $colors__map);
+$cl__action--alpha: get('action.alpha', $colors__map);
+$cl__action--beta: get('action.beta', $colors__map);
+$cl__action--gamma: get('action.gamma', $colors__map);
+$cl__accent--alpha: get('accent.alpha', $colors__map);
+$cl__accent--beta: get('accent.beta', $colors__map);
+$cl__highlight--alpha: get('highlight.alpha', $colors__map);
+$cl__highlight--beta: get('highlight.beta', $colors__map);
+
+// Gradient Color maps are a single variable that take in 2 color-stops.
+// In our instance, we use`start` and `end` values.
+$cl__action--gradient: (
+  $cl__action--alpha,
+  $cl__action--beta
+);
+
+$cl__action-accent--gradient: (
+  $cl__action--beta,
+  $cl__accent--alpha
+);
+
+$cl__accent--gradient: (
+  $cl__accent--alpha,
+  $cl__accent--beta
+);
+
+$cl__accent-highlight--gradient: (
+  $cl__accent--beta,
+  $cl__highlight--alpha
+);
+
+$cl__highlight--gradient: (
+  $cl__highlight--alpha,
+  $cl__highlight--beta
+);

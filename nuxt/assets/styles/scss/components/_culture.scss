@@ -1,0 +1,111 @@
+.culture {
+  @include font-sizes('small', 'gamma');
+  font-weight: $fwt__regular;
+  padding: 53px 0 46px;
+  @include from('tablet--pt') {
+    padding: 75px 0 64px;
+  }
+  @include from('desktop') {
+    padding: 102px 0 72px span(2 wide);
+  }
+  &__container {
+    @include from('tablet--pt') {
+      display: flex;
+    }
+    &--text {
+      @include from('tablet--pt') {
+        @include font-sizes('medium', 'beta-tablet');
+        flex: 1 1 span(8 of 12);
+        padding-right: span(1 wide);
+      }
+    }
+    &--image {
+      margin-bottom: 36px;
+      @include from('tablet--pt') {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 37px;
+      }
+      @include from('desktop') {
+        margin-bottom: 74px;
+      }
+    }
+    &--cta {
+      @include from('tablet--pt') {
+        display: flex;
+        flex: 1 1 span(4 of 4);
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+  &__title {
+    @include font-sizes('medium', 'alpha');
+    font-weight: $fwt__bold;
+    margin-bottom: 18px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha-tablet');
+      flex: 1 1 span(3 of 12);
+      margin-bottom: 0px;
+      padding-top: 5px;
+    }
+  }
+  &__header {
+    margin-bottom: 10px;
+    @include from('tablet--pt') {
+      margin-bottom: 17px;
+    }
+    @include from('desktop') {
+      margin-bottom: 12px;
+    }
+    /deep/ p {
+      @include font-sizes('medium', 'alpha-tablet');
+      @include from('tablet--pt') {
+        @include font-sizes('medium', 'beta-tablet');
+      }
+      @include from('desktop') {
+        @include font-sizes('medium', 'gamma');
+      }
+      font-weight: $fwt__bold;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha-tablet');
+    margin-bottom: 32px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'beta-tablet');
+      margin-bottom: 49px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'beta-desktop');
+      margin-bottom: 80px;
+    }
+  }
+  &__images {
+    max-height: 157px; // To crop the image in height
+    overflow: hidden;
+    margin-bottom: 2px;
+    @include from('tablet--pt') {
+      flex: 1 1 span(3 of 12);
+      max-height: 342px;
+      max-width: calc(100vw / 3);
+      margin-bottom: 0;
+      padding: 0 0.5px;
+    }
+    @include from('desktop') {
+      max-height: 494px;
+    }
+  }
+  &__cta {
+    color: $cl__action--beta;
+    font-weight: $fwt__bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding-bottom: 2px;
+    margin-top: 35px;
+    @include from('tablet--pt') {
+      margin-top: 0;
+    }
+  }
+}

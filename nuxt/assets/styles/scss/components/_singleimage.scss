@@ -1,0 +1,52 @@
+.single-image {
+  position: relative;
+  @include from("desktop") {
+    padding: 0 50px;
+    @include when-inside('.capability') {
+      padding: 0;
+  }
+  }
+  &__container {
+    display: flex;
+    position: relative;
+    z-index: 2;
+    justify-content: flex-start;
+    @include when-inside(".single-image--bg-required") {
+      &--align-right {
+        padding: 8% 0 0 20%;
+      }
+      &--align-left {
+        padding: 8% 20% 0 0;
+      }
+      &--align-center {
+        padding: 8% 10% 0;
+      }
+    }
+    @include when-inside(".capability") {
+      padding: 0;
+    }
+    @include from("tablet--pt") {
+      padding: 0 30px;
+    }
+    @include from("desktop") {
+      padding: 0;
+    }
+    &--align-right {
+      justify-content: flex-end;
+    }
+    &--align-center {
+      justify-content: center;
+    }
+  }
+  &__bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 61%;
+    top: 0;
+    @include from("desktop") {
+      left: 50px;
+      right: 50px;
+    }
+  }
+}

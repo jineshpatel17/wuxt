@@ -1,0 +1,54 @@
+// -----------------------------------------------------------------------------
+// Basic typography style for copy text
+// -----------------------------------------------------------------------------
+
+h1 {
+  @include font-sizes("large", "delta");
+
+  @include from('tablet--pt') {
+    @include font-sizes("large", "delta-tablet");
+  }
+
+  @include from('desktop') {
+    @include font-sizes("large", "delta-desktop");
+  }
+  font-weight: $fwt--extra-light;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+
+p {
+  // @include font-sizes("medium", "beta");
+
+  // @include from('tablet--pt') {
+  //   @include font-sizes("medium", "beta-tablet");
+  // }
+
+  // @include from('desktop') {
+  //   @include font-sizes("medium", "beta-desktop");
+  // }
+
+  margin: 0;
+
+  br {
+    line-height: 230%;
+    @include when-inside('.location__text') {
+      line-height: 0px;
+    }
+  }
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+strong {
+  font-weight: $fwt--bold;
+}

@@ -1,0 +1,63 @@
+.text-cta {
+  font-size: 34px; // 34px is not in font-size map list
+  padding: 0 18px 0 0;
+  padding-bottom: 0;
+  @include from('tablet--pt') {
+    padding: 0 30px 0px 0;
+  }
+  @include from('desktop') {
+    @include font-sizes('large', alpha);
+    padding-right: calc((100vw - (#{get('desktop.min-width', $config)} - 10px)) / 2)
+  }
+  &__section {
+    padding: 63px 0 55px;
+    background: rgba(0, 85, 186, 0.9);
+    @include from('tablet--pt') {
+      padding: 83px 0 59px;
+    }
+    @include from('desktop') {
+      padding: 108px 0 106px;
+    }
+  }
+  &__container {
+    @include from('desktop') {
+      padding-left: span(4 of 12);
+    }
+  }
+  &__text {
+    @include font-sizes('medium', 'gamma');
+    padding-right: 16px;
+    margin-bottom: 44px;
+    @include from('tablet--pt') {
+      padding-right: span(2 wide);
+      margin-bottom: 49px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'gamma-desktop');
+      margin-bottom: 52px;
+      padding-right: 0;
+      max-width: 555px;
+    }
+  }
+  &__cta {
+    @include font-sizes('small', 'gamma');
+    border: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.93px;
+    border: 2px solid $cl__light--alpha;
+    font-weight: bold;
+    cursor: pointer;
+    &-text {
+      line-height: 24px;
+      display: block;
+      vertical-align: middle;
+      padding: 24px 65px 24px 40px;
+      @include from('tablet--pt') {
+        padding: 28px 61px 28px 48px;
+      }
+      @include from('tablet--ls') {
+        padding: 36px 63px 36px 45px;
+      }
+    }
+  }
+}

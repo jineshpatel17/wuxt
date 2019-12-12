@@ -1,0 +1,376 @@
+.contact-form {
+  &__container {
+    padding-top: 49px;
+    @include from('tablet--pt') {
+      padding-top: 61px;
+    }
+    @include from('desktop') {
+      padding-top: 70px;
+    }
+  }
+  &__title {
+    @include font-sizes('medium', 'beta');
+    font-weight: $fwt__extra-light;
+    @include from('tablet--pt') {
+      font-size: 40px; // not defined in map
+      line-height: 48px; // No defined in map
+    }
+  }
+  &__form {
+    @include from('tablet--pt') {
+      margin: 0 -10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include from('desktop') {
+      margin: 0 -15px;
+    }
+  }
+  &__row {
+    position: relative;
+    @include from('tablet--pt') {
+      padding: 0 10px;
+      /***************
+      ** Tried to keep ::
+      ** 33.3333 => span(4 of 12)
+      ** 50% => span(6 of 12)
+      ** 66.666667% => span(8 of 12)
+      ** 100% => span(12 of 12)
+      ** But alignment is mismatch end of row
+      ** So kept value instead
+      *****************/
+      &--sm-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+      }
+      &--sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+      &--sm-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+      }
+      &--sm-12 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+    @include from('desktop') {
+      padding: 0 15px;
+    }
+    &--select {
+      &:after {
+        content:"";
+        border: solid $cl__light--alpha;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(-135deg);
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        @include from('tablet--pt') {
+          right: 18px;
+        }
+      }
+      &:before {
+        @extend .contact-form__row--select:after;
+        transform: rotate(45deg);
+        top: 14px;
+      }
+    }
+  }
+  &__control {
+    position: relative;
+    font-size: 22px;
+    line-height: $lht__medium--beta-desktop;
+    border: 0;
+    border-bottom: 2px solid #bad1cf; // color not defined in map
+    height: 36px;
+    background: transparent;
+    width: 100%;
+    outline: 0;
+    color: $cl__dark--beta;
+    margin-bottom: 29px;
+    resize: none;
+    appearance: none;
+    overflow: hidden;
+    @include when-inside('.contact-form__row--error') {
+      border-bottom-color: $cl__accent--beta;
+    }
+    @include from("tablet--pt") {
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: $lht__medium--gamma;
+      margin-bottom: 51px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__medium--gamma-desktop;
+      line-height: $lht__medium--gamma;
+      margin-bottom: 48px;
+      border-bottom: 2px solid #bad1cf;
+      color: #2a3d3d;
+      padding-bottom: 6px;
+      height: 42px;
+    }
+    &--checkbox {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      width: 0;
+      height: 0;
+      margin: 0;
+    }
+    // Comma seperated placeholder css is not working ie &::placeholder, &:-ms-input-placeholder { ... }
+    // Thats why kept in seperate lines
+    &::placeholder {
+      opacity: 0;
+      color: #b6d8ff; // Not defined in color map
+    }
+    &:-ms-input-placeholder {
+      opacity: 0;
+      color: #b6d8ff; // Not defined in color map
+    }
+    &::-ms-input-placeholder {
+      opacity: 0;
+      color: #b6d8ff; // Not defined in color map
+    }
+    &:focus {
+      border-bottom-color: $cl__action--beta;
+      color: $cl__action--beta;
+      & ~ .contact-form__label {
+        color: #b6d8ff;
+        font-size: 11px;
+        line-height: 32px;
+        font-weight: 600;
+        color: $cobalt;
+        top: -22px;
+      }
+      & ~ .contact-form__label > .contact-form__tip {
+        display: inline-block;
+        color: #808080; // Not defined in map
+      }
+    }
+    &:not(:placeholder-shown) ~ .contact-form__label {
+      top: -22px;
+      font-size: 11px;
+      line-height: 32px;
+      font-weight: 600;
+      color: $cobalt;
+    }
+    &[type="number"]::-webkit-outer-spin-button,
+    &[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    &[type="number"] {
+      -moz-appearance: textfield;
+    }
+    &--textarea {
+      border: solid 2px #bad1cf;
+      height: 173px;
+      margin-top: 9px;
+      padding: 18px 21px;
+      @include from("tablet--pt") {
+        margin-top: 12px;
+        margin-bottom: 58px;
+        height: 143px;
+      }
+      @include from("desktop") {
+        margin-top: 17px;
+        margin-bottom: 49px;
+        height: 160px;
+      }
+      &:focus, &:visited {
+        border: solid 2px $cl__action--beta;
+      }
+    }
+  }
+  &__label {
+    font-size: 22px;
+    line-height: $lht__medium--beta-desktop;
+    color: #bad1cf; // Not defined in color map
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: 0.2s ease all;
+    pointer-events: none;
+    @include from("tablet--pt") {
+      left: 10px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'gamma-desktop');
+      color: rgba($color: #2a3d3d, $alpha: 0.6);
+      left: 15px;
+    }
+    &--accept {
+      @include font-sizes('medium', 'beta');
+      color: $cl__dark--beta;
+      position: relative;
+      display: block;
+      padding-left: 30px;
+      pointer-events: visible;
+      left: auto;
+      top: auto;
+    }
+    &--repeater {
+      font-size: 22px; // not defined in map
+      line-height: $lht__medium--gamma;
+      font-weight: $fwt__regular;
+      color: $cl__dark--beta;
+      position: relative;
+      display: block;
+      left: auto;
+      top: auto;
+      margin-top: 10px;
+      @include from("tablet--pt") {
+        margin-top: 0px;
+        font-size: $fnt__medium--gamma-desktop;
+        line-height: $lht__medium--gamma;
+      }
+    }
+  }
+  &__tip {
+    display: inline-block;
+    /deep/ {
+      a {
+        text-decoration: underline !important;
+      }
+    }
+  }
+  &__inValid {
+    border-bottom: 2px solid $cl__accent--beta;
+  }
+  &__hint {
+    position: absolute;
+    bottom: 13px;
+    @include font-sizes('small', 'gamma');
+    color: $cl__accent--beta;
+    @include when-inside('.contact-form__row--error') {
+      display: block;
+    }
+    @include from('desktop') {
+      bottom: 25px;
+    }
+  }
+  &__link {
+    text-decoration: underline;
+  }
+  &__recaptcha {
+    border: 0;
+    padding: 0;
+  }
+  &__checkbox {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    background-color: transparent;
+    border: 2px solid rgba(0, 0, 0, 0.54);
+    border-radius: 2px;
+    @include from("tablet--pt") {
+      top: 6px;
+    }
+    @include when-after(".contact-form__control--checkbox:checked") {
+      background: $cl__action--beta;
+      border-color: $cl__action--beta;
+      &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 0px;
+        width: 6px;
+        height: 12px;
+        border: solid $cl__light--alpha;
+        border-width: 0 2px 2px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+  &__button {
+    margin-top: 28px;
+    border: 2px solid $cl__dark--beta;
+    background: $cl__light--alpha;
+    width: 100%;
+    text-align: center;
+    color: $cl__dark--beta;
+    font-weight: $fwt__bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 26px;
+    cursor: pointer;
+    @include font-sizes('small', 'gamma');
+    &:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    @include from('tablet--pt') {
+      padding: 18px;
+      @include when-inside('.contact-form__row--sm-6') {
+        margin-top: 0;
+      }
+    }
+  }
+  &__box {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    padding: 12px 20px;
+    margin: 30px 0;
+    background: $cl__light--alpha;
+    color: $cl__light--alpha;
+    &--success {
+      border: 1px solid $cl__action--beta;
+      color: $cl__action--beta;
+      margin-top: 0;
+    }
+    &--error {
+      border: 1px solid $cl__highlight--beta;
+      color: $cl__highlight--beta;
+      margin-top: 0;
+    }
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'alpha');
+    }
+  }
+  &__load-icon {
+    display: block;
+    background: _asset('img', 'jellyfish_loader.svg') center no-repeat;
+    width: 60px;
+    height: 50px;
+    margin: 25px auto 0;
+  }
+  &__repeater {
+    padding: 22px 0 19px;
+    @include from('tablet--pt') {
+      padding: 36px 0 10px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    @include from('desktop') {
+      padding: 30px 0 45px;
+    }
+    &-label {
+      display: inline-block;
+      @include font-sizes('medium', 'beta-desktop');
+    }
+    &-labels {
+      margin-bottom: 24px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      @include from('tablet--pt') {
+        flex: 1 1 span(6 of 12);
+      }
+      @include from('desktop') {
+        flex: 1 1 span(6 of 12);
+      }
+    }
+    &-checkbox {
+      top: 7px;
+    }
+  }
+}

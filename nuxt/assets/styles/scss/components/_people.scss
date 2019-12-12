@@ -1,0 +1,64 @@
+.people {
+  font-weight: $fwt__regular;
+  flex: 1 1 span(4 of 4);
+  @include from('tablet--pt') {
+    padding-top: 89px;
+  }
+  @include from('tablet--pt') {
+    padding-top: 15px;
+    @include when-inside('.we-are') {
+      padding-top: 22px;
+    }
+  }
+  @include from('desktop') {
+    padding: 28px 0 0 span(2 wide);
+    @include when-inside('.we-are') {
+      padding-top: 32px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -9px;
+    @include when-inside('.we-are__people') {
+      margin-bottom: 43px;
+    }
+    @include from('desktop') {
+      @include when-inside('.we-are__people') {
+        margin-bottom: 56px;
+      }
+    }
+    @include from('desktop') {
+      margin: 0 -15px;
+    }
+  }
+  &__progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    @include from('tablet--pt') {
+      margin-bottom: 22px;
+    }
+    @include from('desktop') {
+      margin-bottom: 32px;
+    }
+  }
+  &__refresh {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    text-align: center;
+    margin-left: 16px;
+    margin-top: 13px;
+    &-ico {
+      background-image: _asset('img', 'ic-refresh.svg');
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+    }
+    // @include when-inside('.bg--light-alpha') {
+    //   color: #cb017d; // Not defined in map
+    // }
+  }
+}

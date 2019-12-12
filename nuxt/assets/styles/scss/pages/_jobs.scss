@@ -1,0 +1,94 @@
+.jobs {
+  font-weight: $fwt--regular;
+  &__bg {
+    padding: 0 18px 0px 0;
+    position: relative;
+    @include extended-bg('.jobs', 'right');
+    @include from("tablet--pt") {
+      padding: 0 46px 46px 0;
+    }
+    @include from("desktop") {
+      padding: 0 span(1 wide) 46px 0;
+    }
+  }
+  &__section {
+    padding-bottom: 48px;
+    @include from("tablet--pt") {
+      padding-bottom: 50px;
+    }
+    @include from("desktop") {
+      padding-bottom: 100px;
+    }
+  }
+  &__country {
+    @include font-sizes('large', 'beta');
+    font-weight: $fwt--extra-light;
+    text-transform: capitalize;
+    margin-bottom: 22px;
+    @include from("desktop") {
+      font-size: 64px;
+      line-height: 104px;
+      margin-bottom: 60px;
+    }
+  }
+  &__list {
+    border-top: 1px solid rgba(155, 155, 155, 0.2);
+    padding: 18px 0 13px;
+    @include from("tablet--pt") {
+      display: flex;
+      padding: 13px 0 10px;
+    }
+    @include from("desktop") {
+      border-top-width: 2px;
+      padding: 23px 0;
+    }
+  }
+  &__role {
+    color: $cl__action--beta;
+    @include font-sizes("small", "gamma");
+    font-weight: $fwt--bold;
+    margin-bottom: 17px;
+    display: inline-block;
+    @include from("tablet--pt") {
+      @include font-sizes("medium", "alpha-tablet");
+      padding-right: 30px;
+      margin: 0;
+      flex: 2;
+    }
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+    }
+  }
+  &__department {
+    @include font-sizes("small", "gamma");
+    margin-bottom: 6px;
+    @include from("tablet--pt") {
+      margin: 0;
+      flex: 1;
+    }
+    @include from("desktop") {
+      font-size: $fnt__medium--beta;
+      line-height: $lht__medium--beta-tablet;
+    }
+  }
+  &__location {
+    @include font-sizes("small", "gamma");
+    @include from("tablet--pt") {
+      flex: 1;
+    }
+    @include from("desktop") {
+      font-size: $fnt__medium--beta;
+      line-height: $lht__medium--beta-tablet;
+    }
+  }
+  &__no-record {
+    border-top: 1px solid rgba(155, 155, 155, 0.2);
+    border-bottom: 1px solid rgba(155, 155, 155, 0.2);
+    padding: 15px 0;
+    @include font-sizes("small", "gamma");
+    @include from("tablet--pt") {
+      @include font-sizes("medium", "alpha");
+      border-width: 2px;
+    }
+  }
+}

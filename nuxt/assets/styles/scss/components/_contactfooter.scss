@@ -1,0 +1,61 @@
+.contact-footer {
+  background: rgba($color: #e6f5f5, $alpha: 0.5);
+  padding: 32px 0 39px;
+  @include from('tablet--pt') {
+    padding: 64px 0 79px;
+  }
+  @include from('desktop') {
+    padding: 64px 0 71px;
+  }
+  &__container {
+    @include from('desktop') {
+      max-width: 810px;
+      margin: 0 auto;
+    }
+  }
+  &__header {
+    font-size: $fnt__medium--alpha-tablet;
+    font-weight: $fwt__bold;
+    margin-bottom: 5px;
+  }
+  &__communication {
+    margin-bottom: 36px;
+    @include from('tablet--pt') {
+      display: inline-block;
+      width: 40%;
+      vertical-align: top;
+      margin-bottom: 0;
+    }
+  }
+  &__reach-office {
+    @include from('tablet--pt') {
+      display: inline-block;
+      width: 55%;
+      vertical-align: top;
+    }
+  }
+  &__phone {
+    font-size: $fnt__medium--beta-desktop;
+    display: inline-block;
+    margin-bottom: 5px;
+    @include from('desktop') {
+      font-size: $fnt__medium--gamma-desktop;
+    }
+  }
+  &__link {
+    font-size: $fnt__small--gamma;
+    line-height: $lht__small--beta;
+    color: $cl__action--beta;
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $cl__action--gamma;
+    @include from('desktop') {
+      @include when-inside('.contact-footer__reach-office') {
+        margin-top: 15px;
+        display: inline-block;
+      }
+    }
+  }
+}

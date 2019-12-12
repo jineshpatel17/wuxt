@@ -1,0 +1,81 @@
+.article-list {
+  position: relative;
+  border-top: 1px solid #a6b2bc;
+  &__container {
+    min-height: 152px;
+    position: relative;
+    display: flex;
+    @include from('tablet--pt') {
+      min-height: 248px;
+    }
+  }
+  &__item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 0;
+    &--left {
+      align-items: center;
+      width: 108px;
+      height: 152px;
+      margin-left: -18px;
+      @include from('tablet--pt') {
+        height: 248px;
+      }
+      @include from('desktop') {
+        width: 208px;
+        height: 280px;
+      }
+    }
+    &--right {
+      width: 70%;
+      padding-left: 20px;
+      text-align: left;
+      @include from('tablet--pt') {
+        padding-left: 60px;
+      }
+      @include from('desktop') {
+        padding-left: span(2 wide);
+      }
+    }
+  }
+  &__link-container {
+    display: block;
+    text-align: center;
+  }
+  &__link {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    color: $cl__action--beta;
+    display: block;
+    text-transform: uppercase;
+    @include when-inside('.article-list__link-container') {
+      margin-top: 10px;
+    }
+    @include when-inside('.paging__link-container') {
+      line-height: 42px;
+    }
+    @include from('desktop') {
+      letter-spacing: 1px;
+    }
+  }
+  &__text {
+    vertical-align: middle;
+  }
+  &__blurb {
+    @include font-sizes('medium', 'alpha-tablet');
+    font-weight: $fwt--bold;
+    color: #000000;
+    margin-top: 12px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'beta-tablet');
+      color: $cl__dark--beta;
+      margin-top: 11px;
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'gamma-desktop');
+      color: #36445e;;
+    }
+  }
+}

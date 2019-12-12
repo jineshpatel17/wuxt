@@ -1,0 +1,35 @@
+.cookie {
+  position: fixed;
+  bottom: 0;
+  padding: 21px 18px 23px;
+  font-size: 16px;
+  line-height: 28px;
+  background: $cl__action--gamma;
+  width: 100vw;
+  text-align: center;
+  color: $cl__light--alpha;
+  font-weight: $fwt__regular;
+  z-index: 999;
+  display: flex;
+  justify-content: space-around;
+  // cms content styling
+  &__text {
+    align-self: center;
+    text-align: left;
+    /deep/ a {
+        font-weight: $fwt__bold;
+        text-decoration: underline;
+      }
+  }
+  @include from('tablet--pt') {
+    padding: 21px 30px 23px;
+    display: block;
+    text-align: center;
+  }
+  .btn--outline-wrapper {
+    min-width: 125px;
+  }
+  &__button {
+    margin-left: 25px;
+  }
+}

@@ -1,0 +1,130 @@
+.events {
+  @include font-sizes('small', 'gamma');
+  font-weight: $fwt__regular;
+  position: relative;
+  &__details {
+    padding-bottom: 80px;
+    @include from('tablet--pt') {
+      margin-left: span(2 wide);
+    }
+    @include from('desktop') {
+      padding-bottom: 120px;
+    }
+  }
+  &__bg-img {
+    @include from('tablet--pt') {
+      padding-left: span(2 wide);
+      margin-left: 20px;
+      min-height: 720px;
+      margin-bottom: 56px;
+    }
+    @include from('desktop') {
+      padding-left: calc(((100% - #{get('desktop.min-width', $config)}) / 2) + 15px);
+      margin-left: calc((#{get('desktop.min-width', $config)} / 6) - 2px);
+      overflow: hidden;
+    }
+  }
+  &__card {
+    background: $cl__light--alpha;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
+    padding: 39px 35px 40px 20px;
+    position: relative;
+    margin: -80px 0 40px;
+    @include from('tablet--pt') {
+      margin: 0 span(4 wide) 0 0;
+      padding: 37px 32px 80px;
+      position: absolute;
+      transform: translateY(-50%);
+      top: calc(50% - 56px);
+    }
+    @include from('desktop') {
+      margin: 0 span(5 wide) 0 0;
+      padding: 49px 40px;
+      min-height: 480px;
+    }
+  }
+  &__date {
+    font-size: 12px;
+    line-height: 14px; // Not defined in map
+    color: $cl__dark--beta;
+    font-weight: $fwt__bold;
+    margin-bottom: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    @include from('desktop') {
+      @include font-sizes('small', 'beta');
+      letter-spacing: 1.83px;
+    }
+  }
+  &__meta {
+    display: inline-block;
+    background: #394853;
+    text-transform: uppercase;
+    color: $cl__light--alpha;
+    padding: 5px 30px 5px 33px;
+    letter-spacing: 4px;
+    position: absolute;
+    top: -28px;
+    left: 0;
+    @include from('tablet--pt') {
+      width: 126px;
+      height: 28px;
+      top: 126px;
+      left: -28px;
+      transform: rotate(-90deg);
+      transform-origin: left top;
+    }
+  }
+  &__title {
+    @include font-sizes('medium', 'gamma');
+    color: $cl__dark--alpha;
+    margin: 0 0 9px;
+    font-weight: $fwt__bold;
+    @include from('tablet--pt') {
+      font-size: 26px; // not defined in map
+    }
+    @include from('desktop') {
+      @include font-sizes('medium', 'gamma-desktop');
+    }
+  }
+  &__seperator {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 12px;
+    &:before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 3px;
+      background: $cl__dark--alpha;
+      display: inline-block;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha');
+    color: $cl__dark--beta;
+    margin: 0 0  28px;
+    @include from('tablet--pt') {
+      @include font-sizes('medium', 'beta-tablet');
+    }
+    @include from('desktop') {
+      padding-right: 25px;
+    }
+  }
+  &__link {
+    display: inline-block;
+    padding-bottom: 2px;
+    color: $cl__action--beta;
+    text-transform: uppercase;
+    font-weight: $fwt__bold;
+    letter-spacing: 1px;
+    &::after {
+      content: "";
+      position: relative;
+      display: block;
+      width: 100px;
+      border-bottom: 2px solid #0284ff;
+      padding-bottom: 2px;
+    }
+  }
+}

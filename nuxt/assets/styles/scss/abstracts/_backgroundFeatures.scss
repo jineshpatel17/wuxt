@@ -1,0 +1,94 @@
+/********************************
+* Background features
+*********************************/
+
+.background-feature {
+  &--dots {
+    width: 44px;
+    height: 100%;
+    position: fixed;
+      top: calc(50% - 121px); /* 71px for header + 50px svg bottom margin */
+      left: 0;
+      z-index: 1;
+
+    background-image: -webkit-repeating-radial-gradient(
+      center center,
+      rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px,
+      transparent 1px, transparent 100%);
+    background-image: -moz-repeating-radial-gradient(
+      center center,
+      rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px,
+      transparent 1px, transparent 100%);
+    background-image:
+      -ms-repeating-radial-gradient(
+      center center, rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px,
+      transparent 1px, transparent 100%);
+    background-image: repeating-radial-gradient(
+      center center,
+      rgba(0,0,0,0.2), rgba(0,0,0,0.2) 1px,
+      transparent 1px, transparent 100%);
+    -webkit-background-size: 10px 10px;
+    -moz-background-size: 10px 10px;
+    background-size: 10px 10px;
+
+    opacity: 0.5;
+
+    @include from('tablet--pt') {
+      width: 88px;
+      top: calc(50% - 40px); /* 90px for header - 50px svg bottom margin */
+    }
+
+    @include from('desktop') {
+      width: 100vw;
+      height: 8vh;
+      left: calc(50% - 615px);
+      bottom: 0;
+      top: auto;
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      .expertise--intro & {
+        bottom: 0px;
+      }
+    }
+  }
+
+  &--hidden {
+    opacity: 0;
+  }
+
+  &--perspective-blocks {
+    display: none;
+    height: 100vh;
+    transform: rotateZ(-15deg);
+    position: fixed;
+      right: 0;
+      z-index: -2;
+    @include from('desktop') {
+      display: flex;
+      opacity: 0;
+      transition: opacity 0.2s linear;
+      .expertise--intro & {
+        opacity: 1;
+      }
+
+    }
+    .col {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      perspective: 1000px;
+      padding-right: 10%;
+    }
+    .bg-block{
+      width: 70px;
+      height: 70px;
+      background: $royal-blue;
+      transform: rotateY(-70deg) rotateX(-0.5deg);
+      opacity: 0;
+      transition: opacity 0.5s linear;
+      &--visible {
+        opacity: 1;
+      }
+    }
+  }
+}

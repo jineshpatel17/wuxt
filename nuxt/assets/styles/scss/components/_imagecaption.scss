@@ -1,0 +1,28 @@
+.image-caption {
+  font-size: 12px;
+  line-height: $lht__small--alpha;
+  padding-top: 13px;
+  @include when-inside('.capability') {
+    margin: 0 -15px;
+    color: #1c1e21;
+  }
+  @include from("tablet--pt") {
+    padding-top: 20px;
+    @include font-sizes("medium", "beta");
+    @include when-inside('.capability') {
+      margin: 0 -30px;
+    }
+  }
+  @include from('desktop') {
+    @include font-sizes("medium", "beta");
+    padding-top: 16px;
+    border-top: 6px solid rgba($color: $cl__dark--alpha, $alpha: 0.3);
+    margin-left: span(5 of 12);
+    margin-right: span(1 of 12);
+    @include when-inside('.capability') {
+      @include font-sizes("medium", "alpha");
+      margin: 0;
+      margin-right: span(5 wide);
+    }
+  }
+}

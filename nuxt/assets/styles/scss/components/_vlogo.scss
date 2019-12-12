@@ -1,0 +1,279 @@
+.logo {
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    &--top {
+      @include from("desktop") {
+        @include when-inside(".we-do") {
+          padding-right: span(1 wide);
+        }
+      }
+    }
+  }
+  @include when-inside(".working__section") {
+    @include from("desktop") {
+      margin-left: span(2 wide);
+    }
+  }
+  &__page-tile {
+    @include font-sizes("medium", "beta");
+    font-weight: $fwt--bold;
+    flex: 1 1 span(4 of 4);
+    padding: 0;
+    @include when-inside(".we-do__partner") {
+      margin-bottom: 13px;
+    }
+    @include when-inside(".we-do__work") {
+      margin-bottom: 13px;
+    }
+    @include when-inside(".working") {
+      @include font-sizes("medium", "beta-tablet");
+      margin-bottom: 12px;
+    }
+    @include from("tablet--pt") {
+      flex: 1 1 span(2 of 12);
+      padding-top: 3px;
+      margin: 0;
+      @include when-inside(".working") {
+        @include font-sizes("medium", "beta");
+        margin: 0;
+      }
+      @include when-inside(".we-do__partner") {
+        margin-bottom: 0px;
+        padding-top: 6px;
+      }
+      @include when-inside(".we-do__work") {
+        margin-bottom: 0;
+      }
+    }
+    @include from("desktop") {
+      flex: 1 1 span(2.5 of 12);
+    }
+  }
+  &__text-block {
+    @include from("tablet--pt") {
+      display: block;
+      max-width: 121px;
+    }
+    @include from("desktop") {
+      max-width: 180px;
+    }
+  }
+  &__container {
+    flex: 1 1 span(4 of 4);
+    padding: 0;
+    @include font-sizes("medium", "beta");
+    @include when-inside(".working") {
+      @include font-sizes("medium", "beta-tablet");
+    }
+    @include when-inside(".logo__offices") {
+      line-height: 30px;
+    }
+    @include from("tablet--pt") {
+      flex: 1 1 span(8 of 12);
+      padding-left: 10px;
+      padding-right: span(1 wide);
+    }
+    @include from("desktop") {
+      padding-left: 37px;
+    }
+  }
+  &__about-copy {
+    margin-bottom: 15px;
+    @include when-inside(".working .working__section--academy") {
+      margin-bottom: 45px;
+    }
+    @include when-inside(".we-do__partner .logo__partners") {
+      @include font-sizes('medium', 'gamma');
+      margin-bottom: 17px;
+    }
+    @include from("tablet--pt") {
+      margin-bottom: 8px;
+      @include when-inside(".working .working__section--academy") {
+        margin-bottom: 38px;
+      }
+    }
+    @include from("desktop") {
+      margin-bottom: 10px;
+      @include when-inside(".working .working__section--academy") {
+        margin-bottom: 45px;
+      }
+    }
+    @include when-inside(".event-detail__Intro") {
+      @include font-sizes("medium", "alpha");
+      font-weight: $fwt__regular;
+      @include from("tablet--pt") {
+        font-size: $fnt__medium--beta;
+      }
+      @include from("desktop") {
+        font-size: $fnt__medium--beta;
+        line-height: $lht__medium--gamma;
+      }
+    }
+    @include when-inside(".logo__partners") {
+      @include from("tablet--pt") {
+        margin-bottom: 0;
+        @include font-sizes("medium", "beta-tablet");
+      }
+      @include from("desktop") {
+        // margin-bottom: 26px;
+        font-size: 20px;
+        line-height: $lht__medium--gamma;
+      }
+    }
+    @include when-inside(".we-do__partner .logo__partners") {
+      margin-bottom: 30px;
+      @include from("tablet--pt") {
+        margin-bottom: 38px;
+      }
+      @include from("desktop") {
+        margin-bottom: 45px;
+      }
+    }
+    @include when-inside(".logo__offices") {
+      margin-bottom: 60px;
+      @include from("tablet--pt") {
+        margin-bottom: 65px;
+      }
+      @include from("desktop") {
+        margin-bottom: 79px;
+      }
+    }
+    @include when-inside(".we-do__partner") {
+      p {
+        @include font-sizes("medium", "gamma");
+        font-weight: $fwt__bold;
+      }
+    }
+    a {
+      color: $cl__action--beta;
+      font-weight: $fwt--bold;
+    }
+  }
+  &__text-copy,
+  &__text-copy p {
+    @include font-sizes("medium", "beta");
+    font-weight: $fwt__regular;
+    @include from("desktop") {
+      font-size: $fnt__medium--beta;
+      line-height: $lht__medium--gamma;
+    }
+    @include when-inside(".we-do__partner") {
+      @include from("tablet--pt") {
+        @include font-sizes("medium", "alpha");
+      }
+      @include from("desktop") {
+        @include font-sizes("medium", "beta-desktop");
+      }
+    }
+  }
+  &__image {
+    margin-bottom: 3px;
+    @include from('desktop') {
+      margin-bottom: 8px;
+    }
+    .work__image {
+      width: auto;
+      height: auto;
+      margin-bottom: 30px;
+      @include when-inside(".we-do__partner") {
+        margin-bottom: 15px;
+        @include from("tablet--pt") {
+          margin-bottom: 28px;
+        }
+        @include from("desktop") {
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+  &__logo-name {
+    line-height: 20px;
+    font-size: 15px;
+    font-weight: $fwt--bold;
+    margin-top: 15px;
+    text-transform: capitalize;
+    color: #394853;
+    @include when-inside(".working") {
+      font-weight: normal;
+      color: $cl__dark--beta;
+      @include font-sizes("small", "gamma");
+      @include from("tablet--pt") {
+        @include font-sizes("medium", "beta");
+      }
+      @include from("desktop") {
+        @include font-sizes("medium", "beta");
+      }
+    }
+    @include when-inside(".we-do__partner") {
+      font-size: $fnt__small--beta;
+      line-height: 13px;
+      margin: 8px auto -8px;
+      overflow: hidden;
+      @include from("tablet--ls") {
+        margin: 20px auto -20px;
+      }
+      @include from("desktop") {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+    @include when-inside(".we-do__work") {
+      display: none;
+    }
+  }
+  &__logo-list {
+    margin-top: 25px;
+    padding: 0px;
+    width: 100%;
+    @include when-inside(".logo__offices") {
+      display: none;
+    }
+    @include when-inside(".we-do__partner") {
+      margin: 43px 0 0;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    @include when-inside(".logo__working") {
+      margin: 0 0 10px;
+    }
+    @include when-inside(".logo__job") {
+      margin-top: 28px;
+    }
+    @include when-inside(".we-do__work") {
+      margin: 0 0 35px;
+    }
+    @include from("tablet--pt") {
+      margin-top: 57px;
+      @include when-inside(".logo__working") {
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+      @include when-inside(".logo__job") {
+        margin-top: 11px;
+      }
+      @include when-inside(".we-do__partner") {
+        margin-top: 58px;
+      }
+      @include when-inside(".we-do__work") {
+        margin: 41px 0;
+      }
+    }
+    @include from("desktop") {
+      @include when-inside(".logo__working") {
+        margin-top: 24px;
+        margin-bottom: 0;
+      }
+      @include when-inside(".logo__job") {
+        margin-top: 12px;
+      }
+      @include when-inside(".we-do__partner") {
+        margin-top: 73px;
+      }
+      @include when-inside(".we-do__work") {
+        margin: 58px 0 69px;
+      }
+    }
+  }
+}

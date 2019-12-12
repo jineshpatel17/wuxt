@@ -1,0 +1,522 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+
+/// Responsive breakpoint manager.
+/// ----------------------------------------------------------------------------
+/// This allows the use of mixins to determine progressive styling enhancements
+/// The website is built mobile first to keep the load times low and the codebase
+/// lean. What this means is that additional styles are added further up the
+/// breakpoints.
+///
+/// Our specific breakpoints are defined within the `_grid.scc` partial, these
+/// are then namespaced to make them easier to work with. The namespaces are all
+/// defined within the `$config` variable within `_variables.scss`.
+///
+/// This mixin looks through our table of breakpoitns for the matchin namespace,
+/// if it finds a match, then css is generated for that media query.
+///
+/// The mixin uses reassigns the Susy configuration details (Gutter, Columns etc.)
+/// based upon the breakpoint. This looks up the `susy-config` key within the
+/// `$config` map to define these.
+/// @access public
+/// @group grid
+/// @example scss - **Usage**
+///
+///   .foo {
+///     width: 100px;
+///
+///     @include from('tablet--ls') {
+///       width: 400px;
+///       margin-top: 40px;
+///     }
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     width: 100px;
+///   }
+///
+///   @media only screen and (min-width: 992px) {
+///     .foo {
+///       width: 400px;
+///       margin-top: 40px;
+///     }
+///   }
+///
+/// @param {String} $breakpoint - Breakpoint namespace
+/// @requires {function} get
+/// @requires {map} $config
+/// @requires {mixin} _susy-use
+@mixin from($breakpoint) {
+
+    $raw-query: get('#{$breakpoint}.min-width', $config);
+
+    @if $raw-query {
+        $query: if(
+            type-of($raw-query) == 'string',
+            unquote($raw-query),
+            inspect($raw-query)
+        );
+
+        $susy-config: get('#{$breakpoint}.susy-config', $config);
+
+        @media only screen and (min-width: $query) {
+            @include _susy-use($susy-config) {
+                @content;
+            }
+        }
+    } @else {
+        @error 'No value found for `#{$breakpoint}`. Please make sure that
+        namespace is defined in `$breakpoints` map.';
+    }
+}
+
+/// Used to simplify working with Susy and defining column and gutter widths.
+/// @group grid
+/// @param {Number} $size [100%]
+///   - Size can be either a fixed number, or a fraction.
+///
+///   All calculations are performed **Per Breakpoint** so they will give incorrect widths if they aren't re-specified for each.
+/// @param {Number} $grow [1]
+///   -  Specifies the flex grow factor of a flex item. It specifies how much of
+///   the available space in the flex container should be assigned to that
+///   item.
+///
+///   If all sibling items have the same flex grow factor, then all
+///   items will receive the same share of available space, otherwise it is
+///   distributed according to the ratio defined by the different flex grow
+///   factors.
+/// @example scss - **Usage**
+///
+///   ...
+///   $columns: 12;
+///   $gutter: 30px;
+///   ...
+///
+///   // No specified width
+///   // If no number is provided, the mixin defaults to 100% width.
+///   .foo {
+///     @include col-span();
+///   }
+///
+///   // Output
+///   .foo {
+///     padding: 0 15px;
+///     flex: calc(330px + (100% - 360px));
+///     flex-grow: 1;
+///   }
+///
+///   // If a whole number is provided, the mixin does some calculations to
+///   // determine if the number is greater than the maximum column count for
+///   // that breakpoint. If it is, then it is assumed to be 100% width.
+///   .foo {
+///     @include col-span(24);
+///   }
+///
+///   // Output
+///   .foo {
+///     padding: 0 15px;
+///     flex: calc(330px + (100% - 360px));
+///     flex-grow: 1;
+///   }
+///
+///   // If instead the number is less than the max columns, then it is treated
+///   // the same as bootstrap, so for a 12 column layout, if `6` is provided,
+///   // then the width is set to 6 columns.
+///   .foo {
+///     @include col-span(6);
+///   }
+///
+///   // Output
+///   .foo {
+///     padding: 0 15px;
+///     flex: calc(150px + ((100% - 360px) / 12 * 6))
+///     flex-grow: 1;
+///   }
+///
+///   // If a fraction is provided (`1/3`) then the width is calculated as that
+///   // fraction of the maxium column counts. If the fraction is inexact, it
+///   // will use the closest values that it can.
+///   .foo {
+///     @include col-span(1/2);
+///   }
+///
+///   // Output
+///   .foo {
+///     padding: 0 15px;
+///     flex: calc(150px + ((100% - 360px) / 12 * 6));
+///     flex-grow: 1;
+///   }
+///
+/// @requires {function} get
+@mixin col-span($size:100%, $grow: 1) {
+
+  $susy-col-count: length(get('columns', $susy));
+  $span-size: $susy-col-count;
+
+  @if type-of($grow) != 'number' {
+    @error '@include col-span(..., $grow) must be an number.';
+  } @else {
+
+    @if type-of($size) != 'number' {
+      @error '@include col-span($size, ...) must be an number.';
+    } @else {
+
+      @if $size >= $susy-col-count {
+        $span-size: $susy-col-count;
+      } @elseif $size < 1 {
+        $span-size: $size * $susy-col-count;
+      } @else {
+        $span-size: $size;
+      }
+
+      margin: 0 gutter() / 2;
+      flex: span($span-size);
+      flex-grow: $grow;
+    }
+
+  }
+
+}
+
+/// Used to style elements that have some form of attention, such as `:hover`,
+/// `:focus` or `:active`. It is added to any element, but works best with
+/// elements that typically may have a user interaction.
+/// @access public
+/// @group utils
+/// @author Harry Roberts
+/// @example scss - **Usage**
+///
+///   a {
+///       color: red;
+///
+///       @include attention() {
+///           color: blue;
+///       }
+///   }
+///
+/// @example scss - **Output**
+///
+///   a {
+///       color: red;
+///   }
+///
+///   a:hover, a:active, a:focus {
+///     color: blue;
+///   }
+///
+/// @output Adds `:hover`, `:active` and `:focus` styles to the parent selector
+/// @link https://www.sassmeister.com/gist/35c9c323d22eefdbf293 Original code Harry Roberts
+@mixin attention() {
+  &:hover,
+  &:active,
+  &:focus {
+      @content;
+  }
+}
+
+/// Makes parent based selectors a little bit easier. It also works well with
+/// the BEM methodology, as we can keep separate concerns. This mixin provides
+/// a lot of contextual cruft that makes working with the code easier.
+/// @author Hugo Giraudel
+/// @group grid
+/// @example scss - **Usage**
+///
+///   .foo {
+///       background-color: black;
+///
+///       @include when-inside('.bar') {
+///           background-color: white;
+///       }
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     background-color: black;
+///   }
+///
+///   .bar .foo {
+///     background-color: white;
+///   }
+///
+/// @param {String} $context - The selector to match against
+@mixin when-inside($context) {
+  #{$context} & {
+      @content;
+  }
+}
+
+/// Makes sibling based selectors a little bit easier. It also works well with
+/// the BEM methodology, as we can keep separate concerns. This mixin provides
+/// a lot of contextual cruft that makes working with the code easier.
+/// @author Steve Slade
+/// @group grid
+/// @example scss - **Usage**
+///
+///   .foo {
+///     margin-top: 40px;
+///
+///     // Passing in a selector (element, class or id)
+///     @include when-after('.bar') {
+///       margin-top: 0;
+///     }
+///
+///     // Referencing 'self'
+///     @include when-after('self') {
+///       margin-top: 20px;
+///     }
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     margin-top: 40px;
+///   }
+///
+///   // Passing in a selector (element, class or id)
+///   .bar + .foo {
+///     margin-top: 0;
+///   }
+///
+///   // Referencing 'self'
+///   .bar + .bar {
+///     margin-top: 20px;
+///   }
+///
+/// @param {String} $context - The selector (`element`, `class` or `id`) or `'self'`
+@mixin when-after($context) {
+
+  @if ($context == 'self') {
+    & + & {
+      @content;
+    }
+  } @else {
+    #{$context} + & {
+      @content;
+    }
+  }
+
+}
+
+
+/// Use CSS3 selectors to change the styles based on the number of the siblings
+/// that the selector has. This can create quite a lot of CSS so use it sparingly.
+/// @access public
+/// @group grid
+/// @example scss - **Usage**
+///
+///   .foo {
+///     width: 100%;
+///
+///     @include when-there-are(4) {
+///       width: 25%;
+///     }
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     width: 100%;
+///   }
+///
+///   .foo:first-child:nth-last-child(4),
+///   .foo:first-child:nth-last-child(4) ~ .foo {
+///     width: 25%;
+///   }
+///
+/// @author Steve Slade
+/// @param {Int} $siblingCount - Number of sublings
+@mixin when-there-are($siblingCount: 0) {
+
+    $variableType: $siblingCount;
+
+    @if type-of($variableType) == 'string' {
+
+        @error 'Must provide an integer for $siblingCount';
+
+    } @else {
+
+        @if $siblingCount == 1  {
+
+            &:first-child:nth-last-child(#{$siblingCount}) {
+                @content;
+            }
+
+        } @else if $siblingCount > 1 {
+
+            &:first-child:nth-last-child(#{$siblingCount}),
+            &:first-child:nth-last-child(#{$siblingCount}) ~ & {
+                @content;
+            }
+
+        } @else {
+            @error '$siblingCount MUST be an integer > 0';
+        }
+
+    }
+
+}
+
+/// Loops through a passed in map and creates BEM modifier classes based on the
+/// keys and values within. Very useful for rapidly being able to add a new
+/// modifier simply by updating a Sass map.
+/// @access public
+/// @group utils
+/// @example scss - **Usage**
+///
+///   $foo: (
+///     'bar': 'barbar',
+///     'baz': (
+///       'qux': 'quxqux'
+///     )
+///   );
+///
+///   .foo {
+///     @include create-modifiers($foo, 'color');
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo--bar {
+///     color: "barbar";
+///   }
+///
+///   .foo--baz-qux {
+///     color: "quxqux";
+///   }
+///
+/// @param  {[type]} $map       The map to iterate through
+/// @param  {[type]} $attribute What CSS attribute to create for the modifier
+/// @param  {string} $prefix    ['--'] - Modifier prefix to use
+/// @param  {string} $separator ['-'] - Seperator to use for sub-maps
+/// @param  {string} $base      ['base'] - If a key exists that matches base, it is ignored. This is rarely used
+@mixin create-modifiers($map, $attribute, $prefix: '--', $separator: '-', $base: 'base') {
+  @each $key, $value in $map {
+    &#{if($key != $base, #{$prefix}#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include create-modifiers($value, $attribute, $separator);
+      }
+      @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+
+/// Mixin for creating linear gradients. Color stops are passed in as a list
+/// @access public
+/// @group colors
+/// @example scss - **Usage**
+///
+///   $colors: #91b252 #0066cc;
+///
+///   .foo {
+///     @include linear-gradient(to right, $colors);
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     background: #91b252;
+///     background: -webkit-linear-gradient(left, #91b252 #0066cc);
+///     background: linear-gradient(to right, #91b252 #0066cc);
+///   }
+///
+/// @param {String | List | Angle} $direction - Linear gradient direction
+/// @param {List} $color-stops - List of color-stops composing the gradient
+/// @requires {function} _is-direction
+/// @requires {function} _legacy-direction
+@mixin linear-gradient($direction, $color-stops...) {
+
+  @if _is-direction($direction) == false {
+    $color-stops: ($direction, $color-stops);
+    $direction: 180deg;
+  }
+
+  @if type-of(nth($color-stops, 1)) == "color" {
+    background: nth($color-stops, 1);
+  }
+  @else  {
+    background: nth(nth($color-stops, 1), 1);
+    background: -webkit-linear-gradient(_legacy-direction($direction), $color-stops);
+    background: linear-gradient($direction, $color-stops);
+  }
+}
+
+/// Custom Susy mixin to change which config is used at different breakpoints
+/// @access private
+/// @group grid
+/// @param  {Map} $config Susy $susy: config map
+/// @link http://oddbird.net/susy/docs/
+@mixin _susy-use($config: $susy) {
+  //  parse and normalize any shorthand arguments
+  $config: susy-compile($config);
+
+  // record the global settings -
+  // and update the global variable with our new settings
+  $global: $susy;
+  $susy: map-merge($susy, $config) !global;
+
+  // any content inside this mixin
+  // will use the local settings
+  @content;
+
+  // return the global variable to its initial value
+  $susy: $global !global;
+}
+
+// mixins for assigning font size and line height through defined vars
+@mixin font-sizes($size, $type) {
+  font-size: get('#{$size}.#{$type}.font-size', $font__sizes);
+  line-height: get('#{$size}.#{$type}.line-height', $font__sizes);
+}
+
+// Mixins for extended background
+/// @param {String} $context - The selector (`element`, `class` or `id`) or `'self'`
+/// @param {String} $position - Position 'left' or 'right'
+@mixin extended-bg($context, $position) {
+  #{$context} &:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    /// mixins when-inside is used to define background of extended layout
+    @include when-inside(".bg--dark-beta") {
+      background: $cl__dark--beta;
+    }
+    @include when-inside(".bg--dark-alpha") {
+      background: $cl__dark--alpha;
+    }
+    @include when-inside(".bg--light-alpha") {
+      background: $cl__light--beta;
+    }
+    @include when-inside(".bg--light-beta") {
+      background: $cl__light--alpha;
+    }
+    /// Position of the extended layout
+    @if $position == 'left' {
+      width: 100vw;
+      right: 100%;
+    }
+    @else {
+      left: 100%;
+      width: 18px;
+      @include from("tablet--pt") {
+        width: 30px;
+      }
+      @include from("desktop") {
+        width: calc(50vw - ((#{get("desktop.min-width", $config)}) - 12px) / 2);
+      }
+    }
+  }
+}
+@mixin font-normal() {
+  font-style: normal;
+  font-stretch: normal;
+}

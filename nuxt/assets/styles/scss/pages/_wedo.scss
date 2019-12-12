@@ -1,0 +1,90 @@
+.we-do {
+  &__seperator {
+    border-top: 1px solid #d4d2d2;
+    @include from('desktop') {
+      border: 0;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: calc(((100% - #{get('desktop.min-width', $config)}) / 2) + 15px);
+        margin-left: calc((#{get('desktop.min-width', $config)} / 6) - 2px);
+        display: inline-block;
+        height: 1px;
+        background: #d4d2d2;
+      }
+    }
+  }
+  &__event-text {
+    @extend .we-do__seperator;
+    padding-top: 50px;
+    position: relative;
+    @include from('tablet--pt') {
+      padding-top: 78px;
+    }
+    @include from('desktop') {
+      padding-top: 103px;
+    }
+  }
+  &__carousel {
+    padding: 28px 0 70px;
+    @include from('tablet--pt') {
+      padding: 51px 0 109px;
+    }
+    @include from('desktop') {
+      padding: 78px 0 119px;
+    }
+  }
+  &__work {
+    padding: 55px 0 49px;
+    position: relative;
+    @extend .we-do__seperator;
+    @include from('tablet--pt') {
+      padding: 98px 0 83px;
+    }
+    @include from('desktop') {
+      padding: 104px 0 96px;
+    }
+  }
+  &__events {
+    position: relative;
+    @extend .we-do__seperator;
+  }
+  &__partner {
+    padding-bottom: 40px;
+    @include from('tablet--pt') {
+      padding-bottom: 76px;
+    }
+    @include from('desktop') {
+      padding-bottom: 93px;
+    }
+  }
+  &__section-text {
+    padding: 78px 0 58px;
+    @include from("tablet--pt") {
+      padding: 102px 0 0;
+    }
+    @include from("desktop") {
+      padding: 91px 0 0;
+    }
+  }
+  &__news-card {
+    padding-top: 0;
+    @include from('tablet--pt') {
+      padding-top: 74px;
+    }
+    @include from('desktop') {
+      padding-top: 69px;
+    }
+  }
+  &__product-bar {
+    padding-top: 48px;
+    @include from('tablet--pt') {
+      padding-top: 81px;
+    }
+    @include from('desktop') {
+      padding-top: 114px;
+    }
+  }
+}

@@ -1,0 +1,40 @@
+.share {
+  background: $cl__light--alpha;
+  color: $cl__dark--beta;
+  position: relative;
+  &__bg {
+    position: relative;
+  }
+  &__container{
+    display: flex;
+    align-items: center;
+    min-height: 112px;
+    border-top: 1px solid #a6b2bc;
+    @include from('tablet--pt') {
+      min-height: 161px;
+      margin-left: span(1 wide);
+    }
+    @include from('desktop') {
+      margin-right: span(1 wide);
+      margin-left: span(2 wide);
+      border: 0;
+      min-height: 1px;
+      margin-bottom: 114px
+    }
+  }
+  &__title{
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    letter-spacing: 0.93px;
+    color: #959595;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+  &__link{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 40px;
+    cursor: pointer;
+  }
+}

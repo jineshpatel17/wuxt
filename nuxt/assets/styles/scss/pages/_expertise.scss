@@ -1,0 +1,237 @@
+.expertise {
+  &__section {
+    background: $white;
+    padding: 33px 0 50px;
+    position: relative;
+
+    @include from('tablet--pt') {
+      padding: 48px 0 63px;
+    }
+
+    @include from('tablet--ls') {
+      padding: 73px 0;
+    }
+
+    &:before {
+      display: none;
+      @include from('tablet--pt') {
+        content: "";
+        height: 2px;
+        display: inline-block;
+        position: absolute;
+          top: 0;
+          right: 0;
+          left: 30px;
+          margin-left: 0;
+        background: #d4d2d2;
+      }
+      @include from('desktop') {
+        height: 2px;
+        left: 50%;
+        margin-left: -406px;
+      }
+    }
+
+    &:first-child {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    padding: 0;
+    max-width: 1230px;
+    width: 100%;
+
+    @include from('desktop') {
+      margin-left: span(2 wide);
+      margin-right: span(0.6 wide);
+      padding-left: 0;
+    }
+  }
+
+  &__intro {
+    display: flex;
+    flex-direction: column-reverse;
+    @include from('tablet--pt') {
+      flex-direction: row;
+    }
+  }
+
+  .product {
+    /* Product title and summary */
+    &__content {
+      @include from('tablet--ls') {
+        max-width: 70%;
+      }
+    }
+
+    &__heading {
+      font-size: $fnt__large--alpha-desktop;
+      line-height: $lht__large--alpha;
+      font-weight: $fwt--regular;
+      letter-spacing: -0.2px;
+      margin: 0 0 18px 0;
+      @include from('tablet--pt') {
+        font-size: $fnt__large--beta-tablet;
+        line-height: $lht__large--gamma;
+        margin: 0 0 20px 0;
+      }
+      @include from('tablet--ls') {
+        @include font-sizes("large", "beta-desktop");
+        margin: 0 0 10px 0;
+      }
+    }
+
+    &__subheading {
+      font-size: 20px;
+      line-height: 33px;
+      position: relative;
+      color: $cobalt;
+      text-decoration: none;
+      padding: 5px;
+      margin-left: -5px;
+    }
+
+    &__description {
+      font-size: $fnt__medium--alpha-tablet;
+      line-height: $lht__medium--beta-tablet;
+      padding: 10px 0 10px;
+      margin: 0 0 20px;
+
+      @include from('tablet--pt') {
+        padding: 18px 0 10px;
+      }
+
+      @include from('tablet--ls') {
+        padding: 10px 0 10px;
+        margin: 0 0 35px;
+      }
+    }
+
+    &__icon {
+      order: 1;
+      margin-bottom: 40px;
+
+      @include from('tablet--pt') {
+        order: 2;
+        flex: 1 1 calc(80px + ((100% - 220px) / 12 * 3));
+        margin-left: calc(60px + ((100% - 220px) / 12 * 1));
+        margin-bottom: 0;
+      }
+
+      @include from('tablet--ls') {
+
+      }
+
+      @include from('desktop') {
+        margin-left: 0;
+        position: relative;
+      }
+
+      &.strategy {
+        /deep/ svg {
+          width: 84px;
+          margin: 9px 0 0 19px;
+        }
+      }
+
+      &.data {
+        /deep/ svg {
+          width: 88px;
+          margin: 25px 0 0 4px;
+        }
+      }
+
+      &.technology {
+        /deep/ svg {
+          width: 127px;
+          margin: 0 0 0 18px;
+        }
+      }
+
+      &.creative {
+        /deep/ svg {
+          width: 96px;
+          margin: 0 0 0 17px;
+        }
+      }
+
+      &.media {
+        /deep/ svg {
+          width: 102px;
+          margin: 2px 0 0 4px;
+        }
+      }
+
+      &.training {
+        /deep/ svg {
+          width: 87px;
+          margin: 14px 0 0 5px;
+        }
+      }
+
+      &.product__icon {
+        /deep/ svg {
+          height: auto;
+          @include from('tablet--pt') {
+            width: 108px;
+            margin: 0 0 0 3px;
+            position: relative;
+              top: 0;
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          @include from('tablet--ls') {
+            width: auto;
+            margin: 0;
+          }
+          @include from('desktop') {
+            position: absolute;
+              top: 8px;
+              right: 3px;
+              left: auto;
+              transform: none;
+          }
+        }
+      }
+    }
+
+    /* Two column product detail fields */
+    &__details-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    &__details {
+      @include from('tablet--pt') {
+        flex: 0 0 48%;
+      }
+      @include from('desktop') {
+        flex: 0 0 45%;
+      }
+    }
+
+    &__title {
+      @include font-sizes('medium', 'beta-desktop');
+      font-weight: $fwt--bold;
+      margin: 24px 0 12px;
+    }
+
+    &__summary {
+      font-size: $fnt__medium--alpha-tablet;
+      line-height: $lht__medium--beta-tablet;
+      margin-bottom: 15px;
+      @include from('tablet--pt') {
+        margin-bottom: 8px;
+      }
+      @include from('desktop') {
+        margin-bottom: 20px;
+      }
+    }
+
+  }
+
+} // .expertise

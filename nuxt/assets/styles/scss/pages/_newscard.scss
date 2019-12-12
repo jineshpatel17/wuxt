@@ -1,0 +1,30 @@
+.card--news {
+  flex: 1 1 span(4 of 4);
+  padding: 0 gutter() / 2;
+  @include when-inside('.we-do') {
+    flex: 1 1 span(2 of 4);
+  }
+  @include from('tablet--pt') {
+    flex: 1 1 span(6 of 12);
+  }
+  @include from('desktop') {
+    padding: 0 15px;
+    @include when-inside('.we-do') {
+      flex: 1 1 span(4 of 12);
+    }
+  }
+}
+.card__header {
+  @include font-sizes('large', 'alpha');
+  font-weight: $fwt--extra-light;
+  color: $cl__dark--alpha;
+  margin: 0;
+}
+.news__breadcrumb {
+  @include when-inside('.we-do') {
+    display: none;
+  }
+  @include when-inside('.we-are') {
+    display: none;
+  }
+}

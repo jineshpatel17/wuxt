@@ -1,0 +1,94 @@
+.contact-tabs {
+  padding: 25px 0 62px;
+  @include from('tablet--pt') {
+    padding: 45px 0 100px;
+  }
+  @include from('desktop') {
+    padding: 76px 0 58px;
+  }
+  &__container {
+    @include from('desktop') {
+      max-width: 810px;
+      margin: 0 auto;
+    }
+  }
+  &__tabs {
+    display: flex;
+  }
+  &__tab {
+    font-size: $fnt__small--beta;
+    line-height: 14px;
+    font-weight: $fwt__bold;
+    flex: 1 1 span(4 of 12);
+    text-align: center;
+    padding: 15px;
+    letter-spacing: 0.79px;
+    text-transform: uppercase;
+    color: #094ecd;
+    border: 2px solid #094ecd;
+    border-left: 0;
+    border-right: 0;
+    &:first-child,
+    &:last-child {
+      border: 2px solid #094ecd;
+      border-radius: 5px 0 0 5px;
+    }
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+    &--active {
+      color: $cl__light--alpha;
+      background-color: #094ecd;
+    }
+    @include from('tablet--pt') {
+      @include font-sizes('small', 'gamma');
+      letter-spacing: 0.93px;
+      padding: 23px;
+    }
+    @include from('desktop') {
+      padding: 26px 0 24px;
+    }
+  }
+  &__title {
+    font-size: $fnt__large--alpha;
+    line-height: normal;
+    margin-bottom: 14px;
+    padding-top: 27px;
+    @include from('tablet--pt') {
+      font-size: $fnt__large--beta;
+      padding-top: 37px;
+    }
+    @include from('desktop') {
+      font-size: $fnt__large--alpha-desktop;
+      margin-bottom: 12px;
+      padding-top: 50px;
+    }
+  }
+  &__copy {
+    @include font-sizes('medium', 'alpha-tablet');
+    @include from('desktop') {
+      max-width: 600px;
+    }
+    // CMS content
+    /deep/ a {
+      font-size: $fnt__small--gamma;
+      line-height: $lht__small--beta;
+      color: $cl__action--beta;
+      font-weight: $fwt__bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding-bottom: 4px;
+      border-bottom: 2px solid $cl__action--gamma;
+    }
+  }
+  &__link {
+    font-size: $fnt__small--gamma;
+    line-height: $lht__small--beta;
+    color: $cl__action--beta;
+    font-weight: $fwt__bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $cl__action--gamma;
+  }
+}

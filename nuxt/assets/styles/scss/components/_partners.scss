@@ -1,0 +1,132 @@
+.partner {
+  padding-top: 73px;
+  @include when-inside('.we-do__work') {
+    padding: 0;
+  }
+  @include when-inside('.we-do__partner') {
+    padding-top: 56px;
+  }
+  @include from("tablet--pt") {
+    padding-top: 82px;
+    @include when-inside('.we-do__partner') {
+      padding-top: 93px;
+    }
+  }
+  @include from('desktop') {
+    padding-top: 98px;
+    @include when-inside('.we-do__partner') {
+      padding-top: 110px;
+    }
+  }
+  &__title {
+    font-weight: 300;
+    font-size: 40px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--alpha;
+    }
+  }
+  &__container {
+    flex: 1 1 span(4 of 4);
+    @include from('desktop') {
+      flex: 1 1 span(10 of 12);
+      margin-left: span(2 wide);
+    }
+  }
+}
+.logo__partners {
+  @include when-inside('.we-do') {
+    margin: 0 -18px;
+    @include from('tablet--pt') {
+      margin: 0 -30px;
+    }
+    @include from('desktop') {
+      margin: 0;
+    }
+  }
+  .partners__list-item {
+    text-align: center;
+    display: inline-block;
+    vertical-align: top;
+
+    width: calc(33.33% - 4px);
+    padding: calc(33.33% - 4px) 0 0;
+    height: 0;
+    position: relative;
+    .logo__wrapper {
+      position: absolute;
+        top: 50%;
+        left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .lazyload-image {
+      min-height: 50px;
+    }
+
+    @include when-inside('.we-do__partner') {
+      width: calc(33.33% - 4px);
+      background: #eeeeee;
+      margin-bottom: 6px;
+      // &:last-child {
+      //   display: none;
+      // }
+      display: none;
+      &:nth-child(-n + 9) {
+        display: block;
+      }
+    }
+    @include when-inside('.we-do__work') {
+      width: 50%;
+      display: none;
+      &:nth-child(-n + 10) {
+        display: inline-block;
+      }
+    }
+    @include from("tablet--pt") {
+      width: 16%;
+      padding: 0px 20px 0px 0px;
+      @include when-inside('.we-do__work') {
+        width: 25%;
+        padding-top: 15%;
+        &:nth-child(-n + 12) {
+          display: inline-block;
+        }
+      }
+      @include when-inside('.we-do__partner') {
+        width: calc(20% - 6px);
+        padding-top: calc(20% - 6px);
+        // &:last-child {
+        //   display: block;
+        // }
+        &:nth-child(-n + 10) {
+          display: block;
+        }
+      }
+    }
+    @include from("desktop") {
+      width: 20%;
+      padding: 0px 30px 0 0px;
+      @include when-inside('.we-do__work') {
+        width: 20%;
+        display: inline-block;
+      }
+      @include when-inside('.we-do__partner') {
+        display: block;
+      }
+    }
+  }
+  .partners__image {
+    height: auto;
+    max-width: 70px;
+    display: block;
+    margin: auto;
+    @include when-inside('.we-do__partner') {
+      max-width: 50px;
+      @include from("tablet--pt") {
+        max-width: 70px;
+      }
+    }
+    @include when-inside('.we-do__work') {
+      max-width: 110px;
+    }
+  }
+}

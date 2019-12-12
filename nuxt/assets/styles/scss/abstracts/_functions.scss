@@ -1,0 +1,363 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass functions.
+// -----------------------------------------------------------------------------
+
+
+/// Lighten a color by mixing it with White, this is a much more granular version
+/// of the native `lighten`. See the link for an example.
+/// @access public
+/// @author KatieK2 - Github
+/// @example scss - **Usage**
+///
+///    .foo {
+///      background: tint(ff0000, 50%);
+///    }
+///
+/// @example scss - **Output**
+///
+///    .foo {
+///      background: #ff8080;
+///    }
+///
+/// @group colors
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @link https://codepen.io/KatieK2/pen/tejhz
+/// @return {Color} - The tinted color
+@function tint($color, $percentage) {
+  @return mix(#ffffff, $color, $percentage);
+}
+
+/// Darken a color by mixing it with Black, this is a much more granular version
+/// of the native `darken`. See the link for an example.
+/// @access public
+/// @author KatieK2 - Github
+/// @example scss - **Usage**
+///
+///    .foo {
+///      background: tint(ff0000, 50%);
+///    }
+///
+/// @example scss - **Output**
+///
+///    .foo {
+///      background: #800000;
+///    }
+///
+/// @group colors
+/// @param {Color} $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @link https://codepen.io/KatieK2/pen/tejhz
+/// @return {Color} - The shaded color
+@function shade($color, $percentage) {
+  @return mix(#000000, $color, $percentage);
+}
+
+
+/// String to number converter.
+/// @access public
+/// @group utils
+/// @param {String | Number} $value - Value to be parsed
+/// @return {Number}                - The string represented as a Number
+@function to-number($value) {
+  @if type-of($value) == 'number' {
+    @return $value;
+  } @else if type-of($value) != 'string' {
+    $_: log('Value for `to-number` should be a number or a string.');
+  }
+
+  $result: 0;
+  $digits: 0;
+  $minus: str-slice($value, 1, 1) == '-';
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+
+  @for $i from if($minus, 2, 1) through str-length($value) {
+    $character: str-slice($value, $i, $i);
+
+    @if not (index(map-keys($numbers), $character) or $character == '.') {
+      @return to-length(if($minus, -$result, $result), str-slice($value, $i))
+    }
+
+    @if $character == '.' {
+      $digits: 1;
+    } @else if $digits == 0 {
+      $result: $result * 10 + map-get($numbers, $character);
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+
+  @return if($minus, -$result, $result);;
+}
+
+
+/// Add `$unit` to `$value`.
+/// @group utils
+/// @param {Number} $value - Value to add unit to
+/// @param {String} $unit  - String representation of the unit
+/// @return {Number}       - `$value` expressed in `$unit`
+@function to-length($value, $unit) {
+  $units: ('px': 1px, 'cm': 1cm, 'mm': 1mm, '%': 1%, 'ch': 1ch, 'pc': 1pc, 'in': 1in, 'em': 1em, 'rem': 1rem, 'pt': 1pt, 'ex': 1ex, 'vw': 1vw, 'vh': 1vh, 'vmin': 1vmin, 'vmax': 1vmax);
+
+  @if not index(map-keys($units), $unit) {
+    $_: log('Invalid unit `#{$unit}`.');
+  }
+
+  @return $value * map-get($units, $unit);
+}
+
+/// Convert angle from one type to another (eg. `deg` to `rad`).
+/// @author Chris Eppstein
+/// @example scss - **Usage**
+///
+///   $foo: 30deg;
+///   $bar: convert-angle($foo, rad);
+///
+///   .rotate--30 {
+///       transform: rotate($bar);
+///   }
+///
+/// @example scss - **Output**
+///
+///   .rotate--30 {
+///       transform: rotate(0.5236rad);
+///   }1
+///
+/// @group utils
+/// @param {Number} $value - Value to convert
+/// @param {String} $unit  - Unit to convert to, can be: `deg`, `grad`, `turn`, `rad`
+/// @return {Number}       Converted angle
+@function convert-angle($value, $unit) {
+  $convertable-units: deg grad turn rad;
+  $conversion-factors: 1 (10grad/9deg) (1turn/360deg) (3.1415926rad/180deg);
+  @if index($convertable-units, unit($value)) and index($convertable-units, $unit) {
+    @return $value
+             / nth($conversion-factors, index($convertable-units, unit($value)))
+             * nth($conversion-factors, index($convertable-units, $unit));
+  }
+
+  @warn "Cannot convert `#{unit($value)}` to `#{$unit}`.";
+}
+
+
+/// Test if `$value` is an angle such as `to right` or `to bottom left`
+/// @access private
+/// @group utils
+/// @param  {String} $value Value to test
+/// @return {Bool} - Whether or not that passed in value is an angle.
+@function _is-direction($value) {
+  $_is-direction: index((to top, to top right, to right top, to right, to bottom right, to right bottom, to bottom, to bottom left, to left bottom, to left, to left top, to top left), $value);
+  $is-angle: type-of($value) == 'number' and index('deg' 'grad' 'turn' 'rad', unit($value));
+
+  @return $_is-direction or $is-angle;
+}
+
+/// Convert a direction to legacy syntax.
+/// @access private
+/// @group utils
+/// @param {String} $value - Value to convert
+/// @require {function} _is-direction
+/// @require {function} convert-angle
+@function _legacy-direction($value) {
+  @if _is-direction($value) == false {
+    @warn "Cannot convert `#{$value}` to legacy syntax because it doesn't seem to be an angle or a direction";
+  }
+
+  $conversion-map: (
+    to top          : bottom,
+    to top right    : bottom left,
+    to right top    : left bottom,
+    to right        : left,
+    to bottom right : top left,
+    to right bottom : left top,
+    to bottom       : top,
+    to bottom left  : top right,
+    to left bottom  : right top,
+    to left         : right,
+    to left top     : right bottom,
+    to top left     : bottom right
+  );
+
+  @if map-has-key($conversion-map, $value) {
+    @return map-get($conversion-map, $value);
+  }
+
+  @return 90deg - convert-angle($value, 'deg');
+}
+
+
+/// Split a string by delimiter.
+/// @example scss - **Usage**
+///
+///   $foo: 'some-things-will-never-change';
+///   $bar: str-explode($foo, '-');
+///
+/// @example scss - **Output**
+///
+///   $foo: 'some-things-will-never-change';
+///   $bar: "some" "things" "will" "never" "change";
+///
+/// @group utils
+/// @param {String} $string         - Input string to split
+/// @param {String} $delimiter [''] - Delimiter to split by
+/// @return {List}                   - The string split and returned as a list
+@function str-explode($string, $delimiter: '') {
+  @if type-of($string) != 'string' {
+    @error 'The argument $string: `#{$string}` is of incorrect type: `#{type-of($string)}`. Type of `String` is required!';
+  }
+  @else if type-of($delimiter) != 'string' {
+    @error 'The argument $string: `#{$string}` is of incorrect type: `#{type-of($string)}`. Type of `String` is required!';
+  }
+
+  $result: ();
+  $running: true;
+
+  @if str-length($delimiter) == 0 {
+    @for $i from 1 through str-length($string) {
+      $result: append($result, str-slice($string, $i, $i));
+    }
+
+    @return $result;
+  }
+
+  @while $running {
+    $index: str-index($string, $delimiter);
+
+    @if $index != null {
+      $item: str-slice($string, 1, ($index - 1));
+      $result: append($result, $item);
+      $string: str-slice($string, ($index + str-length($delimiter)));
+    }
+    @else {
+      $running: false;
+    }
+  }
+
+  @return append($result, $string);
+}
+
+
+/// Check if nested map has a value by the keys.
+/// @access private
+/// @example scss - **Usage**
+///
+///   @if not _deep-map-check($map, $keys...) {
+///     @error 'The argument $map: `#{$map}` doesn\'t have some of the $keys: `#{$keys}`!';
+///   }
+///
+/// @group utils
+/// @param {Map}           $map  - The Map to check
+/// @param {String | List} $keys - Single or multiple string values to check for
+/// @return {Bool}                - Whether or not the Map has sub-maps based on the $keys
+@function _deep-map-check($map, $keys...) {
+  @if type-of($map) != 'map' {
+    @error 'The argument $map: `#{$map}` is of incorrect type: `#{type-of($map)}`. Type of `Map` is required!';
+  }
+
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+
+    $map: map-get($map, $key);
+  }
+
+  @return true;
+}
+
+/// Get a value from nested map by the keys.
+/// @access private
+/// @example scss
+///
+///   // Usage
+///   $foo: _deep-map-get($map, $keys...);
+///
+/// @group utils
+/// @param {Map}           $map  - The Map to check
+/// @param {String | List} $keys - Single or multiple string values to check for
+/// @return {String | Number | Bool | Color | List | Map | Null } - The value of the searched for key
+@function _deep-map-get($map, $keys...) {
+  @if type-of($map) != 'map' {
+    @error 'The argument $map: `#{$map}` is of incorrect type: `#{type-of($map)}`. Type of `Map` is required!';
+  }
+
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+
+/// Search for any value contained within nested maps, by using dot notation as
+/// the key argument. This brings Sass much closer to working with JSON style
+/// Objects with Javascript.
+/// @example scss
+///   // Usage
+///   $qux: '#91b252';
+///   $foo: (
+///     'bar': (
+///       'baz': $qux;
+///     )
+///   );
+///
+///   $foobar: get('bar.baz', $foo);
+///   // $foobar: '#91b252'
+/// @group utils
+/// @param  {String} $key                             - The key to search for
+/// @param  {Map} $map                  [$dfr-config] - The Map to check
+/// @require {function} _deep-map-check
+/// @require {function} _deep-map-get
+/// @require {function} str-explode
+/// @return {String | Number | Bool | Color | List | Map | Null } - The value of the searched for key
+@function get($key, $map: $dfr-config) {
+  $keys: str-explode($key, '.');
+
+  @if not _deep-map-check($map, $keys...) {
+    @error 'The argument $map: `#{$map}` doesn\'t have some of the $keys: `#{$keys}`!';
+  }
+
+  @return _deep-map-get($map, $keys...);
+}
+
+
+/// Asset URL builder
+/// @access private
+/// @param {String} $type - Asset type, matching folder name
+/// @param {String} $file - Asset file name, including extension
+/// @require {variable} $asset-root
+/// @return {Function} - A `url()` function leading to the asset
+@function _asset($type, $file) {
+  @return url($asset-root + '/' + $type + '/' + $file);
+}
+
+@function _asset-path($type, $file) {
+  @return url('../../assets/' + $type + '/' + $file);
+}
+
+/// Image asset helper
+/// @access public
+/// @group utils
+/// @param {String} $file - Asset file name, including extension
+/// @example scss - **Usage**
+///
+///   $asset-root: 'http://cdn.example.com';
+///   $image-dir: 'dist/images';
+///
+///   .foo {
+///     background: get-image('bar.svg');
+///   }
+///
+/// @example scss - **Output**
+///
+///   .foo {
+///     background: url("http://cdn.example.com/dist/images/bar.svg");
+///   }
+///
+/// @return {URL} - A `url()` path to the image
+/// @require {variable} $image-dir
+/// @require {function} _asset
+@function get-image($file) {
+  @return _asset($image-dir, $file);
+}

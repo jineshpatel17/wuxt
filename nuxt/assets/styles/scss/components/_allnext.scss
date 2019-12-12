@@ -1,0 +1,75 @@
+.all-next {
+  @include font-sizes('small', 'beta');
+  font-weight: $fwt__bold;
+  &__container {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include from("tablet--pt") {
+      height: 248px;
+    }
+  }
+  &__left {
+    flex: 1;
+  }
+  &__mid {
+    @extend .all-next__left;
+    text-align: center;
+  }
+  &__right {
+    @extend .all-next__left;
+    text-align: right;
+  }
+  &__link {
+    line-height: $lht__small--gamma;
+    letter-spacing: 1px;
+    position: relative;
+    @include from("tablet--pt") {
+      @include font-sizes("small", "gamma");
+    }
+    .svg--chevron-left,
+    .svg--chevron-right {
+      position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      /deep/ .mask {
+        fill: $white;
+      }
+    }
+    .svg--chevron-left {
+      left: 0;
+    }
+    .svg--chevron-right {
+      right: 0;
+    }
+
+  }
+  &__text {
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 0 15px;
+    @include when-inside('.all-next__mid') {
+      line-height: $lht__large--gamma;
+      @include from('tablet--pt') {
+        @include font-sizes("small", "gamma");
+        line-height: $lht__large--gamma;
+        margin-top: 7px;
+      }
+    }
+  }
+  &__title {
+    font-size: 20px; // Not defined in map
+    line-height: 42px; // Not defined in map
+    display: none;
+    @include from("tablet--pt") {
+      display: block;
+      font-size: $fnt__large--beta;
+      margin-top: 11px;
+    }
+  }
+  &__work {
+    display: inline-block;
+    cursor: pointer;
+  }
+}

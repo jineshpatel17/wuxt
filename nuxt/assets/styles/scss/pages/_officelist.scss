@@ -1,0 +1,31 @@
+.office-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -9px 25px;
+    @include from('tablet--pt') {
+        margin: 0 -9px 0px;
+    }
+    @include from('desktop') {
+        margin: 0 -15px 24px;
+    }
+}
+.card--offices {
+    margin-bottom: 40px;
+    flex: 1 1 span(2 of 4);
+    padding: 0 gutter() / 2;
+    max-width: 50%;
+    &-first {
+        flex: 1 1 span(4 of 4);
+        max-width: 100%;
+    }
+    @include from('tablet--pt') {
+        flex: 1 1 span(4 of 12);
+        margin-bottom: 72px;
+        max-width: 33.333%;
+    }
+    @include from('desktop') {
+        flex: 1 1 span(3 of 12);
+        padding: 0 15px;
+        max-width: 25%;
+    }
+}

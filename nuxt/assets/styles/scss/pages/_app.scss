@@ -1,0 +1,17 @@
+#app {
+  &__main {
+    padding-top: 71px;
+    // @include from('tablet--pt') {
+    //   padding-top: 90px;
+    //   min-height: calc(100vh - 340px);
+    // }
+    // @include when-after(".header--open") {
+    //   filter: blur(10px);
+    //   // height: calc(100vh - 71px);
+    //   transform: scale(1.1);
+    //   @include from("tablet--pt") {
+    //     //height: calc(100vh - 90px);
+    //   }
+    // }
+  }
+}

@@ -1,0 +1,29 @@
+[31-Jan-2019 17:24:51 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[31-Jan-2019 17:24:51 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[31-Jan-2019 17:24:51 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[31-Jan-2019 17:44:58 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[31-Jan-2019 17:44:58 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[31-Jan-2019 17:44:58 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[04-Feb-2019 16:31:14 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[04-Feb-2019 16:31:14 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[04-Feb-2019 16:31:14 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[11-Feb-2019 16:33:08 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[11-Feb-2019 16:33:08 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[11-Feb-2019 16:33:08 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[05-Mar-2019 17:05:24 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[05-Mar-2019 17:05:24 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[05-Mar-2019 17:05:24 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[05-Mar-2019 17:05:24 UTC] PHP Notice:  Undefined index: HTTP_HOST in /var/www/html/wp-content/themes/jellyfish/functions/preview.php on line 40
+[05-Mar-2019 17:05:24 UTC] PHP Notice:  Undefined index: HTTP_AUTHORIZATION in /var/www/html/wp-content/themes/jellyfish/functions/preview.php on line 43
+[12-Mar-2019 12:16:04 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[12-Mar-2019 12:16:04 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[12-Mar-2019 12:16:04 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[12-Mar-2019 13:21:27 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[12-Mar-2019 13:21:27 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[12-Mar-2019 13:21:27 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[17-Mar-2019 14:09:02 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 112
+[17-Mar-2019 14:09:03 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 113
+[17-Mar-2019 14:09:03 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 114
+[19-Mar-2019 11:29:04 UTC] PHP Notice:  Constant WP_DEBUG already defined in /var/www/html/wp-config.php on line 114
+[19-Mar-2019 11:29:04 UTC] PHP Notice:  Constant WP_DEBUG_LOG already defined in /var/www/html/wp-config.php on line 115
+[19-Mar-2019 11:29:04 UTC] PHP Notice:  Constant WP_DEBUG_DISPLAY already defined in /var/www/html/wp-config.php on line 116

@@ -1,0 +1,123 @@
+.people-card {
+  flex: 1 1 span(2 of 4);
+  margin-bottom: 21px;
+  @include when-inside('.we-are__people') {
+    margin-bottom: 0;
+  }
+  padding: 0 9px;
+  // In case  any slide have less people to show
+  // Then stop growing the card width through max-width
+  max-width: 50%;
+  @include when-inside('.speakers') {
+    margin-bottom: 37px;
+    max-width: 210px;
+  }
+  @include from('tablet--pt') {
+    flex: 1 1 span(3 of 12);
+    margin-bottom: 29px;
+    max-width: 25%;
+    @include when-inside('.speakers') {
+      margin-bottom: 61px;
+      flex: 1 1 span(3 of 12);
+      max-width: 25%;
+    }
+  }
+  @include from('desktop') {
+    padding: 0 15px;
+    @include when-inside('.people-list__row') {
+      flex: 1 1 span(2 of 12);
+      max-width: calc(100% / 6);
+      margin-bottom: 40px;
+    }
+    @include when-inside('.speakers') {
+      margin-bottom: 68px;
+      max-width: 210px;
+      margin-right: 65px;
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+    }
+  }
+  &__detail {
+    height: 80px;
+    @include when-inside('.speakers') {
+      height: auto;
+    }
+    overflow: hidden;
+    @include from('tablet--pt') {
+      height: 100px;
+      @include when-inside('.speakers') {
+        height: auto;
+      }
+    }
+  }
+  &__name {
+    font-size: 15px;
+    line-height: $lht__medium--alpha;
+    font-weight: $fwt__bold;
+    margin-top: 8px;
+    @include when-inside('.people') {
+      color: #000000; // color not defined in map
+    }
+    @include when-inside('.speakers') {
+      font-size: $fnt__medium--alpha-tablet;
+    }
+    @include when-inside('.speakers') {
+      text-align: center;
+      margin-top: 10px;
+    }
+    @include from('tablet--pt') {
+      @include font-sizes("medium", "alpha-tablet");
+      margin-top: 10px;
+      margin-bottom: 6px;
+      @include when-inside('.speakers') {
+        margin-top: 22px;
+      }
+      @include when-inside('.we-are') {
+        margin-top: 12px;
+        margin-bottom: 5px;
+      }
+    }
+    @include from('desktop') {
+      @include font-sizes("medium", "alpha");
+      @include when-inside('.people-list__row') {
+        margin-top: 6px;
+        margin-bottom: 3px;
+      }
+      @include when-inside('.speakers') {
+        margin-top: 25px;
+        margin-bottom: 9px;
+      }
+      @include when-inside('.we-are') {
+        font-size: $fnt__medium--alpha-tablet;
+        margin-top: 10px;
+        margin-bottom: 0;
+      }
+    }
+  }
+  &__role {
+    @include font-sizes("small", "gamma");
+    @include when-inside('.speakers') {
+      text-align: center;
+    }
+    @include from('tablet--pt') {
+      @include when-inside('.speakers') {
+      }
+    }
+    @include from('desktop') {
+      font-size: 14px;
+      line-height: $lht__small--beta;
+    }
+  }
+  &__image {
+    width: 100%;
+    display: block;
+  }
+  @include when-inside('.people__list.active') {
+    .people-card__image {
+       /* this number should correspond with timer in People.vue */
+      -webkit-animation: FadeInOut 12s infinite;
+      animation: FadeInOut 12s infinite;
+    }
+  }
+}

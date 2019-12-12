@@ -1,0 +1,697 @@
+.section-title {
+  padding: 20px 0 50px;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  padding-right: span(1 wide);
+  z-index: 9;
+  @include when-inside(".we-do") {
+    padding: 27px 0 42px 0;
+  }
+  @include when-inside(".offices") {
+    padding: 28px 0 57px 0;
+  }
+  @include when-inside(".we-are") {
+    padding: 30px 0px 42px 0;
+  }
+  @include when-inside(".people") {
+    padding: 28px 0 0 0;
+  }
+  @include when-inside(".events") {
+    padding: 12px 0 25px;
+  }
+  @include when-inside(".work") {
+    padding: 28px 0 67px 0;
+  }
+  @include when-inside(".working") {
+    padding: 26px 0 48px 0;
+  }
+
+  @include when-inside(".expertise") {
+    padding: 35px 0 0;
+  }
+
+  @include when-inside(".base") {
+    padding: 28px 0 56px;
+  }
+  @include when-inside(".capability") {
+    padding: 28px 0 59px;
+  }
+  @include when-inside(".news-insights") {
+    padding: 14px 0 50px;
+  }
+  @include from("tablet--pt") {
+    padding: 50px span(2 wide) 74px 0;
+    @include when-inside(".title-article") {
+      padding: 52px span(2 wide) 77px 0;
+    }
+    @include when-inside(".news-insights") {
+      padding: 28px span(2 wide) 76px 0;
+    }
+    @include when-inside(".events") {
+      padding: 25px span(1 wide) 32px 0;
+    }
+    @include when-inside(".capability") {
+      padding: 2px span(3 wide) 88px 0;
+    }
+    @include when-inside(".base") {
+      padding: 50px span(1 wide) 76px 0;
+    }
+    @include when-inside('.work') {
+      padding: 2px span(2 wide) 75px 0;
+    }
+    @include when-inside(".working") {
+      padding: 49px 0 62px 0;
+    }
+
+    @include when-inside(".expertise") {
+      padding: 32px 0 0;
+    }
+
+    @include when-inside(".we-do") {
+      padding: 22px span(4 wide) 63px 0;
+    }
+    @include when-inside(".we-are") {
+      padding: 18px span(3 wide) 69px 0;
+    }
+    @include when-inside(".offices") {
+      padding: 52px span(4 wide) 55px 0;
+    }
+    @include when-inside(".people") {
+      padding: 34px 0 0 0;
+    }
+  }
+
+  @include from("tablet--ls") {
+    @include when-inside(".expertise") {
+      padding: 55px 0 0;
+    }
+  }
+
+  @include from("desktop") {
+    padding: 70px span(3 wide) 97px 0;
+    @include when-inside(".title-article") {
+      padding: 66px span(2 wide) 101px 0;
+    }
+    @include when-inside(".news-insights") {
+      padding: 48px span(3 wide) 138px 0;
+    }
+    @include when-inside(".events") {
+      padding: 50px 0 58px;
+    }
+    @include when-inside(".capability") {
+      padding: 48px span(6 wide) 126px 0;
+    }
+    @include when-inside(".work") {
+      padding: 46px span(3 wide) 126px 0;
+    }
+    @include when-inside(".working") {
+      padding: 70px 0 127px 0;
+    }
+    @include when-inside(".base") {
+      padding: 66px span(3 wide) 118px 0;
+    }
+    @include when-inside(".we-do") {
+      padding: 71px span(3 wide) 120px 0;
+    }
+    @include when-inside(".we-are") {
+      padding: 73px span(2 wide) 184px 0;
+    }
+    @include when-inside(".offices") {
+      padding: 67px span(3 wide) 105px 0;
+    }
+    @include when-inside(".people") {
+      padding: 70px 0 0 0;
+    }
+  }
+  &__meta {
+    @include font-sizes('small', 'beta');
+    font-weight: $fwt--bold;
+    letter-spacing: 0.85px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    @include when-inside('.work') {
+      font-size: 12px;
+      line-height: normal;
+      margin-bottom: 15px;
+      letter-spacing: 2.4px;
+    }
+    @include when-inside('.working') {
+      @include font-sizes('small', 'gamma');
+      margin-bottom: 11px;
+      letter-spacing: 2.6px;
+    }
+
+    @include when-inside('.expertise') {
+      @include font-sizes('medium', 'alpha-tablet');
+      margin-bottom: 15px;
+      letter-spacing: 3.2px;
+    }
+
+    @include when-inside(".offices") {
+      @include font-sizes('small', 'gamma');
+      letter-spacing: 2.6px;
+      margin-bottom: 12px;
+    }
+    @include when-inside(".we-do") {
+      letter-spacing: 3px;
+      margin-bottom: 13px;
+    }
+    @include when-inside(".we-are") {
+      letter-spacing: 3px;
+      margin-bottom: 11px;
+    }
+    @include when-inside(".base") {
+      margin-bottom: 9px;
+    }
+    @include when-inside(".people") {
+      @include font-sizes('small', 'gamma');
+      font-weight: $fwt__bold;
+      letter-spacing: 2.6px;
+      margin-bottom: 12px;
+    }
+    @include when-inside(".capability") {
+      font-size: 12px;
+      line-height: normal;
+      letter-spacing: 2.4px;
+      margin-bottom: 15px;
+    }
+    @include when-inside('.news-insights') {
+      font-size: $fnt__small--beta;
+      line-height: $fnt__small--gamma;
+      margin-bottom: 11px;
+      letter-spacing: 2.2px;
+      font-weight: $fwt--regular;
+    }
+    @include when-inside('.events') {
+      font-size: 12px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
+    }
+    @include from("tablet--pt") {
+      @include font-sizes("small", "gamma");
+      margin-bottom: 1px;
+      letter-spacing: 1px;
+      @include when-inside(".people") {
+        @include font-sizes("medium", "beta");
+        letter-spacing: 3.2px;
+        margin-bottom: 4px;
+      }
+      @include when-inside(".we-do") {
+        font-size: 14px;
+        line-height: $lht__medium--alpha;
+        letter-spacing: 2.8px;
+        margin-bottom: 13px;
+      }
+      @include when-inside(".capability") {
+        font-size: 14px;
+        line-height: $lht__medium--alpha;
+        letter-spacing: 2.8px;
+        margin-bottom: 8px;
+      }
+      @include when-inside(".we-are") {
+        font-size: 14px;
+        line-height: $lht__medium--alpha;
+        letter-spacing: 2.8px;
+        margin-bottom: 13px;
+      }
+      @include when-inside('.work') {
+        font-size: 14px;
+        line-height: normal;
+        margin-bottom: 8px;
+        letter-spacing: 2.8px;
+      }
+      @include when-inside('.working') {
+        margin-bottom: 7px;
+      }
+
+      @include when-inside('.expertise') {
+        line-height: $lht__small--alpha;
+        margin-bottom: 13px;
+      }
+
+      @include when-inside(".offices") {
+        @include font-sizes('medium', 'beta');
+        letter-spacing: 3.2px;
+        margin-bottom: 4px;
+      }
+      @include when-inside('.news-insights') {
+        @include font-sizes('small', 'gamma');
+        margin-bottom: 8px;
+        letter-spacing: 3px;
+      }
+      @include when-inside('.events') {
+        font-size: 14px;
+        letter-spacing: 2.8px;
+        margin-bottom: 8px;
+      }
+    }
+
+    @include from("tablet--ls") {
+      @include when-inside('.expertise') {
+        margin-bottom: 21px;
+      }
+    }
+
+    @include from("desktop") {
+      @include font-sizes("medium", "alpha-tablet");
+      letter-spacing: 3.2px;
+      margin-bottom: 27px;
+      @include when-inside(".title-article") {
+        @include font-sizes("small", "gamma");
+        margin-bottom: 22px;
+      }
+      @include when-inside(".base") {
+        @include font-sizes("small", "gamma");
+        letter-spacing: 0.93px;
+        margin-bottom: 39px;
+      }
+      @include when-inside(".people") {
+        margin-bottom: 41px;
+      }
+      @include when-inside('.work') {
+        @include font-sizes("medium", "beta");
+        letter-spacing: 3.6px;
+        margin-bottom: 37px;
+      }
+      @include when-inside('.working') {
+        @include font-sizes('medium', 'beta');
+        margin-bottom: 15px;
+        letter-spacing: 3.2px;
+      }
+      @include when-inside(".we-do") {
+        font-size: $fnt__medium--alpha-tablet;
+        letter-spacing: 3.2px;
+        margin-bottom: 40px;
+        line-height: normal;
+      }
+      @include when-inside(".we-are") {
+        @include font-sizes('medium', 'alpha-tablet');
+        margin-bottom: 19px;
+        letter-spacing: 3.2px;
+      }
+      @include when-inside(".offices") {
+        margin-bottom: 41px;
+      }
+      @include when-inside(".capability") {
+        font-size: $fnt__medium--alpha;
+        letter-spacing: 3.6px;
+        line-height: normal;
+        margin-bottom: 37px;
+      }
+      @include when-inside('.news-insights') {
+        @include font-sizes('medium', 'beta');
+        margin-bottom: 24px;
+        letter-spacing: 3.2px;
+      }
+      @include when-inside('.events') {
+        @include font-sizes('medium', 'alpha-tablet');
+        letter-spacing: 3.2px;
+        margin-bottom: 36px;
+      }
+    }
+  }
+  &__category,
+  &__datetime {
+    vertical-align: middle;
+  }
+  &__seperator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    &:before {
+      width: 3px;
+      height: 3px;
+      // border-radius: 3px;
+      background: $cl__dark--beta;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+      content: "";
+    }
+  }
+
+  &__title {
+    font-size: $fnt__large--alpha-tablet;
+    line-height: 42px;
+    font-weight: $fwt--bold;
+    @include when-inside(".we-are") {
+      margin: 0 0 27px 0;
+      letter-spacing: -0.6px;
+    }
+    @include when-inside(".we-do") {
+      margin: 0 0 27px 0;
+      letter-spacing: -0.6px;
+    }
+    @include when-inside(".base") {
+      font-size: $fnt__large--alpha;
+      line-height: $lht__medium--gamma-desktop;
+      margin: 0 0 27px 0;
+      letter-spacing: -0.53px;
+    }
+    @include when-inside(".people") {
+      margin: 0 0 27px;
+      letter-spacing: -0.6px;
+    }
+    @include when-inside(".news-insights") {
+      margin: 0;
+      line-height: 44px;
+      letter-spacing: -0.6px;
+    }
+    @include when-inside('.work') {
+      margin: 15px 0 27px 0;
+      font-size: 40px;
+      line-height: $lht__large--alpha-desktop;
+    }
+    @include when-inside('.working') {
+      margin: 0 0 13px 0;
+      letter-spacing: -0.6px;
+    }
+
+    @include when-inside('.expertise') {
+      @include font-sizes('large', 'beta-desktop');
+      margin: 0 0 19px 0;
+      letter-spacing: normal;
+      padding-right: 0;
+    }
+
+    @include when-inside(".capability") {
+      margin: 0 0 27px 0;
+      font-size: 40px;
+      line-height: $lht__large--alpha-desktop;
+    }
+    @include when-inside(".offices") {
+      margin: 0 0 27px 0;
+      letter-spacing: -0.6px;
+    }
+    @include when-inside('.events') {
+      margin: 0;
+      letter-spacing: -0.6px;
+    }
+    @include from("tablet--pt") {
+      @include font-sizes("large", "delta-tablet");
+
+      @include when-inside('.expertise') {
+        // @include font-sizes("large", "delta-tablet");
+        margin: 0 0 13px 0;
+        letter-spacing: -1px;
+      }
+
+      @include when-inside(".people") {
+        letter-spacing: -1px;
+      }
+      @include when-inside(".base") {
+        font-size: $fnt__large--beta-tablet;
+        line-height: 48px;
+        margin: 0 0 26px 0;
+        letter-spacing: -0.83px;
+      }
+      @include when-inside(".work") {
+        margin-bottom: 24px;
+        font-size: 56px;
+        line-height: $lht__large--beta-desktop;
+      }
+      @include when-inside('.working') {
+        margin: 0 0 18px 0;
+        letter-spacing: -1px;
+      }
+
+      @include when-inside('.expertise') {
+        margin: 0 0 35px 0;
+      }
+
+      @include when-inside(".we-do") {
+        @include font-sizes("large", "gamma-tablet");
+        margin: 0 0 24px 0;
+        letter-spacing: -1px;
+      }
+      @include when-inside(".we-are") {
+        @include font-sizes("large", "gamma-tablet");
+        margin-bottom: 24px;
+        letter-spacing: -1px;
+      }
+      @include when-inside(".news-insights") {
+        @include font-sizes("large", "gamma-tablet");
+        letter-spacing: -1px;
+      }
+      @include when-inside(".capability") {
+        margin-bottom: 24px;
+        font-size: 56px;
+        line-height: $lht__large--beta-desktop;
+      }
+      @include when-inside(".offices") {
+        @include font-sizes("large", "gamma-tablet");
+      }
+      @include when-inside('.events') {
+        letter-spacing: -1px;
+      }
+    }
+
+    @include from("tablet--ls") {
+      @include when-inside('.expertise') {
+        @include font-sizes("large", "delta-desktop");
+        margin: 0 0 28px 0;
+        letter-spacing: -2px;
+      }
+    }
+
+    @include from("desktop") {
+      @include font-sizes("large", "delta-desktop");
+      margin-bottom: 63px;
+      @include when-inside(".we-do") {
+        font-size: 80px;
+        line-height: 88px;
+        margin-bottom: 20px;
+        letter-spacing: -2px;
+      }
+      @include when-inside(".base") {
+        font-size: 64px;
+        line-height: 76px;
+        margin: 0 0 31px 0;
+        letter-spacing: -1.6px;
+      }
+      @include when-inside(".we-are") {
+        font-size: $fnt__large--gamma-desktop;
+        line-height: 88px;
+        margin-bottom: 28px;
+        letter-spacing: -2px;
+      }
+      @include when-inside(".title-article") {
+        margin-bottom: 31px;
+      }
+      @include when-inside(".people") {
+        font-size: $fnt__large--gamma-desktop;
+        line-height: 88px;
+        margin-bottom: 47px;
+        letter-spacing: -2px;
+      }
+      @include when-inside(".capability") {
+        margin-bottom: 33px;
+      }
+      @include when-inside(".work") {
+        margin-bottom: 33px;
+        font-size: $fnt__large--delta-desktop;
+        line-height: $lht__large--gamma-desktop;
+      }
+      @include when-inside('.working') {
+        margin: 0 0 23px 0;
+      }
+      @include when-inside(".capability") {
+        margin-bottom: 33px;
+        font-size: $fnt__large--delta-desktop;
+        line-height: $lht__large--gamma-desktop;
+      }
+      @include when-inside(".events") {
+        margin: 0 span(1 wide) 0 0;
+      }
+      @include when-inside(".offices") {
+        font-size: $fnt__large--gamma-desktop;
+        line-height: 88px;
+        letter-spacing: -2px;
+        margin-bottom: 47px;
+      }
+      @include when-inside(".news-insights") {
+        font-size: 80px;
+        line-height: 88px;
+        letter-spacing: -2px;
+      }
+      @include when-inside('.events') {
+        line-height: 104px;
+        letter-spacing: -2px;
+      }
+    }
+  }
+
+  &__subtitle {
+    @include font-sizes('medium', 'alpha-tablet');
+    margin: 0;
+    @include when-inside(".we-are") {
+      margin-right: span(1 wide);
+    }
+    @include when-inside(".we-do") {
+      margin-right: span(1 wide);
+    }
+    @include when-inside(".offices") {
+      font-size: $fnt__medium--beta-desktop;
+      line-height: $lht__medium--beta;
+      padding-right: span(1 wide);
+    }
+    @include when-inside(".work") {
+      font-size: 20px;
+      line-height: $lht__medium--beta;
+      padding-right: span(1 wide);
+    }
+    @include when-inside(".people") {
+      @include font-sizes('medium', 'alpha');
+    }
+    @include when-inside(".working") {
+      padding-right: span(1 wide);
+    }
+
+    @include when-inside(".expertise") {
+      @include font-sizes('medium', 'beta-desktop');
+      margin-bottom: 40px;
+    }
+
+    @include from("tablet--pt") {
+      @include font-sizes('medium', 'beta-tablet');
+      @include when-inside(".offices") {
+        @include font-sizes('medium', 'beta-tablet');
+        padding-right: 0;
+      }
+      @include when-inside(".working") {
+        padding-right: span(2 wide);
+      }
+
+      @include when-inside(".expertise") {
+        @include font-sizes('medium', 'beta-tablet');
+        margin-bottom: 75px;
+      }
+
+      @include when-inside(".work") {
+        @include font-sizes('medium', 'beta-tablet');
+        padding-right: 0;
+      }
+      @include when-inside(".base") {
+        @include font-sizes('medium', 'beta');
+      }
+    }
+
+    @include from("tablet--ls") {
+      @include when-inside(".expertise") {
+        @include font-sizes('medium', 'beta-desktop');
+        margin-bottom: 0;
+        max-width: 750px;
+      }
+    }
+
+    @include from("desktop") {
+      @include font-sizes('medium', 'beta-desktop');
+      @include when-inside(".work") {
+        padding-right: span(2 wide);
+      }
+      @include when-inside(".working") {
+        @include font-sizes('medium', 'gamma-desktop');
+        line-height: normal;
+      }
+      @include when-inside(".base") {
+        line-height: normal;
+      }
+      @include when-inside(".offices") {
+        @include font-sizes('medium', 'gamma-desktop');
+      }
+    }
+  }
+
+  &__link {
+    font-weight: $fwt--bold;
+    // @include font-sizes("medium", "alpha");
+    color: $cl__action--beta;
+    margin-top: 33px;
+    @include when-inside('.working') {
+      margin-top: 26px;
+    }
+    @include from("tablet--pt") {
+      margin-top: 31px;
+      @include when-inside('.working') {
+        margin-top: 41px;
+      }
+    }
+    @include from("desktop") {
+      font-size: 19px;
+      margin-top: 41px;
+      @include when-inside('.working') {
+        margin-top: 49px;
+      }
+      @include when-inside(".offices") {
+        margin-top: 44px;
+      }
+    }
+  }
+  &__author {
+    margin-top: 28px;
+    @include from("tablet--pt") {
+      margin-top: 32px;
+    }
+    @include from("desktop") {
+      margin-top: 45px;
+    }
+  }
+  &__author-name {
+    @include font-sizes('small', 'gamma');
+    font-weight: $fwt--bold;
+    letter-spacing: 2.6px;
+    margin-bottom: 9px;
+    display: block;
+    text-transform: uppercase;
+    @include from("tablet--pt") {
+      font-size: $fnt__medium--alpha;
+      letter-spacing: 3.2px;
+      margin-bottom: 5px;
+      @include when-inside(".base") {
+        @include font-sizes('medium', 'beta');
+      }
+    }
+    @include from("desktop") {
+      @include font-sizes('medium', 'beta');
+    }
+  }
+  &__author-role {
+    @include when-inside(".base") {
+      @include font-sizes('small', 'beta');
+    }
+    @include font-sizes('medium', 'alpha-tablet');
+    font-weight: $fwt--bold;
+    letter-spacing: 0.85px;
+    text-transform: uppercase;
+    display: block;
+    @include from("tablet--pt") {
+      @include font-sizes('small', 'gamma');
+      letter-spacing: 0.93px;
+      @include when-inside(".base") {
+        @include font-sizes('small', 'gamma');
+        letter-spacing: 1px;
+      }
+    }
+  }
+  &__dot {
+    height: 4px;
+    width: 4px;
+    background-color: $white;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+
+  &--light {
+    .section-title__meta,
+    .section-title__title,
+    .section-title__subtitle {
+        color: $white;
+    }
+  }
+
+}

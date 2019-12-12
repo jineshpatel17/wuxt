@@ -1,0 +1,81 @@
+.paragraph {
+  @include from("desktop") {
+    margin-left: span(2 wide);
+  }
+  &__title {
+    color: $cl__dark--beta;
+    font-size: $fnt__large--alpha;
+    line-height: $lht__medium--beta;
+    font-weight: $fwt--regular;
+    margin: 19px 0 21px;
+    @include from("tablet--pt") {
+      font-size: $fnt__large--alpha-tablet;
+      margin: 58px 0 22px;
+    }
+    @include from("desktop") {
+      @include font-sizes("large", "beta-desktop");
+      margin: 58px 0 20px;
+    }
+  }
+  &__description {
+    @include font-sizes("medium", "beta");
+    color: $cl__dark--alpha;
+    &--list {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+    }
+  }
+  &__list {
+    padding-left: 40px;
+    margin-bottom: 7px;
+    position: relative;
+    color: $cl__dark--beta;
+    @include font-sizes("medium", "beta");
+    &::before {
+      content: "";
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      left: 10px;
+      top: 10px;
+      border-radius: 4px;
+      background: $cl__dark--beta;
+    }
+    @include from("desktop") {
+      @include font-sizes("medium", "beta-desktop");
+      padding-left: 35px;
+      &:before {
+        left: 13px;
+        top: 13px;
+      }
+    }
+  }
+  &__option {
+    @include font-sizes("small", "gamma");
+    font-weight: $fwt--bold;
+    color: $cl__action--beta;
+    display: inline-block;
+    margin: 36px 0 44px;
+    cursor: pointer;
+    @include from("tablet--pt") {
+      margin: 33px 0 44px;
+    }
+    @include from("desktop") {
+      margin: 35px 0 43px;
+    }
+  }
+  //temporary styling. once confirmed Images then we'll remove this
+  &__btn {
+    margin-bottom: 81px;
+    @include from("tablet--pt") {
+      margin-bottom: 72px;
+    }
+    @include from("desktop") {
+      margin-bottom: 80px;
+    }
+  }
+}

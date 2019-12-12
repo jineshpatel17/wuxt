@@ -1,0 +1,93 @@
+.we-are {
+  &__seperator {
+    border-top: 1px solid #d4d2d2;
+    @include from('desktop') {
+      border: 0;
+      &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: calc(((100% - #{get('desktop.min-width', $config)}) / 2) + 15px);
+        margin-left: calc((#{get('desktop.min-width', $config)} / 6) - 2px);
+        display: inline-block;
+        height: 1px;
+        background: #d4d2d2;
+      }
+    }
+  }
+  &__section {
+    position: relative;
+  }
+  &__section-text {
+    padding: 49px 0 42px;
+    @include from('tablet--pt') {
+      padding: 74px 0 61px;
+    }
+    @include from('desktop') {
+      padding: 130px 0 132px;
+    }
+  }
+  &__people {
+    padding: 48px 0 39px;
+    @include from('tablet--pt') {
+      padding: 82px 0 64px;
+    }
+    @include from('desktop') {
+      padding: 114px 0 78px;
+    }
+  }
+  &__offices {
+    position: relative;
+    padding-top: 52px;
+    @extend .we-are__seperator;
+    @include from('tablet--pt') {
+      padding-top: 82px;
+    }
+    @include from('desktop') {
+      padding-top: 88px;
+    }
+  }
+  &__culture {
+    @extend .we-are__seperator;
+    position: relative;
+  }
+  &__news {
+    padding: 52px 0 65px;
+    @extend .we-are__offices;
+    @include from('tablet--pt') {
+      padding: 82px 0 64px;
+    }
+    @include from('desktop') {
+      padding: 87px 0 88px;
+    }
+    &-text {
+      margin-bottom: 49px;
+      @include from('desktop') {
+        margin-bottom: 97px;
+      }
+    }
+  }
+  &__news-card {
+    margin: 0 -18px;
+    @include from('tablet--pt') {
+      margin: 0 -30px;
+    }
+    @include from('desktop') {
+      margin: 0 0 0 span(2 wide);
+    }
+  }
+  &__buttons {
+    @include from('desktop') {
+      margin: 0 0 0 span(2 wide);
+    }
+  }
+  &__hidden {
+    &--mobile {
+      display: none;
+      @include from('tablet--pt') {
+        display: flex;
+      }
+    }
+  }
+}
